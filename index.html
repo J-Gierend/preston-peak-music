@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preston Peak Music - Website Concept</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #12203a;
+            --accent: #d4af37;
+            --accent-glow: rgba(212, 175, 55, 0.3);
+            --text-primary: #f5f0e6;
+            --text-secondary: #a0a0a0;
+            --text-muted: #6a6a7a;
+            --border: rgba(212, 175, 55, 0.2);
+            --gaming-cyan: #00fff7;
+            --gaming-magenta: #ff00ff;
+            --gaming-amber: #ffaa00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 2rem;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--accent);
+        }
+
+        .header-badge {
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 50% 30%, var(--accent-glow) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-subtitle {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-note {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            margin-top: 2rem;
+        }
+
+        .hero-note p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-note strong {
+            color: var(--accent);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .card li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.9rem;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Page Structure */
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .page-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .page-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .page-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .page-card .icon {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .page-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Dual Aesthetic */
+        .aesthetic-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .aesthetic-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .aesthetic-card {
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aesthetic-card.classical {
+            background: linear-gradient(135deg, #0a1628 0%, #1a1a2e 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .aesthetic-card.gaming {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a0a2e 100%);
+            border: 1px solid rgba(0, 255, 247, 0.3);
+        }
+
+        .aesthetic-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .aesthetic-card.classical h4 {
+            color: var(--accent);
+        }
+
+        .aesthetic-card.gaming h4 {
+            color: var(--gaming-cyan);
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .color-palette {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .aesthetic-features {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .aesthetic-features li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* Features List */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent) 0%, #b8962e 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
+        .feature-text h5 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Bio Section */
+        .bio-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        @media (max-width: 640px) {
+            .bio-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .bio-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent) 0%, #8a7028 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--bg-primary);
+        }
+
+        .bio-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bio-tagline {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .bio-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .bio-tag {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .no-ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #1a472a 0%, #0d2818 100%);
+            border: 1px solid #2d5a3d;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #6fcf97;
+            margin-top: 1rem;
+        }
+
+        /* Platforms */
+        .platforms-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .platform-link {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .platform-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Image Prompts */
+        .prompt-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prompt-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .prompt-code {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .prompt-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .prompt-meta span {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-top: 1px solid var(--border);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-note {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Technical Section */
+        .tech-section {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+        }
+
+        .tech-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            max-width: 600px;
+            margin: 0 auto;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: border-color 0.2s ease;
+        }
+
+        .tech-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .tech-toggle h3 {
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .tech-toggle span {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .tech-content {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            display: none;
+        }
+
+        .tech-content.open {
+            display: block;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tech-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .tech-item h5 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        /* Nav Links */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        /* Utilities */
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .mt-2 { margin-top: 2rem; }
+        .mb-2 { margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-logo">Website Concept</div>
+        <div class="header-badge">For Review</div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-subtitle">Website Redesign Concept</div>
+        <h1>Preston Peak Music</h1>
+        <p class="hero-tagline">A modern, animated portfolio showcasing your dual artistic identity as a classical composer and game music creator.</p>
+
+        <div class="hero-note">
+            <p>Hey Preston! This document outlines the concept for your new website. Please review and let me know your thoughts. <strong>Nothing is final</strong> - this is just a starting point for discussion.</p>
+        </div>
+
+        <div class="scroll-hint">Scroll to explore the concept</div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section">
+        <nav class="nav-links">
+            <a href="#vision" class="nav-link">Vision</a>
+            <a href="#about" class="nav-link">Your Bio</a>
+            <a href="#pages" class="nav-link">Pages</a>
+            <a href="#design" class="nav-link">Design</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#images" class="nav-link">Image Ideas</a>
+        </nav>
+    </section>
+
+    <!-- Vision -->
+    <section class="section" id="vision">
+        <div class="section-header">
+            <h2>The Vision</h2>
+            <p>A website that transforms based on which musical world visitors are exploring.</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="card">
+            <h3>Dual Worlds Concept</h3>
+            <p>Your music spans two distinct worlds - the elegance of classical/concert composition and the energy of video game and TTRPG soundtracks. The website will <strong>visually transform</strong> as visitors navigate between these sections, giving each world its own unique atmosphere while maintaining a cohesive experience.</p>
+            <ul>
+                <li><strong>Classical sections:</strong> Elegant, sophisticated, warm gold accents on deep navy</li>
+                <li><strong>Game music sections:</strong> Retro-inspired, neon colors, pixel accents, synthwave vibes</li>
+                <li><strong>Smooth transitions:</strong> The aesthetic morphs seamlessly as visitors switch sections</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Goals for Visitors</h3>
+            <ul>
+                <li><strong>Discover your music</strong> - Easy access to listen across all platforms</li>
+                <li><strong>Hire you for projects</strong> - Clear path to commission inquiries</li>
+                <li><strong>Find game music packs</strong> - Quick access to your itch.io store</li>
+                <li><strong>Learn your story</strong> - Your background, philosophy, and achievements</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About You -->
+    <section class="section" id="about">
+        <div class="section-header">
+            <h2>Your Profile</h2>
+            <p>The verified information we'll feature on the site.</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="bio-card">
+            <div class="bio-avatar">PP</div>
+            <div class="bio-content">
+                <h3>Preston Peak</h3>
+                <p class="bio-tagline">Composer & Pianist | Houston, TX</p>
+                <p>Post-classical composer passionate about music's origins, innovations, and storytelling. Originally studying Biomedical Engineering at Texas A&M, your love for composition led you to create music for solo piano, chamber ensembles, video games, and TTRPGs.</p>
+
+                <div class="bio-details">
+                    <span class="bio-tag">Born 1998</span>
+                    <span class="bio-tag">Texas A&M Alumnus</span>
+                    <span class="bio-tag">Video Gamer</span>
+                    <span class="bio-tag">D&D Player</span>
+                    <span class="bio-tag">Minimalist Style</span>
+                </div>
+
+                <div class="no-ai-badge">
+                    <span>*</span>
+                    <span>No AI is ever used in my compositions</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <h3>Achievements to Highlight</h3>
+            <ul>
+                <li><strong>Sonata No. 1 (2023)</strong> - Semi-finalist at NYC Contemporary Music Symposium 2023</li>
+                <li><strong>Suite for Piano No. 1 - Songs for Winter</strong> (2023)</li>
+                <li><strong>Game Music Packs</strong> - Multiple releases on itch.io with hundreds of minutes of original music</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Your Platforms</h3>
+            <div class="platforms-grid mt-2">
+                <a href="https://soundcloud.com/preston-peak-104023590" class="platform-link" target="_blank">SoundCloud</a>
+                <a href="https://prestonpeak.bandcamp.com/" class="platform-link" target="_blank">Bandcamp</a>
+                <a href="https://www.youtube.com/@prestonpeak2" class="platform-link" target="_blank">YouTube</a>
+                <a href="https://ppeak.itch.io/" class="platform-link" target="_blank">itch.io</a>
+                <a href="https://www.instagram.com/preston_peak_music/" class="platform-link" target="_blank">Instagram</a>
+                <a href="https://music.apple.com/us/artist/preston-peak/1680020328" class="platform-link" target="_blank">Apple Music</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pages -->
+    <section class="section" id="pages">
+        <div class="section-header">
+            <h2>Site Structure</h2>
+            <p>Seven pages covering all aspects of your work.</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="pages-grid">
+            <div class="page-card">
+                <h4><span class="icon">1</span> Home</h4>
+                <p>Dramatic hero section with animated name reveal. Features a "dual portal" letting visitors choose between Classical Works or Game Music worlds.</p>
+            </div>
+            <div class="page-card">
+                <h4><span class="icon">2</span> About</h4>
+                <p>Your story, background, musical philosophy, and achievements. Prominent display of the NYC Symposium recognition and your "No AI" commitment.</p>
+            </div>
+            <div class="page-card">
+                <h4><span class="icon">3</span> Classical Works</h4>
+                <p>Showcase of concert and piano compositions. Each work displayed with title, year, duration, and embedded player. Elegant aesthetic.</p>
+            </div>
+            <div class="page-card">
+                <h4><span class="icon">4</span> Game Music</h4>
+                <p>Full aesthetic transformation to retro/pixel style. Features your itch.io packs with preview players, track counts, and direct purchase links.</p>
+            </div>
+            <div class="page-card">
+                <h4><span class="icon">5</span> Listen</h4>
+                <p>Aggregated music discovery - all your platforms in one place. Tabbed interface for SoundCloud, Bandcamp, and YouTube content.</p>
+            </div>
+            <div class="page-card">
+                <h4><span class="icon">6</span> News</h4>
+                <p>Social feed aggregating your Instagram and YouTube updates. Keeps the site fresh without manual content management.</p>
+            </div>
+            <div class="page-card">
+                <h4><span class="icon">7</span> Contact & Commissions</h4>
+                <p>Simple contact form plus a guided commission wizard that walks potential clients through project type, scope, budget, and details.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design -->
+    <section class="section" id="design">
+        <div class="section-header">
+            <h2>Visual Design</h2>
+            <p>Two distinct aesthetics that transform between sections.</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="aesthetic-comparison">
+            <div class="aesthetic-card classical">
+                <h4>Classical Aesthetic</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Home, About, Classical Works, Listen, Contact</p>
+
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: #0a1628;" title="Deep Navy"></div>
+                    <div class="color-swatch" style="background: #1a1a2e;" title="Charcoal"></div>
+                    <div class="color-swatch" style="background: #d4af37;" title="Warm Gold"></div>
+                    <div class="color-swatch" style="background: #f5f0e6;" title="Ivory"></div>
+                </div>
+
+                <ul class="aesthetic-features">
+                    <li>Playfair Display serif headings</li>
+                    <li>Slow, elegant fade animations</li>
+                    <li>Floating particle effects (musical notes)</li>
+                    <li>Sophisticated, contemplative mood</li>
+                </ul>
+            </div>
+
+            <div class="aesthetic-card gaming">
+                <h4>GAMING AESTHETIC</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Game Music section</p>
+
+                <div class="color-palette">
+                    <div class="color-swatch" style="background: #0f0f0f;" title="Deep Black"></div>
+                    <div class="color-swatch" style="background: #1a0a2e;" title="Dark Purple"></div>
+                    <div class="color-swatch" style="background: #00fff7;" title="Neon Cyan"></div>
+                    <div class="color-swatch" style="background: #ff00ff;" title="Neon Magenta"></div>
+                    <div class="color-swatch" style="background: #ffaa00;" title="Warm Amber"></div>
+                </div>
+
+                <ul class="aesthetic-features">
+                    <li>Pixel font headers + clean body text</li>
+                    <li>Subtle CRT scanline effects</li>
+                    <li>Neon glow on interactive elements</li>
+                    <li>Retro synthwave, energetic mood</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <h3>Additional Design Features</h3>
+            <ul>
+                <li><strong>Dark/Light Mode Toggle</strong> - Visitors can switch between dark and light themes</li>
+                <li><strong>Smooth Scroll Animations</strong> - Elements fade in as you scroll down</li>
+                <li><strong>Section Transformation</strong> - Colors and style morph when switching between Classical and Game sections</li>
+                <li><strong>Mobile-First</strong> - Looks great on phones, tablets, and desktops</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <h2>Key Features</h2>
+            <p>What makes the site special.</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">*</div>
+                <div class="feature-text">
+                    <h5>Lazy-Loaded Embeds</h5>
+                    <p>Music players load only when visible - keeps the site fast</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">*</div>
+                <div class="feature-text">
+                    <h5>Commission Wizard</h5>
+                    <p>Step-by-step form guides clients through project details</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">*</div>
+                <div class="feature-text">
+                    <h5>Social Integration</h5>
+                    <p>Instagram and YouTube feed keeps content fresh</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">*</div>
+                <div class="feature-text">
+                    <h5>Multi-Platform Players</h5>
+                    <p>SoundCloud, Bandcamp, and YouTube embeds</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">*</div>
+                <div class="feature-text">
+                    <h5>Scroll Animations</h5>
+                    <p>Elegant GSAP-powered reveals as you browse</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">*</div>
+                <div class="feature-text">
+                    <h5>Theme Toggle</h5>
+                    <p>Dark and light modes for visitor preference</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-2">
+            <h3>Future Possibilities (Marked as Planned)</h3>
+            <p>These features can be mocked up to show potential, clearly labeled as "coming soon":</p>
+            <ul>
+                <li><strong>Direct Music Sales</strong> - E-commerce integration for purchasing tracks</li>
+                <li><strong>Newsletter Signup</strong> - Email list for updates and releases</li>
+                <li><strong>Multi-Language Support</strong> - Site translation options</li>
+                <li><strong>Blog/CMS</strong> - Write and publish articles directly</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Image Prompts -->
+    <section class="section" id="images">
+        <div class="section-header">
+            <h2>Background Images</h2>
+            <p>AI-generated artwork for each section (to be created).</p>
+            <div class="section-divider"></div>
+        </div>
+
+        <div class="prompt-card">
+            <h4>1. Homepage Hero</h4>
+            <div class="prompt-code">Abstract dark composition featuring a grand piano silhouette dissolving into floating musical notes and starlight, deep navy blue to black gradient, subtle golden light emanating from piano keys, ethereal and sophisticated mood, minimalist style, cinematic lighting, no text, no people</div>
+            <div class="prompt-meta">
+                <span>1920x1080</span>
+                <span>Dark, ethereal</span>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <h4>2. Classical Section</h4>
+            <div class="prompt-code">Elegant abstract visualization of sound waves transforming into delicate golden threads against deep midnight blue background, subtle sheet music notation fading in distance, romantic era inspired, warm ivory and gold accents, soft bokeh light particles, dreamy atmospheric quality, no text, no people</div>
+            <div class="prompt-meta">
+                <span>1920x1200</span>
+                <span>Romantic, warm</span>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <h4>3. Game Music Section</h4>
+            <div class="prompt-code">Retro synthwave landscape at night with glowing neon grid lines extending to horizon, 16-bit pixel art style mountains and stars, cyan and magenta color palette with warm amber accents, CRT monitor glow effect, nostalgic 80s arcade atmosphere, dark background, no text, no people</div>
+            <div class="prompt-meta">
+                <span>1920x1080</span>
+                <span>Synthwave, retro</span>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <h4>4. Ambient/Horror Pack Section</h4>
+            <div class="prompt-code">Liminal space aesthetic, empty dark corridor with flickering fluorescent lights, eerie fog, muted desaturated colors with occasional sickly green glow, unsettling atmosphere, VHS grain texture, abandoned building interior, no people, no text</div>
+            <div class="prompt-meta">
+                <span>1920x1080</span>
+                <span>Liminal, horror</span>
+            </div>
+        </div>
+
+        <div class="prompt-card">
+            <h4>5. Chiptune/Adventure Section</h4>
+            <div class="prompt-code">Colorful 16-bit pixel art adventure landscape, fantasy scene with pixelated castle on distant hill, 8-bit style clouds and trees, warm sunset colors orange and purple, retro SNES era video game aesthetic, cheerful adventurous mood, clean pixel art, no text</div>
+            <div class="prompt-meta">
+                <span>1920x1080</span>
+                <span>16-bit, adventure</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>What Do You Think?</h2>
+        <p>This is just the starting point. Let me know what resonates, what you'd change, and any ideas you have!</p>
+
+        <div class="cta-note">
+            <strong>Questions to consider:</strong><br><br>
+            - Does the "dual worlds" concept fit how you see your music?<br>
+            - Are there any pages or features you'd add or remove?<br>
+            - Do the color schemes feel right for each aesthetic?<br>
+            - Any specific content or works you want highlighted?<br>
+            - Do you have photos we can use for the About section?
+        </div>
+    </section>
+
+    <!-- Technical Details (Collapsible) -->
+    <section class="tech-section">
+        <div class="tech-toggle" onclick="document.getElementById('techContent').classList.toggle('open'); this.querySelector('span').textContent = document.getElementById('techContent').classList.contains('open') ? 'Click to hide' : 'Click to expand'">
+            <h3>Technical Implementation Details</h3>
+            <span>Click to expand</span>
+        </div>
+
+        <div id="techContent" class="tech-content">
+            <p style="color: var(--text-secondary); text-align: center; margin-bottom: 1.5rem;">For the curious - here's how we'll build it.</p>
+
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h5>Framework</h5>
+                    <p>Vue 3 + Vite</p>
+                </div>
+                <div class="tech-item">
+                    <h5>Styling</h5>
+                    <p>UnoCSS (Tailwind-like)</p>
+                </div>
+                <div class="tech-item">
+                    <h5>Animations</h5>
+                    <p>GSAP + ScrollTrigger</p>
+                </div>
+                <div class="tech-item">
+                    <h5>Hosting</h5>
+                    <p>GitHub Pages (free)</p>
+                </div>
+            </div>
+
+            <div class="card mt-2">
+                <h3 style="font-size: 1.1rem;">Performance Strategy</h3>
+                <ul>
+                    <li><strong>Lazy-loaded embeds</strong> - Music players only load when scrolled into view</li>
+                    <li><strong>Optimized images</strong> - WebP format with responsive sizing</li>
+                    <li><strong>Fast animations</strong> - GPU-accelerated, respects reduced-motion preferences</li>
+                    <li><strong>Under 300KB JavaScript</strong> - Keeps the site snappy on any connection</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size: 1.1rem;">Embed Sources</h3>
+                <ul>
+                    <li><strong>YouTube</strong> - lite-youtube-embed (224x faster than standard)</li>
+                    <li><strong>SoundCloud</strong> - Native embeds with lazy loading</li>
+                    <li><strong>Bandcamp</strong> - Native embeds with responsive wrapper</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Concept prepared for Preston Peak | Ready to build once approved</p>
+    </footer>
+</body>
+</html>
