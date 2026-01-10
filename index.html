@@ -538,6 +538,76 @@
             border-radius: 4px;
         }
 
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .image-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-card-content {
+            padding: 1rem;
+        }
+
+        .image-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .image-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .image-full {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .image-full img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-full-content {
+            padding: 1.5rem;
+        }
+
+        .image-full h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .image-full p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
@@ -959,57 +1029,83 @@
         </div>
     </section>
 
-    <!-- Image Prompts -->
+    <!-- Image Previews -->
     <section class="section" id="images">
         <div class="section-header">
-            <h2>Background Images</h2>
-            <p>AI-generated artwork for each section (to be created).</p>
+            <h2>Visual Preview</h2>
+            <p>AI-generated concept artwork for each section of the website.</p>
             <div class="section-divider"></div>
         </div>
 
-        <div class="prompt-card">
-            <h4>1. Homepage Hero</h4>
-            <div class="prompt-code">Abstract dark composition featuring a grand piano silhouette dissolving into floating musical notes and starlight, deep navy blue to black gradient, subtle golden light emanating from piano keys, ethereal and sophisticated mood, minimalist style, cinematic lighting, no text, no people</div>
-            <div class="prompt-meta">
-                <span>1920x1080</span>
-                <span>Dark, ethereal</span>
+        <!-- Hero Image - Full Width -->
+        <div class="image-full">
+            <img src="images/01-hero-piano-starlight.jpg" alt="Homepage hero - piano dissolving into starlight">
+            <div class="image-full-content">
+                <h4>Homepage Hero</h4>
+                <p>The dramatic first impression - a piano silhouette dissolving into musical notes and starlight against deep navy.</p>
             </div>
         </div>
 
-        <div class="prompt-card">
-            <h4>2. Classical Section</h4>
-            <div class="prompt-code">Elegant abstract visualization of sound waves transforming into delicate golden threads against deep midnight blue background, subtle sheet music notation fading in distance, romantic era inspired, warm ivory and gold accents, soft bokeh light particles, dreamy atmospheric quality, no text, no people</div>
-            <div class="prompt-meta">
-                <span>1920x1200</span>
-                <span>Romantic, warm</span>
+        <!-- Grid of other images -->
+        <div class="image-gallery">
+            <div class="image-card">
+                <img src="images/02-classical-golden-waves.jpg" alt="Classical section - golden sound waves">
+                <div class="image-card-content">
+                    <h4>Classical Works Section</h4>
+                    <p>Elegant golden threads and soft bokeh for your concert compositions.</p>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="images/03-gaming-synthwave-grid.jpg" alt="Game music section - synthwave grid">
+                <div class="image-card-content">
+                    <h4>Game Music Section</h4>
+                    <p>Neon synthwave aesthetic with glowing grid lines - the gaming world transforms.</p>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="images/04-liminal-horror-corridor.jpg" alt="Horror ambient - liminal corridor">
+                <div class="image-card-content">
+                    <h4>Horror/Ambient Pack</h4>
+                    <p>Eerie liminal space for your "remnants" ambient music pack.</p>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="images/05-chiptune-pixel-adventure.jpg" alt="Chiptune section - pixel art landscape">
+                <div class="image-card-content">
+                    <h4>Chiptune/Adventure</h4>
+                    <p>Colorful 16-bit pixel art for your adventure music packs.</p>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="images/06-about-portrait-backdrop.jpg" alt="About page - elegant backdrop">
+                <div class="image-card-content">
+                    <h4>About Page Backdrop</h4>
+                    <p>Soft, elegant background for your portrait and bio.</p>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="images/07-contact-waveform-banner.jpg" alt="Contact section - waveform banner">
+                <div class="image-card-content">
+                    <h4>Contact Banner</h4>
+                    <p>Minimalist golden waveform for the contact section.</p>
+                </div>
             </div>
         </div>
 
-        <div class="prompt-card">
-            <h4>3. Game Music Section</h4>
-            <div class="prompt-code">Retro synthwave landscape at night with glowing neon grid lines extending to horizon, 16-bit pixel art style mountains and stars, cyan and magenta color palette with warm amber accents, CRT monitor glow effect, nostalgic 80s arcade atmosphere, dark background, no text, no people</div>
-            <div class="prompt-meta">
-                <span>1920x1080</span>
-                <span>Synthwave, retro</span>
-            </div>
-        </div>
-
-        <div class="prompt-card">
-            <h4>4. Ambient/Horror Pack Section</h4>
-            <div class="prompt-code">Liminal space aesthetic, empty dark corridor with flickering fluorescent lights, eerie fog, muted desaturated colors with occasional sickly green glow, unsettling atmosphere, VHS grain texture, abandoned building interior, no people, no text</div>
-            <div class="prompt-meta">
-                <span>1920x1080</span>
-                <span>Liminal, horror</span>
-            </div>
-        </div>
-
-        <div class="prompt-card">
-            <h4>5. Chiptune/Adventure Section</h4>
-            <div class="prompt-code">Colorful 16-bit pixel art adventure landscape, fantasy scene with pixelated castle on distant hill, 8-bit style clouds and trees, warm sunset colors orange and purple, retro SNES era video game aesthetic, cheerful adventurous mood, clean pixel art, no text</div>
-            <div class="prompt-meta">
-                <span>1920x1080</span>
-                <span>16-bit, adventure</span>
-            </div>
+        <div class="card mt-2">
+            <h3>About These Images</h3>
+            <p>These are AI-generated concept previews to give you an idea of the visual direction. For the final website, we can:</p>
+            <ul>
+                <li>Use these as-is (they look great!)</li>
+                <li>Generate variations with different colors or moods</li>
+                <li>Create higher resolution versions</li>
+                <li>Adjust specific elements based on your feedback</li>
+            </ul>
         </div>
     </section>
 
