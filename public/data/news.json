@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "date": "2024-01-15",
+      "title": "New Release: Marriage Suite",
+      "content": "Excited to announce the completion of my latest work, Marriage Suite for string quartet. This multi-movement piece explores themes of love and celebration.",
+      "type": "release",
+      "link": "https://prestonpeak.bandcamp.com/"
+    },
+    {
+      "id": "2",
+      "date": "2023-11-20",
+      "title": "NYC Symposium Recognition",
+      "content": "Honored to have Sonata No. 1 selected as a semi-finalist at the NYC Contemporary Music Symposium 2023.",
+      "type": "award",
+      "link": null
+    },
+    {
+      "id": "3",
+      "date": "2023-09-01",
+      "title": "New Game Music Pack: surpass your limits!",
+      "content": "Just released a new free music pack on itch.io! 13 tracks of high-energy action music for your games.",
+      "type": "release",
+      "link": "https://ppeak.itch.io/surpass-your-limits"
+    }
+  ]
+}

@@ -26,3 +26,8 @@ npm-debug.log*
 
 # Generated images (keep originals, ignore temp)
 images/temp/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/

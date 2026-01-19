@@ -1,0 +1,40 @@
+{
+  "works": [
+    {
+      "slug": "sonata-no-1",
+      "title": "Sonata No. 1",
+      "year": 2023,
+      "duration": "6-7 min",
+      "instrumentation": "Solo Piano",
+      "awards": ["Semi-finalist, NYC Contemporary Music Symposium 2023"],
+      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+      "bandcamp": "https://prestonpeak.bandcamp.com/",
+      "description": "A romantic era dedication to the classical masters, blending traditional sonata form with contemporary harmonic language.",
+      "featured": true
+    },
+    {
+      "slug": "marriage-suite",
+      "title": "Marriage Suite",
+      "year": 2024,
+      "duration": "12-15 min",
+      "instrumentation": "String Quartet",
+      "awards": [],
+      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+      "bandcamp": "https://prestonpeak.bandcamp.com/",
+      "description": "A multi-movement work exploring themes of love, commitment, and celebration through the rich textures of string quartet.",
+      "featured": true
+    },
+    {
+      "slug": "nocturne-in-e-flat",
+      "title": "Nocturne in E-flat",
+      "year": 2022,
+      "duration": "4-5 min",
+      "instrumentation": "Solo Piano",
+      "awards": [],
+      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+      "bandcamp": "https://prestonpeak.bandcamp.com/",
+      "description": "A contemplative night piece in the tradition of Chopin, featuring lyrical melodies over gentle arpeggiated accompaniment.",
+      "featured": false
+    }
+  ]
+}

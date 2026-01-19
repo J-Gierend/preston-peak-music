@@ -1,0 +1,118 @@
+/* CSS Custom Properties for theming */
+:root {
+  /* Classical Aesthetic (Default) */
+  --bg-primary: #1a2a3a;
+  --bg-secondary: #2a3a4a;
+  --bg-tertiary: #3a4a5a;
+  --accent: #c9a85c;
+  --accent-hover: #d4b76a;
+  --text-primary: #f8f4ef;
+  --text-secondary: #b8a8a0;
+  --text-muted: #8a8a8a;
+
+  /* Fonts */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-pixel: 'Press Start 2P', monospace;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Spacing */
+  --section-padding-x: 1rem;
+  --section-padding-y: 4rem;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-padding-x: 2rem;
+    --section-padding-y: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-padding-x: 4rem;
+  }
+}
+
+/* Gaming Aesthetic */
+[data-aesthetic="gaming"] {
+  --bg-primary: #181820;
+  --bg-secondary: #252035;
+  --bg-tertiary: #352845;
+  --accent: #70d4d0;
+  --accent-hover: #90e4e0;
+  --accent-secondary: #c580c5;
+  --text-primary: #f0f0f5;
+  --text-secondary: #a0a0b0;
+  --text-muted: #707080;
+}
+
+/* Light Theme Override */
+[data-theme="light"] {
+  --bg-primary: #f8f4ef;
+  --bg-secondary: #ebe5dc;
+  --bg-tertiary: #ddd5ca;
+  --text-primary: #1a2a3a;
+  --text-secondary: #4a5a6a;
+  --text-muted: #7a8a9a;
+}
+
+[data-aesthetic="gaming"][data-theme="light"] {
+  --bg-primary: #f0f0f5;
+  --bg-secondary: #e0e0ea;
+  --bg-tertiary: #d0d0dd;
+  --text-primary: #181820;
+  --text-secondary: #404050;
+}
+
+/* Gradient backgrounds */
+.bg-gradient-classical {
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 50%,
+    var(--bg-tertiary) 100%
+  );
+}
+
+.bg-gradient-gaming {
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 50%,
+    #2a1a3a 100%
+  );
+}
+
+/* Glow effects for gaming */
+[data-aesthetic="gaming"] .glow {
+  text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+}
+
+[data-aesthetic="gaming"] .glow-secondary {
+  text-shadow: 0 0 10px var(--accent-secondary), 0 0 20px var(--accent-secondary);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+[data-aesthetic="gaming"] .card-hover:hover {
+  box-shadow: 0 10px 40px rgba(112, 212, 208, 0.2);
+}

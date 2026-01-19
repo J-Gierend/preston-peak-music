@@ -1,0 +1,40 @@
+{
+  "packs": [
+    {
+      "slug": "surpass-your-limits",
+      "title": "surpass your limits!",
+      "tracks": 13,
+      "duration": "20+ min",
+      "style": ["Action chiptune", "Boss themes", "Adventure"],
+      "price": "FREE",
+      "itchUrl": "https://ppeak.itch.io/surpass-your-limits",
+      "preview": "https://soundcloud.com/preston-peak-104023590",
+      "description": "High-energy action music perfect for intense gameplay moments, boss battles, and adventure sequences. Features driving chiptune melodies with modern production.",
+      "featured": true
+    },
+    {
+      "slug": "liminal-spaces",
+      "title": "Liminal Spaces",
+      "tracks": 8,
+      "duration": "15+ min",
+      "style": ["Ambient horror", "Atmospheric", "Suspense"],
+      "price": "$5",
+      "itchUrl": "https://ppeak.itch.io/",
+      "preview": "https://soundcloud.com/preston-peak-104023590",
+      "description": "Unsettling ambient soundscapes for horror games and atmospheric experiences. Creates tension through subtle dissonance and eerie textures.",
+      "featured": true
+    },
+    {
+      "slug": "pixel-adventure",
+      "title": "Pixel Adventure",
+      "tracks": 10,
+      "duration": "18+ min",
+      "style": ["Chiptune", "Retro", "Platformer"],
+      "price": "FREE",
+      "itchUrl": "https://ppeak.itch.io/",
+      "preview": "https://soundcloud.com/preston-peak-104023590",
+      "description": "Classic 8-bit inspired music for platformers and retro-style games. Catchy melodies and energetic rhythms.",
+      "featured": false
+    }
+  ]
+}

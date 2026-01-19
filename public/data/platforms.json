@@ -1,0 +1,30 @@
+{
+  "platforms": [
+    {
+      "name": "SoundCloud",
+      "url": "https://soundcloud.com/preston-peak-104023590",
+      "icon": "i-simple-icons-soundcloud",
+      "color": "#ff5500"
+    },
+    {
+      "name": "Bandcamp",
+      "url": "https://prestonpeak.bandcamp.com/",
+      "icon": "i-simple-icons-bandcamp",
+      "color": "#1da0c3"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/@prestonpeak2",
+      "icon": "i-simple-icons-youtube",
+      "color": "#ff0000"
+    },
+    {
+      "name": "itch.io",
+      "url": "https://ppeak.itch.io/",
+      "icon": "i-simple-icons-itchdotio",
+      "color": "#fa5c5c"
+    }
+  ],
+  "email": "contact@prestonpeakmusic.com",
+  "website": "https://www.prestonpeakmusic.com/"
+}
