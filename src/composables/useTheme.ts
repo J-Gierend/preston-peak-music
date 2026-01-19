@@ -13,6 +13,14 @@ export function useTheme() {
     document.documentElement.setAttribute('data-aesthetic', value)
   }
 
+  const setWorld = (world: Aesthetic) => {
+    setAesthetic(world)
+    // Classical = can be light or dark, Gaming = always dark
+    if (world === 'gaming' && !isDark.value) {
+      toggleDark()
+    }
+  }
+
   onMounted(() => {
     document.documentElement.setAttribute('data-aesthetic', aesthetic.value)
   })
@@ -25,6 +33,7 @@ export function useTheme() {
     aesthetic,
     isDark,
     setAesthetic,
+    setWorld,
     toggleDark
   }
 }

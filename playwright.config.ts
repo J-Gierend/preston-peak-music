@@ -8,7 +8,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:4173/preston-peak-music/',
+    baseURL: 'http://localhost:4180/preston-peak-music/',
     trace: 'on-first-retry',
   },
   projects: [
@@ -18,8 +18,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run preview',
-    url: 'http://localhost:4173/preston-peak-music/',
-    reuseExistingServer: !process.env.CI,
+    command: 'npm run preview -- --port 4180',
+    url: 'http://localhost:4180/preston-peak-music/',
+    reuseExistingServer: false,
   },
 })

@@ -1,14 +1,28 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useScrollAnimation } from '../../composables/useScrollAnimation'
 
-defineProps<{
+const props = defineProps<{
   title: string
   subtitle?: string
   backgroundImage?: string
 }>()
 
 const { gsap } = useScrollAnimation()
+const currentBg = ref(props.backgroundImage)
+const isTransitioning = ref(false)
+
+watch(() => props.backgroundImage, (newBg, oldBg) => {
+  if (newBg !== oldBg) {
+    isTransitioning.value = true
+    setTimeout(() => {
+      currentBg.value = newBg
+      setTimeout(() => {
+        isTransitioning.value = false
+      }, 50)
+    }, 250)
+  }
+})
 
 onMounted(() => {
   gsap.from('.hero-title', {
@@ -29,32 +43,129 @@ onMounted(() => {
 
 <template>
   <section
-    class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"
+    data-testid="hero-section"
+    class="hero-section"
   >
-    <!-- Background Image -->
+    <!-- Background Image with Transition -->
     <div
-      v-if="backgroundImage"
-      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      :style="{ backgroundImage: `url(${backgroundImage})` }"
+      v-if="currentBg"
+      data-testid="hero-background"
+      class="hero-background"
+      :class="{ transitioning: isTransitioning }"
+      :style="{ backgroundImage: `url(${currentBg})` }"
     />
 
     <!-- Overlay -->
-    <div
-      class="absolute inset-0"
-      :style="{
-        background: 'linear-gradient(to bottom, rgba(var(--bg-primary-rgb), 0.7), rgba(var(--bg-primary-rgb), 0.5) 50%, rgba(var(--bg-primary-rgb), 1))'
-      }"
-    />
+    <div class="hero-overlay" />
 
     <!-- Content -->
-    <div class="relative z-10 text-center px-4 py-20">
-      <h1 class="hero-title text-4xl md:text-6xl lg:text-7xl font-display font-bold text-[var(--text-primary)] mb-4">
+    <div class="hero-content">
+      <h1 class="hero-title">
         {{ title }}
       </h1>
-      <p v-if="subtitle" class="hero-subtitle text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
+      <p v-if="subtitle" class="hero-subtitle">
         {{ subtitle }}
       </p>
       <slot />
     </div>
   </section>
 </template>
+
+<style scoped>
+.hero-section {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity 0.5s ease, transform 0.8s ease;
+}
+
+.hero-background.transitioning {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--bg-primary-rgb), 0.7),
+    rgba(var(--bg-primary-rgb), 0.5) 50%,
+    rgba(var(--bg-primary-rgb), 1)
+  );
+  transition: background 0.5s ease;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 5rem;
+  }
+}
+
+[data-aesthetic="gaming"] .hero-title {
+  font-family: var(--font-pixel);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
+}
+
+@media (min-width: 768px) {
+  [data-aesthetic="gaming"] .hero-title {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-aesthetic="gaming"] .hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 42rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+</style>

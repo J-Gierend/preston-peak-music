@@ -47,6 +47,7 @@ watch(() => props.isOpen, (open) => {
     <Transition name="modal">
       <div
         v-if="isOpen && pack"
+        data-testid="pack-modal"
         class="fixed inset-0 z-50 flex items-center justify-center p-4"
       >
         <!-- Backdrop -->

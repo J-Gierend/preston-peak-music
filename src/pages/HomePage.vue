@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useContentLoader } from '../composables/useContentLoader'
+import { useTheme, type Aesthetic } from '../composables/useTheme'
 import HeroSection from '../components/sections/HeroSection.vue'
-import DualPortalSection from '../components/sections/DualPortalSection.vue'
-import FeaturedWorkSection from '../components/sections/FeaturedWorkSection.vue'
+import WorldToggle from '../components/WorldToggle.vue'
+import WorldContentSection from '../components/sections/WorldContentSection.vue'
 import WorkDetailModal from '../components/modals/WorkDetailModal.vue'
 import PackDetailModal from '../components/modals/PackDetailModal.vue'
+import './HomePage.css'
 
 interface Work {
   slug: string
@@ -37,14 +39,29 @@ interface Pack {
 const route = useRoute()
 const router = useRouter()
 const { loadContent } = useContentLoader()
+const { setWorld } = useTheme()
 const baseUrl = import.meta.env.BASE_URL
 
+const currentWorld = ref<Aesthetic>('classical')
 const works = ref<Work[]>([])
 const packs = ref<Pack[]>([])
 const selectedWork = ref<Work | null>(null)
 const selectedPack = ref<Pack | null>(null)
 const isWorkModalOpen = ref(false)
 const isPackModalOpen = ref(false)
+
+const heroBackground = computed(() => {
+  const bgName = currentWorld.value === 'classical'
+    ? 'hero-classical.png'
+    : 'hero-gaming.png'
+  return `${baseUrl}images/backgrounds/${bgName}`
+})
+
+const heroSubtitle = computed(() => {
+  return currentWorld.value === 'classical'
+    ? 'Post-classical composer creating music that bridges concert halls and gaming worlds.'
+    : 'Royalty-free soundtracks and music packs for indie game developers.'
+})
 
 onMounted(async () => {
   const [worksData, packsData] = await Promise.all([
@@ -54,7 +71,6 @@ onMounted(async () => {
   if (worksData) works.value = worksData.works
   if (packsData) packs.value = packsData.packs
 
-  // Handle hash on mount
   handleHash(route.hash)
 })
 
@@ -70,8 +86,14 @@ function handleHash(hash: string) {
   }
   const pack = packs.value.find(p => p.slug === slug)
   if (pack) {
+    currentWorld.value = 'gaming'
+    setWorld('gaming')
     openPack(pack.slug)
   }
+}
+
+function onWorldChange(world: Aesthetic) {
+  setWorld(world)
 }
 
 function openWork(slug: string) {
@@ -100,38 +122,37 @@ function closePackModal() {
 </script>
 
 <template>
-  <div>
+  <div class="homepage">
     <HeroSection
       title="Preston Peak"
-      subtitle="Post-classical composer creating music that bridges concert halls and gaming worlds."
-      :background-image="`${baseUrl}images/backgrounds/hero-classical.png`"
+      :subtitle="heroSubtitle"
+      :background-image="heroBackground"
     >
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-        <RouterLink to="/classical" class="btn-primary">
-          Explore Classical
-        </RouterLink>
-        <RouterLink to="/games" class="btn-outline">
-          Game Music
-        </RouterLink>
+      <div class="hero-actions">
+        <WorldToggle
+          v-model="currentWorld"
+          @change="onWorldChange"
+        />
       </div>
     </HeroSection>
 
-    <DualPortalSection />
-    <FeaturedWorkSection
+    <WorldContentSection
+      :world="currentWorld"
       @open-work="openWork"
       @open-pack="openPack"
     />
 
     <!-- CTA Section -->
-    <section class="py-20 px-4 bg-[var(--bg-secondary)]">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-[var(--text-primary)] mb-4">
+    <section class="cta-section">
+      <div class="cta-container">
+        <h2 class="cta-title">
           Need Custom Music?
         </h2>
-        <p class="text-lg text-[var(--text-secondary)] mb-8">
-          Whether it's a concert piece, game soundtrack, or something unique, let's create something special together.
+        <p class="cta-description">
+          Whether it's a concert piece, game soundtrack, or something unique,
+          let's create something special together.
         </p>
-        <RouterLink to="/contact" class="btn-primary text-lg px-8 py-3">
+        <RouterLink to="/contact" class="cta-button">
           Start a Commission
         </RouterLink>
       </div>
