@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { watch, onMounted, onUnmounted } from 'vue'
 import { RouterLink } from 'vue-router'
-import ThemeToggle from './ThemeToggle.vue'
 
 interface NavLink {
   to: string
@@ -78,13 +77,6 @@ watch(() => props.isOpen, (open) => {
           </ul>
         </nav>
 
-        <!-- Theme Toggle -->
-        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-[var(--accent)]/20">
-          <div class="flex items-center justify-between">
-            <span class="text-sm text-[var(--text-secondary)]">Theme</span>
-            <ThemeToggle />
-          </div>
-        </div>
       </div>
     </div>
   </Transition>

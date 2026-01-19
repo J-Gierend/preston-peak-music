@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import ThemeToggle from './ThemeToggle.vue'
 import MobileMenu from './MobileMenu.vue'
 
 const isMobileMenuOpen = ref(false)
@@ -40,7 +39,6 @@ const navLinks = [
           >
             {{ link.label }}
           </RouterLink>
-          <ThemeToggle />
         </div>
 
         <!-- Mobile Menu Button -->

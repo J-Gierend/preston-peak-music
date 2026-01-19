@@ -47,7 +47,7 @@ test.describe('World Switcher Homepage', () => {
     expect(aesthetic).toBe('gaming')
   })
 
-  test('switches theme with world (classical=light-ready, gaming=dark)', async ({ page }) => {
+  test('switches theme with world (classical=light, gaming=dark)', async ({ page }) => {
     // Switch to gaming
     const gamingTab = page.locator('[data-testid="world-tab-gaming"]')
     await gamingTab.click()
@@ -62,11 +62,11 @@ test.describe('World Switcher Homepage', () => {
     const classicalTab = page.locator('[data-testid="world-tab-classical"]')
     await classicalTab.click()
 
-    // Theme changes with classical (may be light or keep previous)
-    const aesthetic = await page.evaluate(() =>
-      document.documentElement.getAttribute('data-aesthetic')
+    // Classical should always be light theme
+    const themeAfterClassical = await page.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
     )
-    expect(aesthetic).toBe('classical')
+    expect(themeAfterClassical).toBe('light')
   })
 
   test('displays classical works when in classical world', async ({ page }) => {

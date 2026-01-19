@@ -15,8 +15,10 @@ export function useTheme() {
 
   const setWorld = (world: Aesthetic) => {
     setAesthetic(world)
-    // Classical = can be light or dark, Gaming = always dark
-    if (world === 'gaming' && !isDark.value) {
+    // Classical = light mode, Gaming = dark mode
+    if (world === 'classical' && isDark.value) {
+      toggleDark()
+    } else if (world === 'gaming' && !isDark.value) {
       toggleDark()
     }
   }

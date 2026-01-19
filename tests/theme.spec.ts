@@ -1,27 +1,34 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('Theme', () => {
-  test('theme toggle changes theme', async ({ page }) => {
+  test('theme is controlled by world selection', async ({ page }) => {
     await page.goto('/#/')
 
-    // Find and click theme toggle
-    const themeToggle = page.locator('button[aria-label*="mode"]')
-    await expect(themeToggle).toBeVisible()
-
-    // Get initial theme
+    // Homepage defaults to classical (light theme)
     const initialTheme = await page.evaluate(() =>
       document.documentElement.getAttribute('data-theme')
     )
+    expect(initialTheme).toBe('light')
 
-    // Click toggle
-    await themeToggle.click()
+    // Switch to gaming world
+    const gamingTab = page.locator('[data-testid="world-tab-gaming"]')
+    await gamingTab.click()
 
-    // Theme should change
-    const newTheme = await page.evaluate(() =>
+    // Gaming world should be dark theme
+    const gamingTheme = await page.evaluate(() =>
       document.documentElement.getAttribute('data-theme')
     )
+    expect(gamingTheme).toBe('dark')
 
-    expect(newTheme).not.toBe(initialTheme)
+    // Switch back to classical
+    const classicalTab = page.locator('[data-testid="world-tab-classical"]')
+    await classicalTab.click()
+
+    // Classical world should be light theme
+    const classicalTheme = await page.evaluate(() =>
+      document.documentElement.getAttribute('data-theme')
+    )
+    expect(classicalTheme).toBe('light')
   })
 
   test('games page has gaming aesthetic', async ({ page }) => {
