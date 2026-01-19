@@ -1,694 +1,427 @@
-# Preston Peak Music - Website Specification
+# Preston Peak Website - Implementation Specification
 
-## Overview & Goals
+## Overview
 
 ### Project Summary
-A modern, animated portfolio website for **Preston Peak**, a post-classical composer who creates both concert music and video game soundtracks. The site features a dramatic visual transformation between classical and gaming aesthetics, reflecting his dual artistic identity. The two worlds will remain **relatively separate** on the site.
+A modern Vue 3 portfolio website for **Preston Peak**, a post-classical composer who creates concert music and video game soundtracks. The site features a dramatic visual transformation between classical and gaming aesthetics.
 
-### Success Criteria
-- Visitors can easily discover and listen to Preston's music across all genres
+### Goals
+- Visitors can discover and listen to Preston's music across all genres
 - Potential clients can inquire about commissions through a guided wizard
 - Game developers can find and access his itch.io music packs
 - Site loads fast despite multiple embedded players
-- Works excellently on both desktop and mobile
-- Looks modern, animated, and impressive enough to "wow" Preston
+- Preston can easily update content by editing JSON files
 
-### Target Audience
-1. **Industry Professionals** - Film/game studios seeking composers
-2. **Indie Developers** - Game devs looking for music packs
-3. **Classical Music Enthusiasts** - Fans of contemporary piano works
-
-### Scope
+### Scope Boundaries
 **In Scope:**
-- Full custom-built Vue 3 website
-- 7 main pages/sections
-- Dramatic dual-aesthetic design (classical ↔ retro gaming)
-- Embedded music players (SoundCloud, Bandcamp, YouTube)
+- 7 main pages: Home, About, Classical, Games, Listen, News, Contact/Commission
+- Dual aesthetic system (classical ↔ gaming) based on route
+- Embedded music players (SoundCloud, Bandcamp, YouTube) with lazy loading
 - Dark/light theme toggle
-- Multi-language placeholder (future)
-- Commission inquiry wizard
-- Social feed integration
-- GitHub Pages deployment (mockup phase)
+- Commission wizard with Formspree backend
+- JSON-based content management
+- Particle effects (floating musical notes)
+- GitHub Pages deployment
 
-**Out of Scope (Future):**
-- Built-in e-commerce/payment processing
+**Out of Scope:**
+- E-commerce/payment processing
 - User accounts/authentication
-- Newsletter system (can be mocked)
-
-### Editability Requirement
-**Preston wants to personally update the site** when he finishes new projects. He has basic web design experience and is open to a simpler design if it makes editing easier.
-
-**Options:**
-1. **Simple HTML/CSS approach** - Direct file editing, easy to understand
-2. **Vue with clear structure** - Organized components, data in separate files (JSON/YAML)
-3. **Markdown-based content** - Write content in .md files, site generates pages
-4. **Headless CMS (Future)** - Admin panel for content updates
+- Newsletter system
+- Multi-language support
 
 ---
 
-## Verified Content (No Hallucination Policy)
+## Technical Design
 
-All content must come from verified sources. **Never fabricate information.**
+### Architecture
 
-### About Preston Peak
-| Field | Verified Value | Source |
-|-------|---------------|--------|
-| Birth Year | 1998 | prestonpeakmusic.com |
-| Location | Houston, TX | prestonpeakmusic.com |
-| Education | B.S. Biomedical Engineering, Texas A&M | prestonpeakmusic.com |
-| Spouse | Hailey | prestonpeakmusic.com |
-| Background | Mother is pianist; grew up with Beethoven, Mozart, Joplin, Chopin | prestonpeakmusic.com |
-| Style | Post-classical, minimalist, timbral/harmonic experimentation | prestonpeakmusic.com |
-| Interests | Video games, D&D, music history, theology, biblical themes | prestonpeakmusic.com, itch.io |
-| AI Policy | "No AI is EVER used in my compositions" | itch.io |
+```
+ppeakWebsite/
+├── index.html
+├── vite.config.ts
+├── uno.config.ts
+├── package.json
+├── src/
+│   ├── main.ts
+│   ├── App.vue
+│   ├── router/index.ts
+│   ├── data/                    # Preston edits these
+│   │   ├── works.json           # Classical compositions
+│   │   ├── packs.json           # Game music packs
+│   │   ├── bio.json             # About page content
+│   │   ├── news.json            # News/updates (manual)
+│   │   ├── platforms.json       # Social/streaming links
+│   │   └── README.md            # Instructions for Preston
+│   ├── composables/
+│   │   ├── useTheme.ts          # Dark/light + aesthetic switching
+│   │   ├── useScrollAnimation.ts # GSAP ScrollTrigger
+│   │   ├── useLazyEmbed.ts      # Intersection Observer for embeds
+│   │   ├── useContentLoader.ts  # JSON loading + caching + error handling
+│   │   └── useParticles.ts      # Canvas particle effects
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── TheNavigation.vue
+│   │   │   ├── TheFooter.vue
+│   │   │   ├── ThemeToggle.vue
+│   │   │   ├── MobileMenu.vue
+│   │   │   ├── AdminErrorPanel.vue  # Shows JSON errors when ?admin=true
+│   │   │   └── ParticleCanvas.vue
+│   │   ├── embeds/
+│   │   │   ├── YouTubeEmbed.vue     # lite-youtube-embed wrapper
+│   │   │   ├── SoundCloudEmbed.vue  # Lazy iframe
+│   │   │   ├── BandcampEmbed.vue    # Lazy iframe
+│   │   │   └── EmbedFallback.vue    # "Listen on X" placeholder
+│   │   ├── sections/
+│   │   │   ├── HeroSection.vue
+│   │   │   ├── DualPortalSection.vue
+│   │   │   ├── FeaturedWorkSection.vue
+│   │   │   ├── WorkCard.vue
+│   │   │   └── MusicPackCard.vue
+│   │   ├── modals/
+│   │   │   ├── WorkDetailModal.vue  # Classical work details
+│   │   │   └── PackDetailModal.vue  # Game pack details
+│   │   └── commission/
+│   │       ├── CommissionWizard.vue
+│   │       ├── WizardStep.vue
+│   │       ├── ProjectTypeStep.vue
+│   │       ├── ScopeStep.vue
+│   │       └── DetailsStep.vue
+│   ├── pages/
+│   │   ├── HomePage.vue
+│   │   ├── AboutPage.vue
+│   │   ├── ClassicalPage.vue
+│   │   ├── GamesPage.vue
+│   │   ├── ListenPage.vue
+│   │   ├── NewsPage.vue
+│   │   └── ContactPage.vue
+│   ├── layouts/
+│   │   └── DefaultLayout.vue
+│   └── styles/
+│       ├── base.css
+│       └── themes.css
+└── public/
+    └── images/
+```
 
-### Classical Works (Verified)
-| Work | Year | Duration | Instrumentation | Notes |
-|------|------|----------|-----------------|-------|
-| **Marriage Suite for String Quartet** | TBD | TBD | String Quartet | **Featured work** - highlight on site |
-| Sonata No. 1 | 2023 | 6-7 min | Solo Piano | Semi-finalist, NYC Contemporary Music Symposium 2023; romantic era dedication |
-| Suite for Piano No. 1 - Songs for Winter | 2023 | TBD | Solo Piano | - |
-| Overcast Skies | TBD | TBD | TBD | First shared composition that sparked his passion |
-
-**Note:** Preston has many projects getting ready to finish soon. Site will need easy updating for new works.
-
-### Game Music Packs (Verified from itch.io)
-| Pack | Tracks | Duration | Style | Price |
-|------|--------|----------|-------|-------|
-| "surpass your limits!" | 13 | 20+ min | Action chiptune, boss themes, adventure | FREE |
-| "remnants" (Full) | 30 | 50+ min | Liminal, ambient, haunting piano, horror drones | Paid |
-| "remnants" (Free) | 10 | TBD | Liminal, creepy, somber, ominous | FREE |
-
-### Platform Links (Verified)
-| Platform | URL | Status |
-|----------|-----|--------|
-| Website (current) | https://www.prestonpeakmusic.com/ | Active |
-| SoundCloud | https://soundcloud.com/preston-peak-104023590 | Active |
-| Bandcamp | https://prestonpeak.bandcamp.com/ | Active |
-| itch.io | https://ppeak.itch.io/ | Active |
-| YouTube | https://www.youtube.com/@prestonpeak2 | Active |
-| Instagram | https://www.instagram.com/preston_peak_music/ | Active |
-| Apple Music | https://music.apple.com/us/artist/preston-peak/1680020328 | Active |
-| Solo Piano Directory | https://solopiano.com/artist/preston-peak/ | Listed |
-
----
-
-## Technical Stack
-
-### Core Framework
+### Tech Stack
 | Component | Choice | Rationale |
 |-----------|--------|-----------|
-| Framework | **Vue 3** (Composition API) | Modern, reactive, excellent animation support |
-| Build Tool | **Vite** | Fast HMR, native ES modules, Vue ecosystem default |
-| CSS | **UnoCSS** | 200x faster than Tailwind, full flexibility for custom design |
-| Animation | **GSAP + ScrollTrigger** | Industry standard for complex scroll animations, timelines |
-| Utilities | **VueUse** | useDark, useParallax, useIntersectionObserver |
-| Router | **Vue Router 4** | SPA navigation with route transitions |
+| Framework | Vue 3 (Composition API) | Modern, reactive, excellent animation support |
+| Build Tool | Vite | Fast HMR, native ES modules |
+| CSS | UnoCSS | Fast, flexible, tree-shaking |
+| Animation | GSAP + ScrollTrigger | Industry standard for scroll animations |
+| Utilities | VueUse | useDark, useIntersectionObserver, etc. |
+| Router | Vue Router 4 | SPA navigation with hash support |
+| Form Backend | Formspree | Free tier, no server needed |
 
-### Embed Strategy
-| Platform | Implementation | Performance Approach |
-|----------|---------------|---------------------|
-| YouTube | **lite-youtube-embed** | Facade pattern, 224x faster than iframe |
-| SoundCloud | Native iframe | Lazy load via Intersection Observer |
-| Bandcamp | Native iframe or **bandcamp-player** web component | Lazy load, responsive wrapper |
+### Data Model
 
-### Build & Deploy
-| Stage | Target |
-|-------|--------|
-| Development | `npm run dev` → localhost:5173 |
-| Build | `npm run build` → dist/ |
-| Preview | `npm run preview` |
-| Deploy (Mockup) | GitHub Pages |
-| Deploy (Production) | TBD (server with custom domain) |
+**works.json:**
+```json
+{
+  "works": [
+    {
+      "slug": "sonata-no-1",
+      "title": "Sonata No. 1",
+      "year": 2023,
+      "duration": "6-7 min",
+      "instrumentation": "Solo Piano",
+      "awards": ["Semi-finalist, NYC Contemporary Music Symposium 2023"],
+      "soundcloud": "https://soundcloud.com/...",
+      "bandcamp": "https://prestonpeak.bandcamp.com/...",
+      "description": "A romantic era dedication to the classical masters...",
+      "featured": false
+    }
+  ]
+}
+```
+
+**packs.json:**
+```json
+{
+  "packs": [
+    {
+      "slug": "surpass-your-limits",
+      "title": "surpass your limits!",
+      "tracks": 13,
+      "duration": "20+ min",
+      "style": ["Action chiptune", "Boss themes", "Adventure"],
+      "price": "FREE",
+      "itchUrl": "https://ppeak.itch.io/...",
+      "preview": "https://soundcloud.com/...",
+      "description": "High-energy action music...",
+      "featured": true
+    }
+  ]
+}
+```
+
+**news.json:**
+```json
+{
+  "posts": [
+    {
+      "id": "1",
+      "date": "2024-01-15",
+      "title": "New Release: Marriage Suite",
+      "content": "Excited to announce...",
+      "type": "release",
+      "link": "https://..."
+    }
+  ]
+}
+```
+
+### Key Components
+
+**useContentLoader.ts** - JSON loading with error handling:
+- Fetches JSON files on app load
+- Caches last-known-good version in localStorage
+- If JSON fails to parse, uses cached version
+- Tracks errors in reactive state
+- AdminErrorPanel reads error state when ?admin=true
+
+**useTheme.ts** - Dual aesthetic system:
+- Manages dark/light mode via VueUse's useDark
+- Watches route changes to detect /games/* paths
+- Sets `data-aesthetic="gaming"` or `data-aesthetic="classical"` on root
+- CSS variables switch based on data-aesthetic attribute
+
+**useLazyEmbed.ts** - Lazy loading:
+- Uses Intersection Observer
+- Tracks which embeds are in viewport
+- Only loads iframe when element is visible
+- Shows placeholder/facade until loaded
 
 ---
 
-## Site Architecture
+## Edge Cases & Error Handling
 
-### Page Structure
-```
-/ (Home)
-├── /about
-├── /classical
-│   └── /classical/:work-slug (individual work pages)
-├── /games
-│   └── /games/:pack-slug (individual pack pages)
-├── /listen
-├── /news (Social Feed)
-├── /contact
-└── /commission (Guided Wizard)
-```
+### JSON Parsing Errors
+**Scenario:** Preston edits works.json and breaks syntax.
 
-### Component Architecture
-```
-src/
-├── assets/
-│   ├── images/
-│   │   ├── backgrounds/     # AI-generated section backgrounds
-│   │   ├── icons/          # Social icons, UI elements
-│   │   └── portraits/      # Preston's photos (from YouTube/provided)
-│   └── fonts/
-├── components/
-│   ├── common/
-│   │   ├── TheNavigation.vue
-│   │   ├── TheFooter.vue
-│   │   ├── ThemeToggle.vue
-│   │   ├── LanguageSwitcher.vue (placeholder)
-│   │   └── SocialLinks.vue
-│   ├── embeds/
-│   │   ├── YouTubeEmbed.vue (lite-youtube wrapper)
-│   │   ├── SoundCloudEmbed.vue (lazy-loaded)
-│   │   ├── BandcampEmbed.vue (lazy-loaded)
-│   │   └── EmbedFacade.vue (generic placeholder pattern)
-│   ├── sections/
-│   │   ├── HeroSection.vue
-│   │   ├── WorkCard.vue
-│   │   ├── MusicPackCard.vue
-│   │   └── SocialFeed.vue
-│   └── commission/
-│       ├── WizardStep.vue
-│       ├── ProjectTypeStep.vue
-│       ├── ScopeStep.vue
-│       ├── BudgetStep.vue
-│       └── DetailsStep.vue
-├── composables/
-│   ├── useTheme.ts
-│   ├── useScrollAnimation.ts
-│   └── useLazyEmbed.ts
-├── layouts/
-│   ├── DefaultLayout.vue
-│   ├── ClassicalLayout.vue (elegant aesthetic)
-│   └── GamingLayout.vue (retro aesthetic)
-├── pages/
-│   ├── HomePage.vue
-│   ├── AboutPage.vue
-│   ├── ClassicalPage.vue
-│   ├── GamesPage.vue
-│   ├── ListenPage.vue
-│   ├── NewsPage.vue
-│   └── ContactPage.vue
-├── router/
-│   └── index.ts
-├── stores/
-│   └── theme.ts (if needed beyond VueUse)
-├── styles/
-│   ├── base.css
-│   ├── themes/
-│   │   ├── classical.css
-│   │   └── gaming.css
-│   └── transitions.css
-├── App.vue
-└── main.ts
-```
+**Solution:**
+1. `useContentLoader` wraps JSON.parse in try-catch
+2. On success: Store in localStorage as "works-cache"
+3. On error:
+   - Log error to `errors` reactive array
+   - Load from localStorage cache
+   - Site displays cached content normally
+4. Admin mode (?admin=true) shows AdminErrorPanel with:
+   - Which file failed
+   - Line/character hint if possible
+   - Raw error message
+
+**Recovery:** Preston fixes JSON, refreshes, cache updates.
+
+### Embed Load Failures
+**Scenario:** SoundCloud URL is invalid or service is down.
+
+**Solution:**
+1. Embed component has `@error` handler
+2. On error, swap to `<EmbedFallback>` component
+3. EmbedFallback shows:
+   - "Track unavailable"
+   - Direct link: "Listen on SoundCloud →"
+   - Styled consistently with site aesthetic
+
+### Modal Deep Linking
+**Scenario:** User shares link to /classical#sonata-no-1
+
+**Solution:**
+1. Router reads hash on page load
+2. If hash matches a work slug, opens modal automatically
+3. Modal updates URL hash when opened/closed
+4. Browser back button closes modal (history.back())
+
+### Mobile Navigation
+**Scenario:** User on small screen needs to navigate.
+
+**Solution:**
+1. Hamburger icon visible below 640px breakpoint
+2. Click opens full-screen MobileMenu overlay
+3. Menu shows all nav links
+4. Clicking link closes menu and navigates
+5. Escape key also closes menu
 
 ---
 
-## Design System
+## Tradeoffs & Decisions
 
-### Dual Aesthetic Approach
+### JSON Files vs CMS
+**Decision:** JSON files in src/data/
+**Why:**
+- Preston has basic web experience, can edit JSON
+- No external service dependency
+- Git versioning tracks content changes
+- Can migrate to CMS later if needed
+**Tradeoff:** Manual file editing, must understand JSON syntax
 
-The site features two distinct visual identities that transform based on the current section:
+### Route-Based Aesthetic vs Toggle
+**Decision:** Aesthetic determined by route only
+**Why:**
+- Clearer mental model (/games = gaming look)
+- Simpler state management
+- Avoids confusing combinations (gaming aesthetic on classical page)
+**Tradeoff:** Users can't choose aesthetic preference
 
-#### Classical Aesthetic (Home, About, Classical Works, Listen, Contact)
-| Element | Value |
-|---------|-------|
-| Primary BG | Muted Navy `#1a2a3a` |
-| Secondary BG | Soft Slate `#2a3a4a` |
-| Accent | Soft Gold `#c9a85c` |
-| Text Primary | Warm Cream `#f8f4ef` |
-| Text Secondary | Dusty Rose `#b8a8a0` |
-| Font Headings | Playfair Display (serif) |
-| Font Body | Inter (sans-serif) |
-| Animations | Slow fades (0.6s), gentle parallax, floating particles |
-| Mood | Sophisticated, elegant, contemplative, **muted/pastel tones** |
+### Modal vs Separate Pages for Works
+**Decision:** Modal overlay (URL updates for sharing)
+**Why:**
+- Keeps user in context
+- Faster perceived navigation
+- Still shareable via URL hash
+**Tradeoff:** More complex back-button handling, potential accessibility issues
 
-#### Gaming Aesthetic (Game Music section)
-| Element | Value |
-|---------|-------|
-| Primary BG | Deep Charcoal `#181820` |
-| Secondary BG | Muted Indigo `#252035` |
-| Accent Primary | Soft Cyan `#70d4d0` |
-| Accent Secondary | Soft Magenta `#c580c5` |
-| Accent Tertiary | Soft Amber `#d4a050` |
-| Text Primary | Off-White `#f0f0f5` |
-| Font Headings | Clean sans-serif or subtle pixel font (optional) |
-| Font Body | Inter (keeps readability) |
-| Effects | Subtle grid patterns (optional), soft glow effects |
-| Animations | Smooth transitions, gentle reveals |
-| Mood | Gaming-inspired but **muted**, supports both electronic and orchestral VGM |
+### Formspree vs Custom Backend
+**Decision:** Formspree only
+**Why:**
+- No server needed
+- Free tier sufficient
+- Emails go directly to Preston
+**Tradeoff:** Less control, depends on external service
 
-**Note:** Preston creates both electronic/chiptune AND non-electronic (orchestral/acoustic) video game music. The gaming aesthetic should not lean fully into neon-retro - keep it more subdued to accommodate all styles.
+### Particles in Initial Release
+**Decision:** Include particle effects now
+**Why:**
+- Part of the "wow factor" vision
+- Canvas-based, performant
+- Enhances classical aesthetic
+**Tradeoff:** More initial development work
 
-### Light Mode Variants
-Both aesthetics have light mode alternatives:
-- Classical Light: Cream backgrounds, navy text, gold accents
-- Gaming Light: White/light gray backgrounds, dark text, same neon accents
-
-### Responsive Breakpoints
-| Name | Width | Notes |
-|------|-------|-------|
-| Mobile | < 640px | Single column, hamburger nav |
-| Tablet | 640-1024px | Two columns, condensed nav |
-| Desktop | > 1024px | Full layout, expanded nav |
-
-### Animation Principles
-- **Elegant & Smooth** throughout
-- Page transitions: Fade with subtle slide (0.4s ease-out)
-- Scroll reveals: Staggered fade-up (0.3s per element)
-- Hover states: Scale + glow (0.2s)
-- Section transitions: Morphing background + color shift
+### No Reduced Motion Handling
+**Decision:** Keep all animations regardless of user preference
+**Why:** User explicitly chose this option
+**Note:** This is an accessibility concern - consider adding an opt-in motion toggle in settings for users who want it
 
 ---
 
-## Page Specifications
+## Implementation Notes
 
-### 1. Home Page (`/`)
+### CSS Variables Strategy
+```css
+:root {
+  /* Classical (default) */
+  --bg-primary: #1a2a3a;
+  --bg-secondary: #2a3a4a;
+  --accent: #c9a85c;
+  --text-primary: #f8f4ef;
+  --text-secondary: #b8a8a0;
+}
 
-**Purpose:** Dramatic first impression, portal to both worlds
+[data-aesthetic="gaming"] {
+  --bg-primary: #181820;
+  --bg-secondary: #252035;
+  --accent: #70d4d0;
+  --accent-secondary: #c580c5;
+  --text-primary: #f0f0f5;
+}
 
-**Layout:**
-```
-┌─────────────────────────────────────┐
-│          HERO SECTION               │
-│  "Preston Peak" (animated reveal)   │
-│  "Composer • Pianist"               │
-│  [Scroll indicator]                 │
-├─────────────────────────────────────┤
-│        DUAL PORTAL SECTION          │
-│  ┌─────────────┐ ┌─────────────┐   │
-│  │  CLASSICAL  │ │ GAME MUSIC  │   │
-│  │   WORKS     │ │   & TTRPG   │   │
-│  │  [Enter]    │ │  [Enter]    │   │
-│  └─────────────┘ └─────────────┘   │
-├─────────────────────────────────────┤
-│       FEATURED WORK SECTION         │
-│  Latest release with embed          │
-├─────────────────────────────────────┤
-│         QUICK LINKS                 │
-│  [Commission] [Listen] [About]      │
-└─────────────────────────────────────┘
-```
-
-**Features:**
-- Animated name reveal on load (GSAP timeline)
-- Dual portal cards with hover preview (aesthetic hint)
-- Featured track with SoundCloud/YouTube embed (facade)
-- Floating particle effect (subtle musical notes)
-
-### 2. About Page (`/about`)
-
-**Purpose:** Personal connection, bio, achievements
-
-**Content Sections:**
-1. **Hero** - Portrait (Preston will provide photos) + tagline
-2. **Bio** - Full biography (verified content only)
-3. **Philosophy** - "No AI" commitment badge
-4. **Personal** - Mentions video games, D&D, wife Hailey
-
-**Note:** No separate awards/honors section for now - Preston prefers to wait until he has more recognition to highlight.
-
-**Special Elements:**
-- "No AI Used" badge/seal prominently displayed
-- Timeline of musical journey (if more dates become available)
-- Portrait with subtle parallax
-
-### 3. Classical Works Page (`/classical`)
-
-**Purpose:** Showcase concert/piano compositions
-
-**Layout:**
-- Grid of work cards with:
-  - Title
-  - Year
-  - Duration (if known)
-  - Instrumentation
-  - Awards/recognition badges
-  - Play button → opens modal or inline expand
-- Detail view: Full program notes (if available), embedded player
-
-**Works to Display:**
-1. Sonata No. 1 (2023) - with NYC Symposium badge
-2. Suite for Piano No. 1 - Songs for Winter (2023)
-3. Overcast Skies
-
-### 4. Game Music Page (`/games`)
-
-**Purpose:** Showcase video game music packs (no TTRPG)
-
-**Aesthetic:** Gaming-inspired but muted (supports electronic AND orchestral VGM)
-
-**Layout:**
-```
-┌─────────────────────────────────────┐
-│  HERO (subtle gaming background)    │
-│  "Video Game Music"                 │
-├─────────────────────────────────────┤
-│  FEATURED PACK (remnants)           │
-│  Large card with preview player     │
-├─────────────────────────────────────┤
-│  ALL PACKS GRID                     │
-│  ┌────┐ ┌────┐ ┌────┐              │
-│  │Pack│ │Pack│ │Pack│              │
-│  └────┘ └────┘ └────┘              │
-├─────────────────────────────────────┤
-│  CTA: "Browse on itch.io" button    │
-└─────────────────────────────────────┘
+[data-theme="light"] {
+  /* Light mode overrides */
+  --bg-primary: #f8f4ef;
+  --text-primary: #1a2a3a;
+}
 ```
 
-**Pack Cards Display:**
-- Pack artwork (or generated placeholder)
-- Title
-- Track count
-- Duration
-- Price (FREE badge if applicable)
-- Style tags (chiptune, ambient, horror, etc.)
-- "Preview" button → inline player
-- "Get on itch.io" button → external link
-
-### 5. Listen Page (`/listen`)
-
-**Purpose:** Aggregated music discovery across all platforms
-
-**Layout:**
-```
-┌─────────────────────────────────────┐
-│  PLATFORM TABS                      │
-│  [All] [SoundCloud] [Bandcamp] [YT] │
-├─────────────────────────────────────┤
-│  FEATURED PLAYLIST/TRACK            │
-│  (Single prominent embed)           │
-├─────────────────────────────────────┤
-│  RECENT RELEASES                    │
-│  Grid of track cards with facades   │
-├─────────────────────────────────────┤
-│  STREAMING PLATFORMS                │
-│  [Spotify] [Apple] [Bandcamp] etc   │
-└─────────────────────────────────────┘
+### Embed Facade Pattern
+YouTube embeds use lite-youtube-embed:
+```vue
+<lite-youtube videoid="VIDEO_ID" playlabel="Play: Title">
+  <button type="button" class="lty-playbtn">
+    <span class="lyt-visually-hidden">Play</span>
+  </button>
+</lite-youtube>
 ```
 
-**Implementation:**
-- Use lite-youtube-embed for all YouTube
-- Lazy load SoundCloud/Bandcamp via Intersection Observer
-- Maximum 2-4 actual embeds loaded at once
-- Rest use facade pattern (thumbnail + play button → load on click)
-
-### 6. News/Social Feed Page (`/news`)
-
-**Purpose:** Aggregate social media updates
-
-**Implementation Options:**
-1. **Instagram Feed** - Embed via official embed or service
-2. **YouTube Feed** - Latest videos with lite-youtube
-3. **Combined Feed** - Chronological mix
-
-**Technical Approach:**
-- For MVP: Manually curated or use embed widgets
-- Future: API integration for auto-updates
-
-### 7. Contact Page (`/contact`)
-
-**Purpose:** Simple contact form for general inquiries
-
-**Form Fields:**
-- Name (required)
-- Email (required)
-- Subject (dropdown: General, Collaboration, Other)
-- Message (required)
-
-**Note:** Commission inquiries redirect to `/commission` wizard
-
-### 8. Commission Wizard (`/commission`)
-
-**Purpose:** Guided inquiry process for potential clients
-
-**Steps:**
-1. **Project Type**
-   - Film/Video
-   - Video Game
-   - TTRPG/Tabletop
-   - Live Performance
-   - Other
-
-2. **Scope**
-   - Single Track
-   - EP (3-5 tracks)
-   - Full Soundtrack
-   - Ongoing/Retainer
-
-3. **Budget Range** (optional)
-   - Just Exploring
-   - $X - $Y
-   - $Y - $Z
-   - Prefer to discuss
-
-4. **Project Details**
-   - Project name
-   - Description
-   - Timeline/deadline
-   - Reference tracks (optional)
-
-5. **Contact Info**
-   - Name
-   - Email
-   - Company/Project (optional)
-
-**Submission:** Sends email to Preston (or stores for later if email not configured)
-
----
-
-## Wow Factor Features
-
-Based on the design aesthetic, include these enhanced features:
-
-### 1. Particle Effects (Classical sections)
-- Floating musical notes and stardust
-- Subtle, non-distracting
-- Responds slightly to mouse movement
-- Implementation: Canvas or CSS animations
-
-### 2. Section Transformation
-- When navigating from Classical → Games section:
-  - Background morphs/transitions
-  - Color palette shifts
-  - Typography changes
-  - Sound effect (optional, off by default)
-
-### 3. Audio Visualizer (Stretch Goal)
-- When a track is playing, subtle waveform in header
-- Responds to audio (if browser allows)
-- Fallback: Animated sine wave
-
-### 4. Scroll-Triggered Reveals
-- Work cards stagger in as user scrolls
-- Text reveals with elegant timing
-- Parallax on background images
-
----
-
-## AI Image Prompts for Assets
-
-Generate these images using Gemini for the site backgrounds:
-
-### 1. Homepage Hero Background
-```
-Prompt: Abstract dark composition featuring a grand piano silhouette
-dissolving into floating musical notes and starlight, deep navy blue
-(#0a1628) to black gradient, subtle golden light emanating from piano
-keys, ethereal and sophisticated mood, minimalist style, cinematic
-lighting, no text, no people
-
-Size: 1920x1080px (16:9)
-Style: Dark, ethereal, sophisticated
+SoundCloud/Bandcamp use Intersection Observer:
+```ts
+const { isVisible } = useLazyEmbed(embedRef)
+// Only render iframe when isVisible is true
 ```
 
-### 2. Classical Section Background
-```
-Prompt: Elegant abstract visualization of sound waves transforming into
-delicate golden threads against deep midnight blue background, subtle
-sheet music notation fading in distance, romantic era inspired, warm
-ivory and gold accents, soft bokeh light particles, dreamy atmospheric
-quality, no text, no people
+### Particle Effect Implementation
+- Canvas element positioned behind content
+- Particles: Musical notes (♪, ♫) and small dots
+- Drift slowly upward with slight horizontal sway
+- Respect current aesthetic colors
+- Pause when tab is not visible (requestAnimationFrame)
 
-Size: 1920x1200px (16:10)
-Style: Romantic, warm, sophisticated
-```
+### Form Validation
+Commission wizard validates each step:
+- Project type: Required selection
+- Scope: Required selection
+- Details: Name required, email required (format validated), message optional
+- Submit to Formspree with hidden _subject field (form ID configured by Preston)
 
-### 3. Game Music Section Background
-```
-Prompt: Retro synthwave landscape at night with glowing neon grid lines
-extending to horizon, 16-bit pixel art style mountains and stars, cyan
-and magenta color palette with warm amber accents, CRT monitor glow
-effect, nostalgic 80s arcade atmosphere, dark background, no text,
-no people
-
-Size: 1920x1080px (16:9)
-Style: Synthwave, retro, pixel art
-```
-
-### 4. Ambient/Horror Section Background
-```
-Prompt: Liminal space aesthetic, empty dark corridor with flickering
-fluorescent lights, eerie fog, muted desaturated colors with occasional
-sickly green glow, unsettling atmosphere, VHS grain texture, abandoned
-building interior, no people, no text
-
-Size: 1920x1080px (16:9)
-Style: Liminal, horror, unsettling
-```
-
-### 5. Chiptune/Adventure Section Background
-```
-Prompt: Colorful 16-bit pixel art adventure landscape, fantasy scene
-with pixelated castle on distant hill, 8-bit style clouds and trees,
-warm sunset colors orange and purple, retro SNES era video game
-aesthetic, cheerful adventurous mood, clean pixel art, no text
-
-Size: 1920x1080px (16:9)
-Style: 16-bit, cheerful, adventure
-```
-
-### 6. About Page Portrait Background
-```
-Prompt: Abstract artistic background for portrait photo overlay, soft
-gradient from warm cream (#f5f0e6) to gentle sage green, subtle texture
-like fine art paper, elegant and understated, soft diffused light from
-left side, minimalist and refined, no text
-
-Size: 1200x1600px (3:4 portrait)
-Style: Elegant, minimal, portrait-friendly
-```
-
-### 7. Contact Section Banner
-```
-Prompt: Minimalist abstract sound wave visualization, single elegant
-golden waveform line across dark navy background, subtle particle
-effects, professional and inviting, modern and clean, slight gradient
-lighting, no text
-
-Size: 1920x600px (banner/wide)
-Style: Modern, professional, minimal
+### Hash Navigation
+Router config enables scroll behavior:
+```ts
+scrollBehavior(to, from, savedPosition) {
+  if (to.hash) {
+    return { el: to.hash, behavior: 'smooth' }
+  }
+  return savedPosition || { top: 0 }
+}
 ```
 
 ---
 
-## Mock-Up Indicators
+## Verified Content Sources
 
-The following features should be **clearly marked as mock-ups** for Preston to understand these are expandable:
+All content from these verified sources only:
+- https://www.prestonpeakmusic.com/
+- https://ppeak.itch.io/
+- https://prestonpeak.bandcamp.com/
+- https://soundcloud.com/preston-peak-104023590
+- https://www.youtube.com/@prestonpeak2
 
-1. **E-commerce widgets** - "Future: Direct purchase integration"
-2. **Newsletter signup** - "Future: Email list integration"
-3. **Blog/CMS** - "Future: Content management system"
-4. **Multi-language** - Language switcher visible but non-functional
-5. **Social feed auto-update** - May use static content initially
-
-Display mock-ups with subtle "Coming Soon" or "Planned Feature" badges.
-
----
-
-## Performance Requirements
-
-| Metric | Target |
-|--------|--------|
-| First Contentful Paint | < 1.5s |
-| Largest Contentful Paint | < 2.5s |
-| Cumulative Layout Shift | < 0.1 |
-| Total Blocking Time | < 200ms |
-| Total JS Bundle | < 300KB |
-
-### Optimization Strategies
-- All YouTube embeds use lite-youtube-embed
-- Audio embeds lazy load via Intersection Observer
-- Images use modern formats (WebP) with fallbacks
-- CSS is purged/tree-shaken via UnoCSS
-- Fonts subset to used characters
-- Background images use responsive srcset
+**Never fabricate information about Preston's works.**
 
 ---
 
-## Accessibility Requirements
+## Interview Decisions (2026-01-19)
 
-| Requirement | Implementation |
-|-------------|---------------|
-| Keyboard Navigation | Full tab support, visible focus states |
-| Screen Readers | Semantic HTML, ARIA labels on embeds |
-| Color Contrast | WCAG AA minimum (4.5:1 for text) |
-| Reduced Motion | `prefers-reduced-motion` respected |
-| Alt Text | All images have descriptive alt text |
+### Deployment
+- **GitHub Account**: J-Gierend
+- **Repository Name**: preston-peak-music
+- **URL**: https://j-gierend.github.io/preston-peak-music
 
----
+### Content Strategy
+- **Data Source**: Minimal sample (2-3 works per category as examples, Preston expands)
+- **Images**: Use AI-generated backgrounds from images/ folder
+- **Formspree**: Placeholder - Preston configures form ID later
 
-## Development Phases
+### Visual Effects
+- **Particles**: Subtle (5-10 particles, slow drift, low opacity)
+- **Portal Hover**: Aesthetic preview on hover (gold tint for Classical, cyan/magenta for Gaming)
+- **Gaming FX**: Subtle scanlines overlay only
+- **URL Format**: Hash-based modal linking (/classical#sonata-no-1)
 
-### Phase 1: Foundation
-- [ ] Project scaffolding (Vite + Vue 3 + UnoCSS)
-- [ ] Routing setup
-- [ ] Theme system (dark/light)
-- [ ] Base layout components
-- [ ] Typography and color system
-
-### Phase 2: Core Pages
-- [ ] Home page with hero
-- [ ] About page
-- [ ] Classical works page
-- [ ] Game music page
-- [ ] Basic navigation
-
-### Phase 3: Enhanced Features
-- [ ] Embed components (YouTube, SoundCloud, Bandcamp)
-- [ ] Listen aggregation page
-- [ ] Contact form
-- [ ] Commission wizard
-
-### Phase 4: Polish
-- [ ] GSAP scroll animations
-- [ ] Section transitions
-- [ ] Particle effects
-- [ ] Performance optimization
-
-### Phase 5: Deploy
-- [ ] GitHub Pages deployment
-- [ ] Testing across devices
-- [ ] Final review with Preston
+### Commission Wizard Changes
+- **Budget Step**: REMOVED - handle budget discussion in follow-up conversation
+- **Steps**: Project Type → Scope → Details (3 steps instead of 4)
 
 ---
 
-## File Naming Conventions
+## Deployment
 
-| Type | Convention | Example |
-|------|------------|---------|
-| Components | PascalCase | `WorkCard.vue` |
-| Pages | PascalCase + Page suffix | `HomePage.vue` |
-| Composables | camelCase with use prefix | `useTheme.ts` |
-| Styles | kebab-case | `theme-classical.css` |
-| Assets | kebab-case | `hero-background.webp` |
+### GitHub Pages
+1. Vite config sets `base: '/preston-peak-music/'` for correct asset paths
+2. Build outputs to `dist/`
+3. GitHub Actions workflow on push to main:
+   - npm ci
+   - npm run build
+   - Deploy dist/ to gh-pages branch
 
----
-
-## Git Commit Conventions
-
-Per CLAUDE.md atomic commit workflow:
-
-```
-[FEAT][UI] Add hero section with animated reveal
-[FEAT][EMBED] Implement lazy-loaded SoundCloud player
-[FIX][THEME] Correct dark mode toggle persistence
-[REFACTOR][LAYOUT] Extract navigation into component
-[STYLE][GAMES] Add CRT scanline effect to gaming section
-[DOCS] Update README with deployment instructions
-
-Co-Authored-By: Claude <noreply@anthropic.com>
-```
-
----
-
-## Sources & References
-
-- [Preston Peak Website](https://www.prestonpeakmusic.com/)
-- [Preston Peak itch.io](https://ppeak.itch.io/)
-- [Preston Peak Bandcamp](https://prestonpeak.bandcamp.com/)
-- [Preston Peak SoundCloud](https://soundcloud.com/preston-peak-104023590)
-- [Preston Peak YouTube](https://www.youtube.com/@prestonpeak2)
-- [lite-youtube-embed](https://github.com/justinribeiro/lite-youtube)
-- [GSAP ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/)
-- [UnoCSS](https://unocss.dev/)
-- [VueUse](https://vueuse.org/)
+### Testing Checklist
+- [ ] All pages render without console errors
+- [ ] Theme toggle works (dark/light)
+- [ ] Navigate to /games → aesthetic changes
+- [ ] Click work → modal opens, URL updates
+- [ ] Edit JSON → content updates on refresh
+- [ ] Break JSON → cached content shows, admin panel shows error
+- [ ] Commission form submits to Formspree
+- [ ] Embeds lazy load on scroll
+- [ ] Mobile hamburger menu works
+- [ ] Hash links scroll to sections
