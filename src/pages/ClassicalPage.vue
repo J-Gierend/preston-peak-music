@@ -22,6 +22,7 @@ interface Work {
 const route = useRoute()
 const router = useRouter()
 const { loadContent } = useContentLoader()
+const baseUrl = import.meta.env.BASE_URL
 
 const works = ref<Work[]>([])
 const selectedWork = ref<Work | null>(null)
@@ -64,7 +65,7 @@ function closeModal() {
     <HeroSection
       title="Classical Works"
       subtitle="Concert music, chamber works, and solo pieces"
-      background-image="/images/02-classical-golden-waves.jpg"
+      :background-image="`${baseUrl}images/backgrounds/hero-sheet-music.png`"
     />
 
     <section class="py-20 px-4">

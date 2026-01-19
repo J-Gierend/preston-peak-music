@@ -37,6 +37,7 @@ interface Pack {
 const route = useRoute()
 const router = useRouter()
 const { loadContent } = useContentLoader()
+const baseUrl = import.meta.env.BASE_URL
 
 const works = ref<Work[]>([])
 const packs = ref<Pack[]>([])
@@ -103,7 +104,7 @@ function closePackModal() {
     <HeroSection
       title="Preston Peak"
       subtitle="Post-classical composer creating music that bridges concert halls and gaming worlds."
-      background-image="/images/01-hero-piano-starlight.jpg"
+      :background-image="`${baseUrl}images/backgrounds/hero-classical.png`"
     >
       <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
         <RouterLink to="/classical" class="btn-primary">

@@ -22,6 +22,7 @@ interface Pack {
 const route = useRoute()
 const router = useRouter()
 const { loadContent } = useContentLoader()
+const baseUrl = import.meta.env.BASE_URL
 
 const packs = ref<Pack[]>([])
 const selectedPack = ref<Pack | null>(null)
@@ -64,7 +65,7 @@ function closeModal() {
     <HeroSection
       title="Game Music"
       subtitle="Soundtracks and music packs for your games"
-      background-image="/images/03-gaming-synthwave-grid.jpg"
+      :background-image="`${baseUrl}images/backgrounds/hero-gaming.png`"
     />
 
     <section class="py-20 px-4">

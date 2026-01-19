@@ -2,6 +2,7 @@
 :root {
   /* Classical Aesthetic (Default) */
   --bg-primary: #1a2a3a;
+  --bg-primary-rgb: 26, 42, 58;
   --bg-secondary: #2a3a4a;
   --bg-tertiary: #3a4a5a;
   --accent: #c9a85c;
@@ -47,6 +48,7 @@
 /* Gaming Aesthetic */
 [data-aesthetic="gaming"] {
   --bg-primary: #181820;
+  --bg-primary-rgb: 24, 24, 32;
   --bg-secondary: #252035;
   --bg-tertiary: #352845;
   --accent: #70d4d0;
@@ -60,6 +62,7 @@
 /* Light Theme Override */
 [data-theme="light"] {
   --bg-primary: #f8f4ef;
+  --bg-primary-rgb: 248, 244, 239;
   --bg-secondary: #ebe5dc;
   --bg-tertiary: #ddd5ca;
   --text-primary: #1a2a3a;
@@ -69,6 +72,7 @@
 
 [data-aesthetic="gaming"][data-theme="light"] {
   --bg-primary: #f0f0f5;
+  --bg-primary-rgb: 240, 240, 245;
   --bg-secondary: #e0e0ea;
   --bg-tertiary: #d0d0dd;
   --text-primary: #181820;

@@ -29,11 +29,22 @@ onMounted(() => {
 
 <template>
   <section
-    class="relative min-h-[60vh] flex items-center justify-center overflow-hidden"
-    :style="backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : {}"
+    class="relative min-h-[70vh] flex items-center justify-center overflow-hidden"
   >
+    <!-- Background Image -->
+    <div
+      v-if="backgroundImage"
+      class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      :style="{ backgroundImage: `url(${backgroundImage})` }"
+    />
+
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)]/80 via-[var(--bg-primary)]/60 to-[var(--bg-primary)]" />
+    <div
+      class="absolute inset-0"
+      :style="{
+        background: 'linear-gradient(to bottom, rgba(var(--bg-primary-rgb), 0.7), rgba(var(--bg-primary-rgb), 0.5) 50%, rgba(var(--bg-primary-rgb), 1))'
+      }"
+    />
 
     <!-- Content -->
     <div class="relative z-10 text-center px-4 py-20">
