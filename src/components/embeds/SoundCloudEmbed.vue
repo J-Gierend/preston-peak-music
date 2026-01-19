@@ -14,7 +14,7 @@ const hasError = ref(false)
 
 const embedUrl = computed(() => {
   const encoded = encodeURIComponent(props.url)
-  return `https://w.soundcloud.com/player/?url=${encoded}&color=%23c9a85c&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true`
+  return `https://w.soundcloud.com/player/?url=${encoded}&color=%23c9a85c&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false`
 })
 
 function handleError() {
@@ -23,7 +23,7 @@ function handleError() {
 </script>
 
 <template>
-  <div ref="containerRef" class="aspect-video rounded-lg overflow-hidden bg-[var(--bg-secondary)]">
+  <div ref="containerRef" class="h-40 rounded-lg overflow-hidden bg-[var(--bg-secondary)]">
     <EmbedFallback
       v-if="hasError"
       platform="SoundCloud"

@@ -1,25 +1,15 @@
 <script setup lang="ts">
-import { watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { onMounted } from 'vue'
 import { useTheme } from './composables/useTheme'
 import DefaultLayout from './layouts/DefaultLayout.vue'
 import AdminErrorPanel from './components/common/AdminErrorPanel.vue'
 
-const route = useRoute()
-const { aesthetic, setAesthetic } = useTheme()
+// Initialize theme from localStorage on app mount
+const { aesthetic } = useTheme()
 
-// Watch route changes to update aesthetic
-watch(
-  () => route.path,
-  (path) => {
-    if (path.startsWith('/games')) {
-      setAesthetic('gaming')
-    } else {
-      setAesthetic('classical')
-    }
-  },
-  { immediate: true }
-)
+onMounted(() => {
+  // Theme is auto-applied by useTheme composable
+})
 </script>
 
 <template>

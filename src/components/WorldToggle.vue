@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 type World = 'classical' | 'gaming'
 
@@ -12,185 +12,249 @@ const emit = defineEmits<{
   change: [value: World]
 }>()
 
+const hoveredSide = ref<World | null>(null)
 const isClassical = computed(() => props.modelValue === 'classical')
 
 function selectWorld(world: World) {
-  if (world !== props.modelValue) {
-    emit('update:modelValue', world)
-    emit('change', world)
-  }
+  emit('update:modelValue', world)
+  emit('change', world)
 }
 </script>
 
 <template>
-  <div
-    data-testid="world-toggle"
-    class="world-toggle"
-  >
-    <!-- Sliding background indicator -->
-    <div
-      class="toggle-indicator"
-      :class="{ 'slide-right': !isClassical }"
-    />
-
-    <!-- Classical Tab -->
+  <div data-testid="world-toggle" class="world-toggle-cards">
+    <!-- Classical Card -->
     <button
       data-testid="world-tab-classical"
       :data-active="isClassical"
-      class="toggle-tab"
+      class="world-card group"
       :class="{ active: isClassical }"
+      @mouseenter="hoveredSide = 'classical'"
+      @mouseleave="hoveredSide = null"
       @click="selectWorld('classical')"
     >
-      <span class="tab-icon">&#9834;</span>
-      <span class="tab-label">Classical</span>
+      <img
+        src="/images/02-classical-golden-waves.jpg"
+        alt="Classical Music"
+        class="card-image"
+      />
+      <div
+        class="card-overlay"
+        :class="{ hovered: hoveredSide === 'classical' }"
+      />
+      <div class="card-content">
+        <div class="i-carbon-music card-icon classical-icon" />
+        <h3 class="card-title">Classical Works</h3>
+        <p class="card-subtitle">Concert music & chamber works</p>
+        <span v-if="isClassical" class="card-badge">Selected</span>
+      </div>
     </button>
 
-    <!-- Divider -->
-    <div class="toggle-divider" />
-
-    <!-- Gaming Tab -->
+    <!-- Gaming Card -->
     <button
       data-testid="world-tab-gaming"
       :data-active="!isClassical"
-      class="toggle-tab"
+      class="world-card group"
       :class="{ active: !isClassical }"
+      @mouseenter="hoveredSide = 'gaming'"
+      @mouseleave="hoveredSide = null"
       @click="selectWorld('gaming')"
     >
-      <span class="tab-icon">&#127918;</span>
-      <span class="tab-label">Game Music</span>
+      <img
+        src="/images/03-gaming-synthwave-grid.jpg"
+        alt="Game Music"
+        class="card-image"
+      />
+      <div
+        class="card-overlay gaming"
+        :class="{ hovered: hoveredSide === 'gaming' }"
+      />
+      <div class="card-content">
+        <div class="i-carbon-game-console card-icon gaming-icon" />
+        <h3 class="card-title">Game Music</h3>
+        <p class="card-subtitle">Soundtracks & music packs</p>
+        <span v-if="!isClassical" class="card-badge gaming">Selected</span>
+      </div>
     </button>
   </div>
 </template>
 
 <style scoped>
-.world-toggle {
+.world-toggle-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.world-card {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  background: rgba(var(--bg-primary-rgb), 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9999px;
-  padding: 0.375rem;
-  gap: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.toggle-indicator {
-  position: absolute;
-  left: 0.375rem;
-  top: 0.375rem;
-  width: calc(50% - 0.5rem);
-  height: calc(100% - 0.75rem);
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  border-radius: 9999px;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-}
-
-.toggle-indicator.slide-right {
-  transform: translateX(calc(100% + 0.25rem));
-}
-
-[data-aesthetic="gaming"] .toggle-indicator {
-  background: linear-gradient(135deg, var(--accent), #60c4c0);
-  box-shadow: 0 2px 16px rgba(112, 212, 208, 0.3);
-}
-
-.toggle-tab {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  background: transparent;
-  border: none;
-  border-radius: 9999px;
+  aspect-ratio: 4 / 3;
+  border-radius: 1rem;
+  overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: var(--font-display);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+  border: 2px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: none;
+  padding: 0;
 }
 
-.toggle-tab .tab-label {
-  color: var(--text-secondary);
-  transition: color 0.3s ease;
+.world-card.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 24px rgba(201, 168, 92, 0.3);
 }
 
-.toggle-tab .tab-icon {
-  font-size: 1.125rem;
-  opacity: 0.7;
-  transition: all 0.3s ease;
+.world-card.active[data-testid="world-tab-gaming"] {
+  border-color: #70d4d0;
+  box-shadow: 0 0 24px rgba(112, 212, 208, 0.3);
 }
 
-.toggle-tab.active .tab-label {
-  color: var(--bg-primary);
-  font-weight: 600;
+.card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
 }
 
-.toggle-tab.active .tab-icon {
-  opacity: 1;
+.world-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 42, 58, 0.9) 0%,
+    rgba(26, 42, 58, 0.4) 50%,
+    transparent 100%
+  );
+  transition: all 0.5s ease;
+}
+
+.card-overlay.hovered {
+  background: linear-gradient(
+    to top,
+    rgba(26, 42, 58, 0.95) 0%,
+    rgba(201, 168, 92, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+.card-overlay.gaming {
+  background: linear-gradient(
+    to top,
+    rgba(24, 24, 32, 0.9) 0%,
+    rgba(24, 24, 32, 0.4) 50%,
+    transparent 100%
+  );
+}
+
+.card-overlay.gaming.hovered {
+  background: linear-gradient(
+    to top,
+    rgba(24, 24, 32, 0.95) 0%,
+    rgba(112, 212, 208, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+.card-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.classical-icon {
+  color: #c9a85c;
+}
+
+.gaming-icon {
+  color: #70d4d0;
+}
+
+.world-card:hover .card-icon {
   transform: scale(1.1);
 }
 
-.toggle-tab:not(.active):hover .tab-label { color: var(--text-primary); }
-.toggle-tab:not(.active):hover .tab-icon { opacity: 0.9; transform: scale(1.05); }
-
-.toggle-divider {
-  width: 1px;
-  height: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 
-/* Gaming aesthetic overrides */
-[data-aesthetic="gaming"] .toggle-tab {
-  font-family: var(--font-body);
-  text-transform: uppercase;
+/* Classical card always uses serif font */
+[data-testid="world-tab-classical"] .card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Gaming card always uses pixel/monospace font */
+[data-testid="world-tab-gaming"] .card-title {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.card-subtitle {
+  font-size: 0.875rem;
+  color: rgba(248, 244, 239, 0.8);
+  margin-bottom: 1rem;
+}
+
+.card-badge {
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #c9a85c;
+  color: #1a2a3a;
 }
 
-[data-aesthetic="gaming"] .toggle-tab.active .tab-label {
+.card-badge.gaming {
+  background: #70d4d0;
   color: #181820;
-  text-shadow: none;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .world-toggle {
-    padding: 0.25rem;
+/* Responsive */
+@media (max-width: 640px) {
+  .world-toggle-cards {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
-  .toggle-tab {
-    padding: 0.625rem 1rem;
-    font-size: 0.8125rem;
+  .world-card {
+    aspect-ratio: 16 / 9;
   }
 
-  .tab-label {
-    display: none;
+  .card-icon {
+    font-size: 2.5rem;
   }
 
-  .toggle-tab .tab-icon {
-    font-size: 1.25rem;
+  .card-title {
+    font-size: 1.1rem;
   }
 
-  .toggle-indicator {
-    width: calc(50% - 0.375rem);
-  }
-}
-
-@media (min-width: 481px) and (max-width: 640px) {
-  .toggle-tab {
-    padding: 0.625rem 1rem;
-    font-size: 0.8125rem;
-    gap: 0.375rem;
+  [data-testid="world-tab-gaming"] .card-title {
+    font-size: 0.85rem;
   }
 }
 </style>

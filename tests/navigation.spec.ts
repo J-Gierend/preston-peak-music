@@ -13,14 +13,6 @@ test.describe('Navigation', () => {
     await page.click('text=About')
     await expect(page.locator('h1')).toContainText('About')
 
-    // Navigate to Classical
-    await page.click('text=Classical')
-    await expect(page.locator('h1')).toContainText('Classical Works')
-
-    // Navigate to Games
-    await page.click('text=Games')
-    await expect(page.locator('h1')).toContainText('Game Music')
-
     // Navigate to Listen
     await page.click('text=Listen')
     await expect(page.locator('h1')).toContainText('Listen')

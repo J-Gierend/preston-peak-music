@@ -39,10 +39,11 @@ interface Pack {
 const route = useRoute()
 const router = useRouter()
 const { loadContent } = useContentLoader()
-const { setWorld } = useTheme()
+const { aesthetic, setWorld } = useTheme()
 const baseUrl = import.meta.env.BASE_URL
 
-const currentWorld = ref<Aesthetic>('classical')
+// Use global aesthetic state so nav toggle and page cards stay synced
+const currentWorld = aesthetic
 const works = ref<Work[]>([])
 const packs = ref<Pack[]>([])
 const selectedWork = ref<Work | null>(null)
@@ -52,7 +53,7 @@ const isPackModalOpen = ref(false)
 
 const heroBackground = computed(() => {
   const bgName = currentWorld.value === 'classical'
-    ? 'hero-classical.png'
+    ? 'hero-sheet-music.png'
     : 'hero-gaming.png'
   return `${baseUrl}images/backgrounds/${bgName}`
 })

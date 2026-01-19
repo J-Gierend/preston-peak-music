@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import HeroSection from '../components/sections/HeroSection.vue'
 import CommissionWizard from '../components/commission/CommissionWizard.vue'
+
+const baseUrl = import.meta.env.BASE_URL
 </script>
 
 <template>
@@ -8,7 +10,7 @@ import CommissionWizard from '../components/commission/CommissionWizard.vue'
     <HeroSection
       title="Commission"
       subtitle="Let's create something special together"
-      background-image="/images/07-contact-waveform-banner.jpg"
+      :background-image="`${baseUrl}images/backgrounds/hero-contact.png`"
     />
 
     <section class="py-20 px-4">

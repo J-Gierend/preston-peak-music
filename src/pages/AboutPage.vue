@@ -3,6 +3,8 @@ import { ref, onMounted } from 'vue'
 import { useContentLoader } from '../composables/useContentLoader'
 import HeroSection from '../components/sections/HeroSection.vue'
 
+const baseUrl = import.meta.env.BASE_URL
+
 interface Bio {
   name: string
   tagline: string
@@ -26,7 +28,7 @@ onMounted(async () => {
     <HeroSection
       title="About"
       subtitle="The story behind the music"
-      background-image="/images/06-about-portrait-backdrop.jpg"
+      :background-image="`${baseUrl}images/backgrounds/hero-about.png`"
     />
 
     <section v-if="bio" class="py-20 px-4">

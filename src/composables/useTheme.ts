@@ -1,41 +1,38 @@
 import { ref, watch, onMounted } from 'vue'
-import { useDark, useToggle } from '@vueuse/core'
+import { useStorage } from '@vueuse/core'
 
 export type Aesthetic = 'classical' | 'gaming'
 
-const aesthetic = ref<Aesthetic>('classical')
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
+// Persist world selection to localStorage
+const world = useStorage<Aesthetic>('preston-peak-world', 'classical')
 
 export function useTheme() {
-  const setAesthetic = (value: Aesthetic) => {
-    aesthetic.value = value
-    document.documentElement.setAttribute('data-aesthetic', value)
+  // Compute dark mode based on world
+  const isDark = ref(world.value === 'gaming')
+
+  const setWorld = (newWorld: Aesthetic) => {
+    world.value = newWorld
+    isDark.value = newWorld === 'gaming'
+    applyTheme()
   }
 
-  const setWorld = (world: Aesthetic) => {
-    setAesthetic(world)
-    // Classical = light mode, Gaming = dark mode
-    if (world === 'classical' && isDark.value) {
-      toggleDark()
-    } else if (world === 'gaming' && !isDark.value) {
-      toggleDark()
-    }
+  const applyTheme = () => {
+    document.documentElement.setAttribute('data-aesthetic', world.value)
+    document.documentElement.setAttribute('data-theme', isDark.value ? 'dark' : 'light')
   }
 
+  // Initialize on mount
   onMounted(() => {
-    document.documentElement.setAttribute('data-aesthetic', aesthetic.value)
+    applyTheme()
   })
 
-  watch(isDark, (dark) => {
-    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
-  }, { immediate: true })
+  // Watch for changes
+  watch(world, applyTheme, { immediate: true })
 
   return {
-    aesthetic,
+    aesthetic: world,
     isDark,
-    setAesthetic,
-    setWorld,
-    toggleDark
+    setAesthetic: setWorld,
+    setWorld
   }
 }

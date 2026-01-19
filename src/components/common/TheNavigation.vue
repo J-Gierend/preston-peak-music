@@ -2,18 +2,23 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import MobileMenu from './MobileMenu.vue'
+import NavWorldToggle from '../NavWorldToggle.vue'
+import { useTheme, type Aesthetic } from '../../composables/useTheme'
 
 const isMobileMenuOpen = ref(false)
+const { aesthetic, setWorld } = useTheme()
 
 const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/classical', label: 'Classical' },
-  { to: '/games', label: 'Games' },
   { to: '/listen', label: 'Listen' },
   { to: '/news', label: 'News' },
   { to: '/contact', label: 'Contact' }
 ]
+
+function onWorldChange(world: Aesthetic) {
+  setWorld(world)
+}
 </script>
 
 <template>
@@ -39,6 +44,20 @@ const navLinks = [
           >
             {{ link.label }}
           </RouterLink>
+
+          <!-- World Toggle -->
+          <NavWorldToggle
+            v-model="aesthetic"
+            @change="onWorldChange"
+          />
+        </div>
+
+        <!-- Mobile World Toggle -->
+        <div class="md:hidden mr-2">
+          <NavWorldToggle
+            v-model="aesthetic"
+            @change="onWorldChange"
+          />
         </div>
 
         <!-- Mobile Menu Button -->

@@ -28,7 +28,7 @@ const emit = defineEmits<{
     <!-- Price Badge -->
     <div
       class="absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-bold"
-      :class="pack.price === 'FREE' ? 'bg-green-500/20 text-green-400' : 'bg-[var(--accent)]/20 text-[var(--accent)]'"
+      :class="pack.price === 'FREE' ? 'bg-green-500 text-white' : 'bg-[var(--accent)] text-[var(--bg-primary)]'"
     >
       {{ pack.price }}
     </div>
@@ -52,7 +52,7 @@ const emit = defineEmits<{
       <span
         v-for="tag in pack.style"
         :key="tag"
-        class="px-2 py-0.5 text-xs bg-[var(--accent)]/10 text-[var(--accent)] rounded"
+        class="px-2 py-0.5 text-xs bg-[var(--accent)]/20 text-[var(--bg-primary)] font-medium rounded"
       >
         {{ tag }}
       </span>

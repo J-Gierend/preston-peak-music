@@ -90,7 +90,7 @@ watch(() => props.isOpen, (open) => {
             <div class="flex flex-wrap items-center gap-3">
               <span
                 class="px-4 py-2 rounded-lg text-lg font-bold"
-                :class="pack.price === 'FREE' ? 'bg-green-500/20 text-green-400' : 'bg-[var(--accent)]/20 text-[var(--accent)]'"
+                :class="pack.price === 'FREE' ? 'bg-green-500 text-white' : 'bg-[var(--accent)] text-[var(--bg-primary)]'"
               >
                 {{ pack.price }}
               </span>

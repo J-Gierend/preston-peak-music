@@ -2,10 +2,12 @@
 import TheNavigation from '../components/common/TheNavigation.vue'
 import TheFooter from '../components/common/TheFooter.vue'
 import ParticleCanvas from '../components/common/ParticleCanvas.vue'
+import ThemedBackground from '../components/ThemedBackground.vue'
 </script>
 
 <template>
   <div class="min-h-screen flex flex-col">
+    <ThemedBackground />
     <ParticleCanvas />
     <TheNavigation />
 

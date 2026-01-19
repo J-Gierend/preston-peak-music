@@ -3,6 +3,8 @@ import { ref, onMounted, computed } from 'vue'
 import { useContentLoader } from '../composables/useContentLoader'
 import HeroSection from '../components/sections/HeroSection.vue'
 
+const baseUrl = import.meta.env.BASE_URL
+
 interface Post {
   id: string
   date: string
@@ -56,6 +58,7 @@ function getTypeColor(type: string): string {
     <HeroSection
       title="News"
       subtitle="Updates, releases, and announcements"
+      :background-image="`${baseUrl}images/backgrounds/hero-news.png`"
     />
 
     <section class="py-20 px-4">

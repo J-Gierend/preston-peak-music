@@ -79,7 +79,7 @@ watch(() => props.isOpen, (open) => {
           <div class="p-6 space-y-6">
             <!-- Details -->
             <div class="flex flex-wrap gap-3">
-              <span class="px-3 py-1 bg-[var(--accent)]/20 text-[var(--accent)] rounded-lg">
+              <span class="px-3 py-1 bg-[var(--accent)] text-[var(--bg-primary)] font-medium rounded-lg">
                 {{ work.instrumentation }}
               </span>
               <span class="px-3 py-1 bg-[var(--bg-tertiary)] text-[var(--text-secondary)] rounded-lg">

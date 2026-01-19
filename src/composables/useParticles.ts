@@ -19,30 +19,37 @@ export function useParticles(canvasRef: { value: HTMLCanvasElement | null }) {
   let particles: Particle[] = []
   let animationId: number | null = null
 
-  const PARTICLE_COUNT = 8 // Subtle: 5-10 particles
-  const CHARS = ['♪', '♫', '•', '∘']
+  const PARTICLE_COUNT = 15 // More visible particles
+  const CLASSICAL_CHARS = ['♪', '♫', '♩', '♬', '𝄞']
+  const GAMING_CHARS = ['■', '□', '▪', '◆', '●', '○']
 
   function getAccentColor(): string {
     return aesthetic.value === 'gaming' ? '#70d4d0' : '#c9a85c'
   }
 
+  function getChars(): string[] {
+    return aesthetic.value === 'gaming' ? GAMING_CHARS : CLASSICAL_CHARS
+  }
+
   function createParticle(): Particle {
     const canvas = canvasRef.value
+    const chars = getChars()
     if (!canvas) {
       return {
-        x: 0, y: 0, size: 12, speedX: 0, speedY: -0.3,
-        opacity: 0.3, char: '♪'
+        x: 0, y: 0, size: 18, speedX: 0, speedY: -0.5,
+        opacity: 0.4, char: '♪'
       }
     }
 
+    const isGaming = aesthetic.value === 'gaming'
     return {
       x: Math.random() * canvas.width,
       y: canvas.height + 20,
-      size: 10 + Math.random() * 8,
-      speedX: (Math.random() - 0.5) * 0.3,
-      speedY: -(0.2 + Math.random() * 0.3),
-      opacity: 0.15 + Math.random() * 0.25,
-      char: CHARS[Math.floor(Math.random() * CHARS.length)]
+      size: isGaming ? (8 + Math.random() * 12) : (16 + Math.random() * 14),
+      speedX: (Math.random() - 0.5) * 0.5,
+      speedY: -(0.3 + Math.random() * 0.5),
+      opacity: 0.25 + Math.random() * 0.35,
+      char: chars[Math.floor(Math.random() * chars.length)]
     }
   }
 
@@ -79,13 +86,30 @@ export function useParticles(canvasRef: { value: HTMLCanvasElement | null }) {
 
     const color = getAccentColor()
 
+    const isGaming = aesthetic.value === 'gaming'
+
     particles.forEach((p) => {
       updateParticle(p)
-      ctx!.font = `${p.size}px serif`
+
+      // Use pixel-style font for gaming, serif for classical
+      ctx!.font = isGaming
+        ? `bold ${p.size}px monospace`
+        : `${p.size}px "Times New Roman", serif`
       ctx!.fillStyle = color
       ctx!.globalAlpha = p.opacity
+
+      // Add glow effect for gaming mode
+      if (isGaming) {
+        ctx!.shadowColor = color
+        ctx!.shadowBlur = 12
+      } else {
+        ctx!.shadowBlur = 0
+      }
+
       ctx!.fillText(p.char, p.x, p.y)
     })
+
+    ctx.shadowBlur = 0
 
     ctx.globalAlpha = 1
     animationId = requestAnimationFrame(draw)
@@ -128,7 +152,8 @@ export function useParticles(canvasRef: { value: HTMLCanvasElement | null }) {
   })
 
   watch(aesthetic, () => {
-    // Colors will update on next frame
+    // Reinitialize particles with new theme chars
+    initParticles()
   })
 
   return {

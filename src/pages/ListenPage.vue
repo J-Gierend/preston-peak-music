@@ -5,6 +5,8 @@ import HeroSection from '../components/sections/HeroSection.vue'
 import SoundCloudEmbed from '../components/embeds/SoundCloudEmbed.vue'
 import YouTubeEmbed from '../components/embeds/YouTubeEmbed.vue'
 
+const baseUrl = import.meta.env.BASE_URL
+
 interface Platform {
   name: string
   url: string
@@ -30,7 +32,7 @@ onMounted(async () => {
     <HeroSection
       title="Listen"
       subtitle="Stream and discover my music"
-      background-image="/images/07-contact-waveform-banner.jpg"
+      :background-image="`${baseUrl}images/backgrounds/hero-listen.png`"
     />
 
     <section class="py-20 px-4">
