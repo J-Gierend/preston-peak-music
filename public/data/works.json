@@ -82,7 +82,7 @@
       "bandcamp": "https://prestonpeak.bandcamp.com/",
       "description": "A three-movement work for flute, oboe, clarinet, horn, and bassoon showcasing the unique colors of the wind quintet.",
       "featured": false,
-      "sheetMusicAvailable": false
+      "sheetMusicAvailable": true
     },
     {
       "slug": "symphony-sketches",
@@ -96,7 +96,7 @@
       "bandcamp": "https://prestonpeak.bandcamp.com/",
       "description": "Orchestral sketches exploring timbral possibilities and thematic development across the full ensemble.",
       "featured": false,
-      "sheetMusicAvailable": false
+      "sheetMusicAvailable": true
     },
     {
       "slug": "prelude-in-d-minor",
