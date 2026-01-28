@@ -5,6 +5,7 @@ import { useContentLoader } from '../composables/useContentLoader'
 import { useTheme, type Aesthetic } from '../composables/useTheme'
 import HeroSection from '../components/sections/HeroSection.vue'
 import WorldToggle from '../components/WorldToggle.vue'
+import FeaturedUpdate from '../components/sections/FeaturedUpdate.vue'
 import WorldContentSection from '../components/sections/WorldContentSection.vue'
 import WorkDetailModal from '../components/modals/WorkDetailModal.vue'
 import PackDetailModal from '../components/modals/PackDetailModal.vue'
@@ -36,6 +37,30 @@ interface Pack {
   featured: boolean
 }
 
+interface ClassicalUpdate {
+  type: 'youtube'
+  title: string
+  subtitle: string
+  description: string
+  youtubeId: string
+  badge?: string
+}
+
+interface GamingUpdate {
+  type: 'steam'
+  title: string
+  subtitle: string
+  description: string
+  steamUrl: string
+  image?: string
+  badge?: string
+}
+
+interface FeaturedUpdates {
+  classical: ClassicalUpdate
+  gaming: GamingUpdate
+}
+
 const route = useRoute()
 const router = useRouter()
 const { loadContent } = useContentLoader()
@@ -46,6 +71,7 @@ const baseUrl = import.meta.env.BASE_URL
 const currentWorld = aesthetic
 const works = ref<Work[]>([])
 const packs = ref<Pack[]>([])
+const featuredUpdates = ref<FeaturedUpdates | null>(null)
 const selectedWork = ref<Work | null>(null)
 const selectedPack = ref<Pack | null>(null)
 const isWorkModalOpen = ref(false)
@@ -65,12 +91,14 @@ const heroSubtitle = computed(() => {
 })
 
 onMounted(async () => {
-  const [worksData, packsData] = await Promise.all([
+  const [worksData, packsData, updatesData] = await Promise.all([
     loadContent<{ works: Work[] }>('/data/works.json'),
-    loadContent<{ packs: Pack[] }>('/data/packs.json')
+    loadContent<{ packs: Pack[] }>('/data/packs.json'),
+    loadContent<FeaturedUpdates>('/data/featured-updates.json')
   ])
   if (worksData) works.value = worksData.works
   if (packsData) packs.value = packsData.packs
+  if (updatesData) featuredUpdates.value = updatesData
 
   handleHash(route.hash)
 })
@@ -136,6 +164,13 @@ function closePackModal() {
         />
       </div>
     </HeroSection>
+
+    <FeaturedUpdate
+      v-if="featuredUpdates"
+      :world="currentWorld"
+      :classical="featuredUpdates.classical"
+      :gaming="featuredUpdates.gaming"
+    />
 
     <WorldContentSection
       :world="currentWorld"

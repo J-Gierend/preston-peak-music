@@ -40,6 +40,11 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('../pages/ContactPage.vue')
   },
   {
+    path: '/status',
+    name: 'status',
+    component: () => import('../pages/StatusPage.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     redirect: '/'
   }

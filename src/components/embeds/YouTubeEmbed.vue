@@ -31,7 +31,7 @@ function handleError() {
 </script>
 
 <template>
-  <div ref="containerRef" class="aspect-video rounded-lg overflow-hidden bg-[var(--bg-secondary)] relative">
+  <div ref="containerRef" class="youtube-embed">
     <EmbedFallback
       v-if="hasError"
       platform="YouTube"
@@ -43,20 +43,22 @@ function handleError() {
     <button
       v-else-if="isVisible && !isPlaying"
       @click="play"
-      class="w-full h-full relative group cursor-pointer"
+      class="youtube-facade"
       :aria-label="`Play: ${title || 'video'}`"
     >
       <img
         :src="thumbnailUrl"
         :alt="title || 'Video thumbnail'"
-        class="w-full h-full object-cover"
+        class="youtube-thumbnail"
         @error="handleError"
       />
-      <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-      <div class="absolute inset-0 flex items-center justify-center">
-        <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-          <div class="i-carbon-play-filled text-white text-2xl ml-1" />
-        </div>
+      <div class="youtube-overlay" />
+      <div class="youtube-play-container">
+        <!-- Official YouTube-style play button -->
+        <svg class="youtube-play-btn" viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+          <path class="youtube-play-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#FF0000"/>
+          <path class="youtube-play-icon" d="M 45,24 27,14 27,34" fill="#FFFFFF"/>
+        </svg>
       </div>
     </button>
 
@@ -64,7 +66,7 @@ function handleError() {
     <iframe
       v-else-if="isPlaying"
       :src="embedUrl"
-      class="w-full h-full"
+      class="youtube-iframe"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
@@ -72,8 +74,98 @@ function handleError() {
     />
 
     <!-- Loading state -->
-    <div v-else class="w-full h-full flex items-center justify-center">
-      <div class="i-carbon-video text-4xl text-[var(--accent)] animate-pulse" />
+    <div v-else class="youtube-loading">
+      <div class="i-carbon-video loading-icon" />
     </div>
   </div>
 </template>
+
+<style scoped>
+.youtube-embed {
+  aspect-ratio: 16 / 9;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.youtube-facade {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.youtube-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.youtube-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease;
+}
+
+.youtube-facade:hover .youtube-overlay {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.youtube-play-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.youtube-play-btn {
+  width: 68px;
+  height: 48px;
+  transition: transform 0.15s ease, filter 0.15s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.youtube-facade:hover .youtube-play-btn {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.youtube-play-bg {
+  transition: fill 0.15s ease;
+}
+
+.youtube-facade:hover .youtube-play-bg {
+  fill: #FF0000;
+}
+
+.youtube-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.youtube-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-icon {
+  font-size: 2.5rem;
+  color: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+</style>
