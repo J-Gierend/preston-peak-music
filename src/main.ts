@@ -10,13 +10,12 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    // Don't scroll when navigating within classical categories
-    if (to.path.startsWith('/classical') && from.path.startsWith('/classical')) {
+    // Only scroll to top when navigating to a different page path
+    // Don't scroll for hash changes (modal open/close) on same page
+    if (to.path === from.path) {
       return false
     }
-    if (to.hash) {
-      return { el: to.hash, behavior: 'smooth' }
-    }
+    // Use saved position (back/forward) or scroll to top for new pages
     return savedPosition || { top: 0 }
   }
 })
