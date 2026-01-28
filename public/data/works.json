@@ -1,123 +1,330 @@
 {
   "works": [
     {
-      "slug": "sonata-no-1",
-      "title": "Sonata No. 1",
+      "slug": "sonata-no-1-nightfall",
+      "title": "Sonata No. 1 \"Nightfall\"",
       "year": 2023,
       "duration": "6-7 min",
       "instrumentation": "Solo Piano",
       "category": "solo-piano",
-      "awards": ["Semi-finalist, NYC Contemporary Music Symposium 2023"],
-      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
-      "bandcamp": "https://prestonpeak.bandcamp.com/",
-      "description": "A romantic era dedication to the classical masters, blending traditional sonata form with contemporary harmonic language.",
+      "awards": ["NYC Contemporary Music Symposium 2023: Semi-finalist"],
+      "description": "This work is dedicated to the sounds of the romantic era, embracing the expressive, dramatic, and story-telling natures of this period. The opening passage foreshadows a powerful crescendo of passion and anger, and the piece's dark and frustrated tone ultimately depicts how an individual's tumultuous emotions may swell, burst, and hurt themselves and those around them.",
       "featured": true,
-      "sheetMusicAvailable": true
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$5",
+      "perusualScoreUrl": "https://drive.google.com/file/d/1bx2OI4mneP-5PLmE3Ok0jF0-vnDgNZEq/view?usp=drive_link",
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=kUxCu9r9Iww",
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/sonata-no-1-nightfall",
+        "spotify": "https://open.spotify.com/track/3vBkSLU0lZyfShB7tdbSlE",
+        "appleMusic": "https://music.apple.com/us/album/sonata-no-1-nightfall/1718843593?i=1718843594",
+        "amazonMusic": "https://music.amazon.in/albums/B0CP4GR5N7",
+        "pandora": "https://www.pandora.com/artist/preston-peak/sonata-no-1-nightfall/TRqd45v6p5jK9kq"
+      }
     },
     {
       "slug": "marriage-suite",
       "title": "Marriage Suite",
-      "year": 2024,
-      "duration": "12-15 min",
+      "year": 2025,
+      "duration": "6 min",
       "instrumentation": "String Quartet",
       "category": "chamber",
       "awards": [],
-      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
-      "bandcamp": "https://prestonpeak.bandcamp.com/",
-      "description": "A multi-movement work exploring themes of love, commitment, and celebration through the rich textures of string quartet.",
+      "description": "Three bridal processionals for string quartet. In the spring of 2025, I got married, and I composed the bridal processional that my wife walked down the aisle to. I wrote my wife three bridal processionals to choose from: Hailey's Walk, Something Blue (a romantic conversation between the strings), and Serenade for Spring (inspired by Tchaikovsky's Serenade for Strings).",
       "featured": true,
-      "sheetMusicAvailable": true
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$20",
+      "perusualScoreUrl": "https://drive.google.com/file/d/11RNNmzLrN29bew7fyDAiJ0qz3r62MJby/view?usp=sharing",
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=OjSmtCLCPkk",
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/sets/serenade-for-spring",
+        "spotify": "https://open.spotify.com/album/2ORwwCUBTlmMIpSNPZWoKR",
+        "appleMusic": "https://music.apple.com/us/album/serenade-for-spring-single/1827166796",
+        "amazonMusic": "https://music.amazon.com/albums/B0FHQMZDW9",
+        "pandora": "https://pandora.app.link/qbKtep1fwVb",
+        "bandcamp": "https://prestonpeak.bandcamp.com/album/serenade-for-spring",
+        "youtubeMusic": "https://music.youtube.com/playlist?list=OLAK5uy_l6ML34SQKJwQB2jSE9JLVaAnZxPZMoIn0"
+      }
     },
     {
-      "slug": "nocturne-in-e-flat",
-      "title": "Nocturne in E-flat",
-      "year": 2022,
-      "duration": "4-5 min",
+      "slug": "songs-for-winter",
+      "title": "Suite for Piano No. 1 - Songs for Winter",
+      "year": 2023,
+      "duration": "18-20 min",
+      "instrumentation": "Solo Piano",
+      "category": "solo-piano",
+      "awards": ["SoloPiano.com 2023 \"Holiday & Seasonal\" Album of the Year Nominee"],
+      "description": "As the 2023 holidays approached, I composed this short collection of piano pieces dedicated to the season of winter. The work was composed with a variety of compositional styles ranging from minimalist-ambient, to contemporary neo-classical, to traditional classical. Works from Kensuke Ushio, Toby Fox, Ludovico Einaudi, and Frédéric Chopin were a few of my compositional influences. This work is scored in nine short movements.",
+      "featured": true,
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$10",
+      "perusualScoreUrl": "https://drive.google.com/file/d/16FMRZ5sb2SmbsI8lreDUJ3HD9nbYBR8Y/view?usp=sharing",
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=e6D6_8uKDqU",
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/sets/piano-for-winter",
+        "spotify": "https://open.spotify.com/album/3Gg4ENDaWMpSzIc70WRLd8",
+        "appleMusic": "https://music.apple.com/us/album/songs-for-winter/1719252197",
+        "amazonMusic": "https://music.amazon.in/albums/B0CP8J8ZGY",
+        "pandora": "https://www.pandora.com/artist/preston-peak/songs-for-winter/ALmt3vVdgln5f96"
+      }
+    },
+    {
+      "slug": "like-the-stars-forever",
+      "title": "Like the Stars Forever and Ever",
+      "year": 2025,
+      "duration": "7 min",
+      "instrumentation": "Mixed Ensemble (12 Musicians)",
+      "category": "large-ensemble",
+      "awards": ["Premiered by Texas New Music Ensemble, Houston TX, July 2025"],
+      "description": "The book of Daniel in the Old Testament of the Bible contains themes of hope and faith during times of great struggle. This is what inspired this piece - specifically Chapter 12. In this piece, I play with dissonance in a way I never have before. I explore creating tension through the use of timbre, tonal harmonies, and microtonal harmonies. Eventually the mood flips from dark, somber, and epic to light and playful. Scored for 1(pic).1(b.cl).0.0 - 0.1.1.0 - perc(2) - pf - str(2.1.1.1). Daniel 12:3 - Those who are wise will shine like the brightness of the heavens, and those who lead many to righteousness, like the stars for ever and ever.",
+      "featured": true,
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$10",
+      "links": {}
+    },
+    {
+      "slug": "miniatures-for-piano",
+      "title": "Miniatures for Piano",
+      "year": 2025,
+      "duration": "~35 min",
       "instrumentation": "Solo Piano",
       "category": "solo-piano",
       "awards": [],
-      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
-      "bandcamp": "https://prestonpeak.bandcamp.com/",
-      "description": "A contemplative night piece in the tradition of Chopin, featuring lyrical melodies over gentle arpeggiated accompaniment.",
-      "featured": false,
-      "sheetMusicAvailable": true
+      "description": "A collection of 19 short piano pieces carefully composed in a neo-classical and minimal style with emphasis on depicting the object of the miniature titles. Each composition maintains an abstract quality while being interconnected throughout the album. Includes pieces such as Sunset, Midnight, Sunrise, the 'Lost in...' series (Space, Time, Translation, Love, Thought), a coffee-themed suite (Hot, Cold, Instant, No More Left), and four interludes.",
+      "featured": true,
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$5",
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/sunset",
+        "bandcamp": "https://prestonpeak.bandcamp.com/album/miniatures-for-piano"
+      }
     },
     {
-      "slug": "elegy-for-violin",
-      "title": "Elegy for Violin",
+      "slug": "overcast-skies",
+      "title": "Overcast Skies",
       "year": 2023,
-      "duration": "5-6 min",
-      "instrumentation": "Solo Violin",
+      "duration": "5 min",
+      "instrumentation": "Solo Piano",
+      "category": "solo-piano",
+      "awards": [],
+      "description": "Melancholy and hopeful, an overcast sky will either be followed by rain or sunshine breaking through the clouds. This was the imagery in mind when composing this piece in a modern, neoclassical style. A melodic shift growing into a swelling climax drives forth the idea of rain or sunshine bursting through the clouds, leaving the listener to interpret the outcome.",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$10",
+      "perusualScoreUrl": "https://drive.google.com/file/d/1MnzV4BDkCCtXDR5pZZvCwnFIZVhiLpRg/view?usp=sharing",
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=MwmFELfpMQw",
+        "bandcamp": "https://prestonpeak.bandcamp.com/track/overcast-skies"
+      }
+    },
+    {
+      "slug": "pushing-onward",
+      "title": "Pushing Onward",
+      "year": 2023,
+      "duration": "8 min",
+      "instrumentation": "Solo Piano",
+      "category": "solo-piano",
+      "awards": [],
+      "description": "Pushing Onward is a neoclassical piece which drew inspiration from modern, neoclassical composers to create a growing, epic, and emotional piece that is a joy to perform.",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$10",
+      "perusualScoreUrl": "https://drive.google.com/file/d/1tAZy7H3K86Px3QMqbA9YGWlHo3i5OESc/view?usp=sharing",
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=j1aHPTBz8tA",
+        "bandcamp": "https://prestonpeak.bandcamp.com/track/pushing-onward"
+      }
+    },
+    {
+      "slug": "solitude-waltz",
+      "title": "Solitude Waltz",
+      "year": 2023,
+      "duration": "3 min",
+      "instrumentation": "Solo Piano",
+      "category": "solo-piano",
+      "awards": [],
+      "description": "This waltz is nicknamed 'Solitude', and this piece reflects this feeling. Not 'Loneliness', because being alone isn't always bad - but solitude, which can be a period of growth or reflection.",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$5",
+      "perusualScoreUrl": "https://drive.google.com/file/d/1e8Kl-r4HL0feACHCbYS30cCLmJKuhgwE/view?usp=sharing",
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=VmVFDJIXkl4",
+        "bandcamp": "https://prestonpeak.bandcamp.com/track/solitude-waltz"
+      }
+    },
+    {
+      "slug": "less-than-three",
+      "title": "Less Than Three",
+      "year": 2024,
+      "duration": "2 min",
+      "instrumentation": "Solo Piano",
+      "category": "solo-piano",
+      "awards": [],
+      "description": "A short, heartfelt waltz written with my wife in mind.",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$5",
+      "perusualScoreUrl": "https://drive.google.com/file/d/1jTwKS4SSwvYhIw1irbIIo8uPwtmltJZx/view?usp=drive_link",
+      "links": {}
+    },
+    {
+      "slug": "lost-in-space-and-time",
+      "title": "Lost in Space and Time",
+      "year": 2024,
+      "duration": "3 min",
+      "instrumentation": "Solo Piano",
+      "category": "solo-piano",
+      "awards": [],
+      "description": "This set is made up of two pieces, Lost in Space and Lost in Time. The first creates an ethereal mood using unique chords which arpeggiate behind a singing, melancholy, and slightly varying melody. The second uses a 6/4 time signature at a remarkably slow tempo to make this fairly common time signature sound a bit odd with large spaces of sustained piano.",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "sheetMusicPrice": "$5",
+      "perusualScoreUrl": "https://drive.google.com/file/d/1f84bIn8aXf8DbpYPOYZT7_DIxAAcKrrj/view?usp=sharing",
+      "links": {
+        "youtube": "https://www.youtube.com/watch?v=332xPIblm6A"
+      }
+    },
+    {
+      "slug": "nyanza",
+      "title": "Nyanza",
+      "year": 2025,
+      "duration": "",
+      "instrumentation": "Solo Flute",
       "category": "solo",
       "awards": [],
-      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
-      "bandcamp": "https://prestonpeak.bandcamp.com/",
-      "description": "A lyrical solo work exploring themes of loss and remembrance through the expressive voice of the violin.",
+      "description": "",
       "featured": false,
-      "sheetMusicAvailable": true
+      "sheetMusicAvailable": true,
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/nyanza"
+      }
     },
     {
-      "slug": "dialogue-for-two",
-      "title": "Dialogue for Two",
-      "year": 2024,
-      "duration": "8-9 min",
-      "instrumentation": "Violin & Cello",
+      "slug": "two-ships",
+      "title": "Two Ships Passing in the Night",
+      "year": 2025,
+      "duration": "",
+      "instrumentation": "Piano 4-Hands",
       "category": "duos",
       "awards": [],
-      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
-      "bandcamp": "https://prestonpeak.bandcamp.com/",
-      "description": "An intimate conversation between violin and cello, weaving intertwining melodies that complement and contrast.",
+      "description": "",
       "featured": false,
-      "sheetMusicAvailable": true
+      "sheetMusicAvailable": true,
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/two-ships"
+      }
     },
     {
-      "slug": "wind-quintet-no-1",
-      "title": "Wind Quintet No. 1",
-      "year": 2023,
-      "duration": "14-16 min",
-      "instrumentation": "Wind Quintet",
+      "slug": "but-i-am-a-worm",
+      "title": "But I am a Worm",
+      "year": 2025,
+      "duration": "",
+      "instrumentation": "String Quartet",
       "category": "chamber",
       "awards": [],
-      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
-      "bandcamp": "https://prestonpeak.bandcamp.com/",
-      "description": "A three-movement work for flute, oboe, clarinet, horn, and bassoon showcasing the unique colors of the wind quintet.",
+      "description": "",
       "featured": false,
-      "sheetMusicAvailable": true
+      "sheetMusicAvailable": true,
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/but-i-am-a-worm"
+      }
     },
     {
-      "slug": "symphony-sketches",
-      "title": "Symphony Sketches",
-      "year": 2024,
-      "duration": "18-20 min",
-      "instrumentation": "Orchestra",
+      "slug": "romance-no-2-violin-piano",
+      "title": "Romance No. 2",
+      "year": 2025,
+      "duration": "",
+      "instrumentation": "Violin & Piano",
+      "category": "duos",
+      "awards": [],
+      "description": "",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/romance-no-2-vln-pno"
+      }
+    },
+    {
+      "slug": "romance-violin-piano",
+      "title": "Romance",
+      "year": 2025,
+      "duration": "",
+      "instrumentation": "Violin & Piano",
+      "category": "duos",
+      "awards": [],
+      "description": "",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/romance-vln-pno"
+      }
+    },
+    {
+      "slug": "rag-bassoon-piano",
+      "title": "Rag",
+      "year": 2025,
+      "duration": "",
+      "instrumentation": "Bassoon & Piano",
+      "category": "duos",
+      "awards": [],
+      "description": "",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/rag-bsn-pno"
+      }
+    },
+    {
+      "slug": "romance-bassoon-piano",
+      "title": "Romance",
+      "year": 2025,
+      "duration": "",
+      "instrumentation": "Bassoon & Piano",
+      "category": "duos",
+      "awards": [],
+      "description": "",
+      "featured": false,
+      "sheetMusicAvailable": true,
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/romance-bsn-and-pno"
+      }
+    },
+    {
+      "slug": "i-lay-down-and-slept",
+      "title": "I Lay Down and Slept",
+      "year": 2025,
+      "duration": "",
+      "instrumentation": "String Orchestra",
       "category": "large-ensemble",
       "awards": [],
-      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
-      "bandcamp": "https://prestonpeak.bandcamp.com/",
-      "description": "Orchestral sketches exploring timbral possibilities and thematic development across the full ensemble.",
+      "description": "",
       "featured": false,
-      "sheetMusicAvailable": true
-    },
-    {
-      "slug": "prelude-in-d-minor",
-      "title": "Prelude in D Minor",
-      "year": 2021,
-      "duration": "3-4 min",
-      "instrumentation": "Solo Piano",
-      "category": "solo-piano",
-      "awards": [],
-      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
-      "bandcamp": "https://prestonpeak.bandcamp.com/",
-      "description": "A brief but intense piano prelude exploring the darker emotional palette of D minor.",
-      "featured": false,
-      "sheetMusicAvailable": true
+      "sheetMusicAvailable": true,
+      "links": {
+        "soundcloud": "https://soundcloud.com/preston-peak-104023590/i-lay-down-and-slept"
+      }
     }
   ],
   "categories": [
     { "slug": "solo", "name": "Solo", "description": "Works for solo instruments (excluding piano)" },
     { "slug": "duos", "name": "Duos", "description": "Works for two instruments" },
     { "slug": "chamber", "name": "Chamber", "description": "Chamber music ensembles (3+ players)" },
-    { "slug": "large-ensemble", "name": "Large Ensemble", "description": "Orchestra and wind ensemble works" },
+    { "slug": "large-ensemble", "name": "Large Ensemble", "description": "Orchestra and ensemble works" },
     { "slug": "solo-piano", "name": "Solo Piano", "description": "Works for solo piano" }
-  ]
+  ],
+  "contact": {
+    "email": "ppeakmusic@gmail.com"
+  },
+  "socialLinks": {
+    "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+    "spotify": "https://open.spotify.com/artist/1OjZKTQaY0wUDIgzzbu8R2",
+    "appleMusic": "https://music.apple.com/us/artist/preston-peak/1680020328",
+    "amazonMusic": "https://music.amazon.com/artists/B0C1376MPP/preston-peak",
+    "pandora": "https://pandora.app.link/zdG5gBBBMzb",
+    "bandcamp": "https://prestonpeak.bandcamp.com/",
+    "youtube": "https://www.youtube.com/@prestonpeak",
+    "instagram": "https://www.instagram.com/preston_peak_music/",
+    "facebook": "https://www.facebook.com/prestonpeakmusic/"
+  }
 }
