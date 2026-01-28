@@ -13,14 +13,11 @@ export const routes: RouteRecordRaw[] = [
   },
   {
     path: '/classical',
-    name: 'classical',
-    component: () => import('../pages/ClassicalPage.vue')
+    redirect: '/'
   },
   {
     path: '/classical/:category',
-    name: 'classical-category',
-    component: () => import('../pages/ClassicalCategoryPage.vue'),
-    props: true
+    redirect: '/'
   },
   {
     path: '/games',

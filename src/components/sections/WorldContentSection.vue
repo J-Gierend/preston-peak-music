@@ -13,11 +13,19 @@ interface Work {
   year: number
   duration: string
   instrumentation: string
+  category: string
   awards: string[]
   description: string
   featured: boolean
   soundcloud: string
   bandcamp: string
+  sheetMusicAvailable?: boolean
+}
+
+interface Category {
+  slug: string
+  name: string
+  description: string
 }
 
 interface Pack {
@@ -35,34 +43,66 @@ interface Pack {
 
 const props = defineProps<{
   world: World
+  selectedCategory?: string
 }>()
 
 const emit = defineEmits<{
   openWork: [slug: string]
   openPack: [slug: string]
+  selectCategory: [slug: string | null]
 }>()
 
 const { loadContent } = useContentLoader()
 const works = ref<Work[]>([])
+const categories = ref<Category[]>([])
 const packs = ref<Pack[]>([])
 const isTransitioning = ref(false)
+const activeCategory = ref<string | null>(null)
 
 const showClassical = computed(() => props.world === 'classical')
 const sectionTitle = computed(() =>
   showClassical.value ? 'Classical Works' : 'Game Music Packs'
 )
 
+const featuredWorks = computed(() => {
+  return works.value.filter(w => w.featured)
+})
+
+const filteredWorks = computed(() => {
+  if (!activeCategory.value) {
+    // Show all works, sorted by featured first then year
+    return [...works.value].sort((a, b) => {
+      if (a.featured && !b.featured) return -1
+      if (!a.featured && b.featured) return 1
+      return b.year - a.year
+    })
+  }
+  return works.value.filter(w => w.category === activeCategory.value)
+})
+
+function getCategoryWorkCount(categorySlug: string): number {
+  return works.value.filter(w => w.category === categorySlug).length
+}
+
+function selectCategory(slug: string | null) {
+  activeCategory.value = activeCategory.value === slug ? null : slug
+}
+
 onMounted(async () => {
   const [worksData, packsData] = await Promise.all([
-    loadContent<{ works: Work[] }>('/data/works.json'),
+    loadContent<{ works: Work[], categories: Category[] }>('/data/works.json'),
     loadContent<{ packs: Pack[] }>('/data/packs.json')
   ])
-  if (worksData) works.value = worksData.works
+  if (worksData) {
+    works.value = worksData.works
+    categories.value = worksData.categories || []
+  }
   if (packsData) packs.value = packsData.packs
 })
 
 watch(() => props.world, () => {
   isTransitioning.value = true
+  activeCategory.value = null
   setTimeout(() => {
     isTransitioning.value = false
   }, 300)
@@ -96,20 +136,68 @@ watch(() => props.world, () => {
         </p>
       </div>
 
-      <!-- Classical Works Grid -->
-      <div
-        v-if="showClassical"
-        data-testid="classical-works-grid"
-        class="content-grid works-grid"
-      >
-        <WorkCard
-          v-for="work in works"
-          :key="work.slug"
-          :work="work"
-          data-testid="work-card"
-          @click="emit('openWork', $event)"
-        />
-      </div>
+      <!-- Classical Content -->
+      <template v-if="showClassical">
+        <!-- Featured Works -->
+        <div v-if="featuredWorks.length > 0 && !activeCategory" class="featured-section">
+          <h3 class="subsection-title">
+            <span class="star-icon">&#9733;</span>
+            Featured Works
+          </h3>
+          <div class="featured-grid">
+            <WorkCard
+              v-for="work in featuredWorks"
+              :key="work.slug"
+              :work="work"
+              class="featured-card"
+              @click="emit('openWork', $event)"
+            />
+          </div>
+        </div>
+
+        <!-- Category Navigation -->
+        <div v-if="categories.length > 0" class="category-nav">
+          <h3 class="subsection-title">Browse by Category</h3>
+          <div class="category-buttons">
+            <button
+              v-for="cat in categories"
+              :key="cat.slug"
+              :class="['category-btn', { active: activeCategory === cat.slug }]"
+              @click="selectCategory(cat.slug)"
+            >
+              <span class="cat-name">{{ cat.name }}</span>
+              <span class="cat-count">{{ getCategoryWorkCount(cat.slug) }}</span>
+            </button>
+            <button
+              v-if="activeCategory"
+              class="category-btn clear-btn"
+              @click="selectCategory(null)"
+            >
+              Show All
+            </button>
+          </div>
+        </div>
+
+        <!-- Works Grid -->
+        <div class="works-section">
+          <h3 v-if="activeCategory" class="subsection-title">
+            {{ categories.find(c => c.slug === activeCategory)?.name }} Works
+          </h3>
+          <h3 v-else class="subsection-title">All Works</h3>
+          <div
+            data-testid="classical-works-grid"
+            class="content-grid works-grid"
+          >
+            <WorkCard
+              v-for="work in filteredWorks"
+              :key="work.slug"
+              :work="work"
+              data-testid="work-card"
+              @click="emit('openWork', $event)"
+            />
+          </div>
+        </div>
+      </template>
 
       <!-- Gaming Packs Grid -->
       <div
