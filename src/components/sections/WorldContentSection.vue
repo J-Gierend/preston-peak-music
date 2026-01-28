@@ -85,7 +85,7 @@ function getCategoryWorkCount(categorySlug: string): number {
 }
 
 function selectCategory(slug: string | null) {
-  activeCategory.value = activeCategory.value === slug ? null : slug
+  activeCategory.value = slug
 }
 
 onMounted(async () => {
@@ -138,8 +138,8 @@ watch(() => props.world, () => {
 
       <!-- Classical Content -->
       <template v-if="showClassical">
-        <!-- Featured Works -->
-        <div v-if="featuredWorks.length > 0 && !activeCategory" class="featured-section">
+        <!-- Featured Works - Always visible -->
+        <div v-if="featuredWorks.length > 0" class="featured-section">
           <h3 class="subsection-title">
             <span class="star-icon">&#9733;</span>
             Featured Works
@@ -160,6 +160,12 @@ watch(() => props.world, () => {
           <h3 class="subsection-title">Browse by Category</h3>
           <div class="category-buttons">
             <button
+              :class="['category-btn', { active: !activeCategory }]"
+              @click="selectCategory(null)"
+            >
+              Show All
+            </button>
+            <button
               v-for="cat in categories"
               :key="cat.slug"
               :class="['category-btn', { active: activeCategory === cat.slug }]"
@@ -168,22 +174,14 @@ watch(() => props.world, () => {
               <span class="cat-name">{{ cat.name }}</span>
               <span class="cat-count">{{ getCategoryWorkCount(cat.slug) }}</span>
             </button>
-            <button
-              v-if="activeCategory"
-              class="category-btn clear-btn"
-              @click="selectCategory(null)"
-            >
-              Show All
-            </button>
           </div>
         </div>
 
         <!-- Works Grid -->
         <div class="works-section">
-          <h3 v-if="activeCategory" class="subsection-title">
-            {{ categories.find(c => c.slug === activeCategory)?.name }} Works
+          <h3 class="subsection-title">
+            {{ activeCategory ? categories.find(c => c.slug === activeCategory)?.name + ' Works' : 'All Works' }}
           </h3>
-          <h3 v-else class="subsection-title">All Works</h3>
           <div
             data-testid="classical-works-grid"
             class="content-grid works-grid"

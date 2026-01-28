@@ -162,16 +162,6 @@
   background: rgba(255,255,255,0.2);
 }
 
-.category-btn.clear-btn {
-  background: transparent;
-  border: 1px dashed var(--text-secondary);
-  color: var(--text-secondary);
-}
-
-.category-btn.clear-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
 
 /* Works Section */
 .works-section {
