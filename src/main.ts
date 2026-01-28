@@ -9,7 +9,11 @@ import './styles/themes.css'
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-  scrollBehavior(to, _from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
+    // Don't scroll when navigating within classical categories
+    if (to.path.startsWith('/classical') && from.path.startsWith('/classical')) {
+      return false
+    }
     if (to.hash) {
       return { el: to.hash, behavior: 'smooth' }
     }

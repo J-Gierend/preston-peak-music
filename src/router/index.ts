@@ -17,6 +17,12 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('../pages/ClassicalPage.vue')
   },
   {
+    path: '/classical/:category',
+    name: 'classical-category',
+    component: () => import('../pages/ClassicalCategoryPage.vue'),
+    props: true
+  },
+  {
     path: '/games',
     name: 'games',
     component: () => import('../pages/GamesPage.vue')

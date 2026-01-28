@@ -8,10 +8,12 @@ interface Work {
   year: number
   duration: string
   instrumentation: string
+  category: string
   awards: string[]
   soundcloud: string
   bandcamp: string
   description: string
+  sheetMusicAvailable?: boolean
 }
 
 const props = defineProps<{
@@ -115,6 +117,26 @@ watch(() => props.isOpen, (open) => {
                 Listen
               </h3>
               <SoundCloudEmbed :url="work.soundcloud" :title="work.title" />
+            </div>
+
+            <!-- Sheet Music Purchase -->
+            <div v-if="work.sheetMusicAvailable" class="bg-[var(--bg-tertiary)] rounded-xl p-4">
+              <div class="flex items-center justify-between flex-wrap gap-4">
+                <div>
+                  <h3 class="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-1">
+                    Sheet Music
+                  </h3>
+                  <p class="text-[var(--text-primary)]">Sheet music available for purchase</p>
+                </div>
+                <a
+                  :href="`mailto:prestonpeak@email.com?subject=Sheet Music Inquiry: ${work.title}&body=Hi Preston,%0D%0A%0D%0AI'm interested in purchasing the sheet music for '${work.title}'.%0D%0A%0D%0APlease let me know the price and how I can purchase it.%0D%0A%0D%0AThank you!`"
+                  class="btn-primary flex items-center gap-2"
+                  data-testid="sheet-music-button"
+                >
+                  <div class="i-carbon-document-pdf" />
+                  Purchase Sheet Music
+                </a>
+              </div>
             </div>
 
             <!-- Links -->

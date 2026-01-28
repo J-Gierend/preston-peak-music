@@ -6,11 +6,13 @@
       "year": 2023,
       "duration": "6-7 min",
       "instrumentation": "Solo Piano",
+      "category": "solo-piano",
       "awards": ["Semi-finalist, NYC Contemporary Music Symposium 2023"],
       "soundcloud": "https://soundcloud.com/preston-peak-104023590",
       "bandcamp": "https://prestonpeak.bandcamp.com/",
       "description": "A romantic era dedication to the classical masters, blending traditional sonata form with contemporary harmonic language.",
-      "featured": true
+      "featured": true,
+      "sheetMusicAvailable": true
     },
     {
       "slug": "marriage-suite",
@@ -18,11 +20,13 @@
       "year": 2024,
       "duration": "12-15 min",
       "instrumentation": "String Quartet",
+      "category": "chamber",
       "awards": [],
       "soundcloud": "https://soundcloud.com/preston-peak-104023590",
       "bandcamp": "https://prestonpeak.bandcamp.com/",
       "description": "A multi-movement work exploring themes of love, commitment, and celebration through the rich textures of string quartet.",
-      "featured": true
+      "featured": true,
+      "sheetMusicAvailable": true
     },
     {
       "slug": "nocturne-in-e-flat",
@@ -30,11 +34,90 @@
       "year": 2022,
       "duration": "4-5 min",
       "instrumentation": "Solo Piano",
+      "category": "solo-piano",
       "awards": [],
       "soundcloud": "https://soundcloud.com/preston-peak-104023590",
       "bandcamp": "https://prestonpeak.bandcamp.com/",
       "description": "A contemplative night piece in the tradition of Chopin, featuring lyrical melodies over gentle arpeggiated accompaniment.",
-      "featured": false
+      "featured": false,
+      "sheetMusicAvailable": true
+    },
+    {
+      "slug": "elegy-for-violin",
+      "title": "Elegy for Violin",
+      "year": 2023,
+      "duration": "5-6 min",
+      "instrumentation": "Solo Violin",
+      "category": "solo",
+      "awards": [],
+      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+      "bandcamp": "https://prestonpeak.bandcamp.com/",
+      "description": "A lyrical solo work exploring themes of loss and remembrance through the expressive voice of the violin.",
+      "featured": false,
+      "sheetMusicAvailable": true
+    },
+    {
+      "slug": "dialogue-for-two",
+      "title": "Dialogue for Two",
+      "year": 2024,
+      "duration": "8-9 min",
+      "instrumentation": "Violin & Cello",
+      "category": "duos",
+      "awards": [],
+      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+      "bandcamp": "https://prestonpeak.bandcamp.com/",
+      "description": "An intimate conversation between violin and cello, weaving intertwining melodies that complement and contrast.",
+      "featured": false,
+      "sheetMusicAvailable": true
+    },
+    {
+      "slug": "wind-quintet-no-1",
+      "title": "Wind Quintet No. 1",
+      "year": 2023,
+      "duration": "14-16 min",
+      "instrumentation": "Wind Quintet",
+      "category": "chamber",
+      "awards": [],
+      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+      "bandcamp": "https://prestonpeak.bandcamp.com/",
+      "description": "A three-movement work for flute, oboe, clarinet, horn, and bassoon showcasing the unique colors of the wind quintet.",
+      "featured": false,
+      "sheetMusicAvailable": false
+    },
+    {
+      "slug": "symphony-sketches",
+      "title": "Symphony Sketches",
+      "year": 2024,
+      "duration": "18-20 min",
+      "instrumentation": "Orchestra",
+      "category": "large-ensemble",
+      "awards": [],
+      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+      "bandcamp": "https://prestonpeak.bandcamp.com/",
+      "description": "Orchestral sketches exploring timbral possibilities and thematic development across the full ensemble.",
+      "featured": false,
+      "sheetMusicAvailable": false
+    },
+    {
+      "slug": "prelude-in-d-minor",
+      "title": "Prelude in D Minor",
+      "year": 2021,
+      "duration": "3-4 min",
+      "instrumentation": "Solo Piano",
+      "category": "solo-piano",
+      "awards": [],
+      "soundcloud": "https://soundcloud.com/preston-peak-104023590",
+      "bandcamp": "https://prestonpeak.bandcamp.com/",
+      "description": "A brief but intense piano prelude exploring the darker emotional palette of D minor.",
+      "featured": false,
+      "sheetMusicAvailable": true
     }
+  ],
+  "categories": [
+    { "slug": "solo", "name": "Solo", "description": "Works for solo instruments (excluding piano)" },
+    { "slug": "duos", "name": "Duos", "description": "Works for two instruments" },
+    { "slug": "chamber", "name": "Chamber", "description": "Chamber music ensembles (3+ players)" },
+    { "slug": "large-ensemble", "name": "Large Ensemble", "description": "Orchestra and wind ensemble works" },
+    { "slug": "solo-piano", "name": "Solo Piano", "description": "Works for solo piano" }
   ]
 }
