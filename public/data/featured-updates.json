@@ -1,0 +1,19 @@
+{
+  "classical": {
+    "type": "youtube",
+    "title": "Marriage Suite",
+    "subtitle": "String Quartet • 2024",
+    "description": "A multi-movement work exploring themes of love and celebration.",
+    "youtubeId": "CAeDzijUhAY",
+    "badge": "New Release"
+  },
+  "gaming": {
+    "type": "steam",
+    "title": "Trial By Magic",
+    "subtitle": "Original Soundtrack",
+    "description": "Composing the full soundtrack for this spell-combining roguelike.",
+    "steamUrl": "https://store.steampowered.com/app/4140230/Trial_By_Magic/",
+    "image": "/images/trial-by-magic-header.jpg",
+    "badge": "In Development"
+  }
+}
