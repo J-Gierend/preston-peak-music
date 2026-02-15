@@ -51,7 +51,7 @@ onMounted(async () => {
               rel="noopener noreferrer"
               class="card card-hover flex flex-col items-center gap-3 py-6 hover:border-[var(--accent)] border border-transparent transition-colors"
             >
-              <div :class="platform.icon" class="text-4xl" :style="{ color: platform.color }" />
+              <div :class="platform.icon" class="text-4xl text-[var(--accent)]" />
               <span class="text-[var(--text-primary)] font-medium">{{ platform.name }}</span>
             </a>
           </div>
@@ -70,7 +70,7 @@ onMounted(async () => {
 
         <!-- Bandcamp CTA -->
         <div class="bg-[var(--bg-secondary)] p-8 text-center">
-          <div class="i-simple-icons-bandcamp text-5xl text-[#1da0c3] mx-auto mb-4" />
+          <div class="i-simple-icons-bandcamp text-5xl text-[var(--accent)] mx-auto mb-4" />
           <h3 class="text-xl font-display font-bold text-[var(--text-primary)] mb-2">
             Support on Bandcamp
           </h3>

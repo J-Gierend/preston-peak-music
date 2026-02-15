@@ -90,7 +90,7 @@ function reset() {
   <div class="max-w-xl mx-auto">
     <!-- Success State -->
     <div v-if="isSubmitted" class="text-center py-12">
-      <div class="i-carbon-checkmark-filled text-6xl text-green-500 mx-auto mb-4" />
+      <div class="i-carbon-checkmark-filled text-6xl text-[var(--accent)] mx-auto mb-4" />
       <h2 class="text-2xl font-display font-bold text-[var(--text-primary)] mb-2">
         Message Sent!
       </h2>
@@ -151,7 +151,7 @@ function reset() {
           class="btn-primary flex items-center gap-2"
           :class="{ 'opacity-50 cursor-not-allowed': !canProceed || isSubmitting }"
         >
-          <div v-if="isSubmitting" class="i-carbon-loading animate-spin" />
+          <div v-if="isSubmitting" class="i-carbon-loading" />
           <template v-else>
             Send Inquiry
             <div class="i-carbon-send" />

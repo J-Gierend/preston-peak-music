@@ -11,6 +11,12 @@
   --text-secondary: #b8a8a0;
   --text-muted: #8a8a8a;
 
+  /* World-specific colors (stable, used by WorldToggle) */
+  --classical-accent: #c9a85c;
+  --classical-bg: #1a2a3a;
+  --gaming-accent: #70d4d0;
+  --gaming-bg: #181820;
+
   /* Fonts */
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -97,11 +103,14 @@
   );
 }
 
-/* Card hover effects */
-.card-hover {
-  transition: opacity var(--transition-normal);
+/* Standard card border */
+.card {
+  border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
+/* Card hover effects */
 .card-hover:hover {
-  opacity: 0.9;
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: var(--bg-tertiary);
 }

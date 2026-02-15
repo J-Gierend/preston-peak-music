@@ -120,10 +120,6 @@ watch(() => props.world, () => {
       <div class="section-header">
         <div class="header-accent" />
         <h2 class="section-title">
-          <span class="title-icon">
-            <span v-if="showClassical">&#9834;</span>
-            <span v-else>&#127918;</span>
-          </span>
           {{ sectionTitle }}
         </h2>
         <p class="section-subtitle">
@@ -141,7 +137,6 @@ watch(() => props.world, () => {
         <!-- Featured Works - Always visible -->
         <div v-if="featuredWorks.length > 0" class="featured-section">
           <h3 class="subsection-title">
-            <span class="star-icon">&#9733;</span>
             Featured Works
           </h3>
           <div class="featured-grid">

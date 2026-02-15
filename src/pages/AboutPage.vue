@@ -62,10 +62,9 @@ onMounted(async () => {
               <li
                 v-for="highlight in bio.highlights"
                 :key="highlight"
-                class="flex items-start gap-3"
+                class="pl-4 border-l-2 border-[var(--accent)] text-[var(--text-secondary)]"
               >
-                <div class="i-carbon-star-filled text-[var(--accent)] mt-1 flex-shrink-0" />
-                <span class="text-[var(--text-secondary)]">{{ highlight }}</span>
+                {{ highlight }}
               </li>
             </ul>
 

@@ -98,8 +98,7 @@ function getCategoryWorkCount(categorySlug: string): number {
     <!-- Featured Works Section -->
     <section v-if="featuredWorks.length > 0" class="py-12 px-4 bg-[var(--bg-secondary)]">
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl font-display font-bold text-[var(--text-primary)] mb-6 flex items-center gap-3">
-          <div class="i-carbon-star-filled text-[var(--accent)]" />
+        <h2 class="text-2xl font-display font-bold text-[var(--text-primary)] mb-6">
           Featured Works
         </h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
@@ -108,7 +107,7 @@ function getCategoryWorkCount(categorySlug: string): number {
             :key="work.slug"
             :work="work"
             @click="openWork"
-            class="ring-2 ring-[var(--accent)]/30"
+            style="border: 2px solid var(--accent);"
           />
         </div>
       </div>

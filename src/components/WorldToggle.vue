@@ -106,7 +106,7 @@ function selectWorld(world: World) {
 }
 
 .world-card.active[data-testid="world-tab-gaming"] {
-  border-color: #70d4d0;
+  border-color: var(--gaming-accent);
 }
 
 .card-image {
@@ -179,11 +179,11 @@ function selectWorld(world: World) {
 }
 
 .classical-icon {
-  color: #c9a85c;
+  color: var(--classical-accent);
 }
 
 .gaming-icon {
-  color: #70d4d0;
+  color: var(--gaming-accent);
 }
 
 .world-card:hover .card-icon {
@@ -193,7 +193,7 @@ function selectWorld(world: World) {
 .card-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: white;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
@@ -201,7 +201,7 @@ function selectWorld(world: World) {
 
 .card-subtitle {
   font-size: 0.875rem;
-  color: rgba(248, 244, 239, 0.8);
+  color: var(--text-secondary);
   margin-bottom: 1rem;
 }
 
@@ -212,13 +212,13 @@ function selectWorld(world: World) {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: #c9a85c;
-  color: #1a2a3a;
+  background: var(--classical-accent);
+  color: var(--classical-bg);
 }
 
 .card-badge.gaming {
-  background: #70d4d0;
-  color: #181820;
+  background: var(--gaming-accent);
+  color: var(--gaming-bg);
 }
 
 /* Responsive */

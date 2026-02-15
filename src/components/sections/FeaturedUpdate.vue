@@ -57,7 +57,6 @@ const steamImage = computed(() => {
     <div class="featured-container">
       <header class="featured-header">
         <div class="header-left">
-          <div class="featured-icon i-carbon-star-filled" />
           <span class="featured-label">Featured Project</span>
         </div>
         <span v-if="currentUpdate.badge" class="featured-badge">
@@ -157,11 +156,6 @@ const steamImage = computed(() => {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-}
-
-.featured-icon {
-  font-size: 1.25rem;
-  color: var(--accent);
 }
 
 .featured-label {

@@ -35,10 +35,10 @@ export default defineConfig({
     }
   },
   shortcuts: {
-    'btn': 'px-4 py-2 transition-all duration-300 cursor-pointer',
+    'btn': 'px-4 py-2 cursor-pointer',
     'btn-primary': 'btn bg-[var(--accent)] text-[var(--bg-primary)] hover:opacity-90',
     'btn-outline': 'btn border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-[var(--bg-primary)]',
-    'card': 'bg-[var(--bg-secondary)] p-6 transition-all duration-300',
+    'card': 'bg-[var(--bg-secondary)] p-6',
     'section-padding': 'px-4 py-16 md:px-8 lg:px-16 lg:py-24',
   }
 })

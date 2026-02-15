@@ -621,7 +621,7 @@ const changelog = [
   cursor: pointer;
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .tab-btn:hover {
@@ -692,7 +692,7 @@ h2 {
   border: 2px solid rgba(212, 175, 55, 0.2);
   border-radius: 0;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .missing-stat:hover {
@@ -754,7 +754,7 @@ h2 {
   border-radius: 0;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-export:hover {
@@ -768,7 +768,7 @@ h2 {
   border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 0;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-clear:hover {
@@ -1066,7 +1066,7 @@ h2 {
   border-radius: 0;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-primary:hover {
@@ -1080,7 +1080,7 @@ h2 {
   border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 0;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-secondary:hover {

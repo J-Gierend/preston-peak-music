@@ -60,7 +60,7 @@ function selectWorld(world: World) {
   background: transparent;
   border-radius: 0;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
   color: var(--text-secondary);
   font-size: 0.75rem;
   font-weight: 500;
@@ -75,9 +75,9 @@ function selectWorld(world: World) {
   color: var(--bg-primary);
 }
 
-.toggle-btn.gaming.active {
-  background: #70d4d0;
-  color: #181820;
+[data-aesthetic="gaming"] .toggle-btn.gaming.active {
+  background: var(--accent);
+  color: var(--bg-primary);
 }
 
 .toggle-icon {

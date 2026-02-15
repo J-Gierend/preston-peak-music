@@ -3,7 +3,7 @@
   background: var(--bg-secondary);
   position: relative;
   overflow: hidden;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .content-section.transitioning { opacity: 0.6; }
@@ -47,9 +47,6 @@
   gap: 0.75rem;
 }
 
-.title-icon { font-size: 1.5rem; opacity: 0.9; }
-
-
 .section-subtitle {
   font-size: 1rem;
   color: var(--text-secondary);
@@ -76,8 +73,6 @@
   align-items: center;
   gap: 0.5rem;
 }
-
-.star-icon { color: var(--accent); }
 
 /* Featured Section */
 .featured-section {
@@ -120,7 +115,7 @@
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .category-btn:hover {

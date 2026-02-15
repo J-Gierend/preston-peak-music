@@ -29,21 +29,17 @@ const baseUrl = import.meta.env.BASE_URL
                 What I Offer
               </h3>
               <ul class="space-y-3">
-                <li class="flex items-start gap-3 text-[var(--text-secondary)]">
-                  <div class="i-carbon-checkmark text-[var(--accent)] mt-1" />
-                  <span>Original compositions tailored to your vision</span>
+                <li class="pl-4 border-l-2 border-[var(--accent)] text-[var(--text-secondary)]">
+                  Original compositions tailored to your vision
                 </li>
-                <li class="flex items-start gap-3 text-[var(--text-secondary)]">
-                  <div class="i-carbon-checkmark text-[var(--accent)] mt-1" />
-                  <span>High-quality audio files in your preferred format</span>
+                <li class="pl-4 border-l-2 border-[var(--accent)] text-[var(--text-secondary)]">
+                  High-quality audio files in your preferred format
                 </li>
-                <li class="flex items-start gap-3 text-[var(--text-secondary)]">
-                  <div class="i-carbon-checkmark text-[var(--accent)] mt-1" />
-                  <span>Clear licensing terms for your project</span>
+                <li class="pl-4 border-l-2 border-[var(--accent)] text-[var(--text-secondary)]">
+                  Clear licensing terms for your project
                 </li>
-                <li class="flex items-start gap-3 text-[var(--text-secondary)]">
-                  <div class="i-carbon-checkmark text-[var(--accent)] mt-1" />
-                  <span>Revisions until you're satisfied</span>
+                <li class="pl-4 border-l-2 border-[var(--accent)] text-[var(--text-secondary)]">
+                  Revisions until you're satisfied
                 </li>
               </ul>
             </div>
@@ -54,33 +50,21 @@ const baseUrl = import.meta.env.BASE_URL
                 My Process
               </h3>
               <ol class="space-y-4">
-                <li class="flex gap-3">
-                  <span class="w-6 h-6 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center text-sm font-semibold flex-shrink-0">1</span>
-                  <div>
-                    <div class="font-medium text-[var(--text-primary)]">Discussion</div>
-                    <div class="text-sm text-[var(--text-secondary)]">We'll talk about your vision and requirements</div>
-                  </div>
+                <li class="pl-4 border-l-2 border-[var(--accent)]">
+                  <div class="font-medium text-[var(--text-primary)]">Discussion</div>
+                  <div class="text-sm text-[var(--text-secondary)]">We'll talk about your vision and requirements</div>
                 </li>
-                <li class="flex gap-3">
-                  <span class="w-6 h-6 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center text-sm font-semibold flex-shrink-0">2</span>
-                  <div>
-                    <div class="font-medium text-[var(--text-primary)]">Draft</div>
-                    <div class="text-sm text-[var(--text-secondary)]">I create an initial sketch or demo</div>
-                  </div>
+                <li class="pl-4 border-l-2 border-[var(--accent)]">
+                  <div class="font-medium text-[var(--text-primary)]">Draft</div>
+                  <div class="text-sm text-[var(--text-secondary)]">I create an initial sketch or demo</div>
                 </li>
-                <li class="flex gap-3">
-                  <span class="w-6 h-6 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center text-sm font-semibold flex-shrink-0">3</span>
-                  <div>
-                    <div class="font-medium text-[var(--text-primary)]">Refinement</div>
-                    <div class="text-sm text-[var(--text-secondary)]">We collaborate on revisions</div>
-                  </div>
+                <li class="pl-4 border-l-2 border-[var(--accent)]">
+                  <div class="font-medium text-[var(--text-primary)]">Refinement</div>
+                  <div class="text-sm text-[var(--text-secondary)]">We collaborate on revisions</div>
                 </li>
-                <li class="flex gap-3">
-                  <span class="w-6 h-6 rounded-full bg-[var(--accent)]/20 text-[var(--accent)] flex items-center justify-center text-sm font-semibold flex-shrink-0">4</span>
-                  <div>
-                    <div class="font-medium text-[var(--text-primary)]">Delivery</div>
-                    <div class="text-sm text-[var(--text-secondary)]">Final files delivered in your preferred format</div>
-                  </div>
+                <li class="pl-4 border-l-2 border-[var(--accent)]">
+                  <div class="font-medium text-[var(--text-primary)]">Delivery</div>
+                  <div class="text-sm text-[var(--text-secondary)]">Final files delivered in your preferred format</div>
                 </li>
               </ol>
             </div>

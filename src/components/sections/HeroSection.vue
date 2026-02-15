@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 const props = defineProps<{
   title: string
@@ -7,11 +7,27 @@ const props = defineProps<{
   backgroundImage?: string
 }>()
 
-const currentBg = ref(props.backgroundImage)
+const currentBg = ref('')
+const imageLoaded = ref(false)
+
+function preloadImage(src: string | undefined) {
+  if (!src) return
+  const img = new Image()
+  img.onload = () => {
+    currentBg.value = src
+    imageLoaded.value = true
+  }
+  img.src = src
+}
+
+onMounted(() => {
+  preloadImage(props.backgroundImage)
+})
 
 watch(() => props.backgroundImage, (newBg, oldBg) => {
   if (newBg !== oldBg) {
-    currentBg.value = newBg
+    imageLoaded.value = false
+    preloadImage(newBg)
   }
 })
 </script>
@@ -21,11 +37,12 @@ watch(() => props.backgroundImage, (newBg, oldBg) => {
     data-testid="hero-section"
     class="hero-section"
   >
-    <!-- Background Image with Transition -->
+    <!-- Background Image (preloaded) -->
     <div
       v-if="currentBg"
       data-testid="hero-background"
       class="hero-background"
+      :class="{ loaded: imageLoaded }"
       :style="{ backgroundImage: `url(${currentBg})` }"
     />
 
@@ -61,6 +78,12 @@ watch(() => props.backgroundImage, (newBg, oldBg) => {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-background.loaded {
+  opacity: 1;
 }
 
 .hero-overlay {

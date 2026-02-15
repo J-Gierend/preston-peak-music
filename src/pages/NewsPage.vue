@@ -34,21 +34,12 @@ function formatDate(dateStr: string): string {
   })
 }
 
-function getTypeIcon(type: string): string {
+function getTypeLabel(type: string): string {
   switch (type) {
-    case 'release': return 'i-carbon-music'
-    case 'award': return 'i-carbon-trophy'
-    case 'event': return 'i-carbon-event'
-    default: return 'i-carbon-information'
-  }
-}
-
-function getTypeColor(type: string): string {
-  switch (type) {
-    case 'release': return 'text-blue-400'
-    case 'award': return 'text-yellow-400'
-    case 'event': return 'text-green-400'
-    default: return 'text-[var(--accent)]'
+    case 'release': return 'Release'
+    case 'award': return 'Award'
+    case 'event': return 'Event'
+    default: return 'Update'
   }
 }
 </script>
@@ -73,35 +64,30 @@ function getTypeColor(type: string): string {
             :key="post.id"
             class="card"
           >
-            <div class="flex items-start gap-4">
-              <div
-                :class="[getTypeIcon(post.type), getTypeColor(post.type)]"
-                class="text-2xl mt-1 flex-shrink-0"
-              />
-              <div class="flex-1">
-                <div class="flex items-start justify-between gap-4 mb-2">
-                  <h2 class="text-xl font-display font-semibold text-[var(--text-primary)]">
-                    {{ post.title }}
-                  </h2>
-                  <time class="text-sm text-[var(--text-muted)] whitespace-nowrap">
-                    {{ formatDate(post.date) }}
-                  </time>
-                </div>
-                <p class="text-[var(--text-secondary)] mb-4">
-                  {{ post.content }}
-                </p>
-                <a
-                  v-if="post.link"
-                  :href="post.link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center gap-2 text-[var(--accent)] hover:opacity-80"
-                >
-                  Learn more
-                  <div class="i-carbon-arrow-right" />
-                </a>
-              </div>
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h2 class="text-xl font-display font-semibold text-[var(--text-primary)]">
+                {{ post.title }}
+              </h2>
+              <span class="text-xs font-medium text-[var(--accent)] uppercase tracking-wider whitespace-nowrap">
+                {{ getTypeLabel(post.type) }}
+              </span>
             </div>
+            <time class="text-sm text-[var(--text-muted)] block mb-3">
+              {{ formatDate(post.date) }}
+            </time>
+            <p class="text-[var(--text-secondary)] mb-4">
+              {{ post.content }}
+            </p>
+            <a
+              v-if="post.link"
+              :href="post.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-[var(--accent)] hover:opacity-80 text-sm"
+            >
+              Learn more
+              <div class="i-carbon-arrow-right" />
+            </a>
           </article>
         </div>
       </div>
