@@ -135,26 +135,6 @@ onMounted(() => {
   }
 }
 
-[data-aesthetic="gaming"] .hero-title {
-  font-family: var(--font-pixel);
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
-}
-
-@media (min-width: 768px) {
-  [data-aesthetic="gaming"] .hero-title {
-    font-size: 2rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  [data-aesthetic="gaming"] .hero-title {
-    font-size: 2.5rem;
-  }
-}
-
 .hero-subtitle {
   font-size: 1.125rem;
   color: var(--text-secondary);

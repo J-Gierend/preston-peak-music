@@ -33,7 +33,6 @@
 
 [data-aesthetic="gaming"] .header-accent {
   background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-  box-shadow: 0 0 12px var(--accent);
 }
 
 .section-title {
@@ -50,19 +49,6 @@
 
 .title-icon { font-size: 1.5rem; opacity: 0.9; }
 
-[data-aesthetic="gaming"] .section-title {
-  font-family: var(--font-pixel);
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-[data-aesthetic="gaming"] .title-icon { animation: glow-pulse 2s ease-in-out infinite; }
-
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; text-shadow: 0 0 8px var(--accent); }
-}
 
 .section-subtitle {
   font-size: 1rem;

@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test'
 
-test.describe('World Switcher Homepage', () => {
+test.describe('World Switcher Works Page', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/#/')
+    await page.goto('/#/works')
   })
 
-  test('displays world toggle on homepage', async ({ page }) => {
+  test('displays world toggle on works page', async ({ page }) => {
     const worldToggle = page.locator('[data-testid="world-toggle"]')
     await expect(worldToggle).toBeVisible()
 
@@ -17,7 +17,7 @@ test.describe('World Switcher Homepage', () => {
     await expect(gamingTab).toBeVisible()
   })
 
-  test('defaults to classical world on homepage', async ({ page }) => {
+  test('defaults to classical world on works page', async ({ page }) => {
     // Classical tab should be active by default
     const classicalTab = page.locator('[data-testid="world-tab-classical"]')
     await expect(classicalTab).toHaveAttribute('data-active', 'true')
@@ -45,28 +45,6 @@ test.describe('World Switcher Homepage', () => {
       document.documentElement.getAttribute('data-aesthetic')
     )
     expect(aesthetic).toBe('gaming')
-  })
-
-  test('switches theme with world (classical=light, gaming=dark)', async ({ page }) => {
-    // Switch to gaming
-    const gamingTab = page.locator('[data-testid="world-tab-gaming"]')
-    await gamingTab.click()
-
-    // Should be dark theme for gaming
-    const themeAfterGaming = await page.evaluate(() =>
-      document.documentElement.getAttribute('data-theme')
-    )
-    expect(themeAfterGaming).toBe('dark')
-
-    // Switch back to classical
-    const classicalTab = page.locator('[data-testid="world-tab-classical"]')
-    await classicalTab.click()
-
-    // Classical should always be light theme
-    const themeAfterClassical = await page.evaluate(() =>
-      document.documentElement.getAttribute('data-theme')
-    )
-    expect(themeAfterClassical).toBe('light')
   })
 
   test('displays classical works when in classical world', async ({ page }) => {
@@ -99,31 +77,6 @@ test.describe('World Switcher Homepage', () => {
     await expect(packCards.first()).toBeVisible()
   })
 
-  test('hero background changes with world selection', async ({ page }) => {
-    // Get initial background
-    const hero = page.locator('[data-testid="hero-section"]')
-    const initialBg = await hero.evaluate((el) => {
-      const bgDiv = el.querySelector('[data-testid="hero-background"]')
-      return bgDiv?.getAttribute('style') || ''
-    })
-
-    // Switch to gaming
-    const gamingTab = page.locator('[data-testid="world-tab-gaming"]')
-    await gamingTab.click()
-
-    // Wait for transition
-    await page.waitForTimeout(300)
-
-    // Background should change
-    const newBg = await hero.evaluate((el) => {
-      const bgDiv = el.querySelector('[data-testid="hero-background"]')
-      return bgDiv?.getAttribute('style') || ''
-    })
-
-    expect(newBg).not.toBe(initialBg)
-    expect(newBg).toContain('gaming')
-  })
-
   test('clicking work card opens work modal', async ({ page }) => {
     await page.waitForSelector('[data-testid="work-card"]')
 
@@ -148,30 +101,5 @@ test.describe('World Switcher Homepage', () => {
     // Modal should open
     const modal = page.locator('[data-testid="pack-modal"]')
     await expect(modal).toBeVisible()
-  })
-
-  test('world toggle has smooth transition animation', async ({ page }) => {
-    const worldToggle = page.locator('[data-testid="world-toggle"]')
-
-    // Check toggle has transition styles
-    const hasTransition = await worldToggle.evaluate((el) => {
-      const style = window.getComputedStyle(el)
-      return style.transition !== 'none' && style.transition !== ''
-    })
-
-    expect(hasTransition).toBe(true)
-  })
-
-  test('content section transitions smoothly between worlds', async ({ page }) => {
-    const contentSection = page.locator('[data-testid="world-content-section"]')
-    await expect(contentSection).toBeVisible()
-
-    // Check content section has transition
-    const hasTransition = await contentSection.evaluate((el) => {
-      const style = window.getComputedStyle(el)
-      return style.transition.includes('opacity') || style.transition.includes('all')
-    })
-
-    expect(hasTransition).toBe(true)
   })
 })

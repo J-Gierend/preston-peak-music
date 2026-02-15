@@ -30,9 +30,8 @@ export default defineConfig({
       }
     },
     fontFamily: {
-      display: ['Playfair Display', 'serif'],
-      body: ['Inter', 'sans-serif'],
-      pixel: ['"Press Start 2P"', 'monospace']
+      display: ['Inter', 'sans-serif'],
+      body: ['Inter', 'sans-serif']
     }
   },
   shortcuts: {

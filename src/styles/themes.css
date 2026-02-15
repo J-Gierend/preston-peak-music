@@ -12,9 +12,8 @@
   --text-muted: #8a8a8a;
 
   /* Fonts */
-  --font-display: 'Playfair Display', serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --font-pixel: 'Press Start 2P', monospace;
 
   /* Transitions */
   --transition-fast: 0.15s ease;
@@ -26,10 +25,10 @@
   --section-padding-y: 4rem;
 
   /* Border radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
 }
 
 @media (min-width: 768px) {
@@ -96,15 +95,6 @@
     var(--bg-secondary) 50%,
     #2a1a3a 100%
   );
-}
-
-/* Glow effects for gaming */
-[data-aesthetic="gaming"] .glow {
-  text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
-}
-
-[data-aesthetic="gaming"] .glow-secondary {
-  text-shadow: 0 0 10px var(--accent-secondary), 0 0 20px var(--accent-secondary);
 }
 
 /* Card hover effects */

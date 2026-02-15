@@ -7,17 +7,22 @@ export const routes: RouteRecordRaw[] = [
     component: () => import('../pages/HomePage.vue')
   },
   {
+    path: '/works',
+    name: 'works',
+    component: () => import('../pages/WorksPage.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import('../pages/AboutPage.vue')
   },
   {
     path: '/classical',
-    redirect: '/'
+    redirect: '/works'
   },
   {
     path: '/classical/:category',
-    redirect: '/'
+    redirect: '/works'
   },
   {
     path: '/games',

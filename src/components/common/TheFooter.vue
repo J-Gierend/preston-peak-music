@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useContentLoader } from '../../composables/useContentLoader'
+import NewsletterSignup from './NewsletterSignup.vue'
 
 interface Platform {
   name: string
@@ -31,7 +32,7 @@ const currentYear = new Date().getFullYear()
 <template>
   <footer class="bg-[var(--bg-secondary)] border-t border-[var(--accent)]/20 py-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Brand -->
         <div>
           <h3 class="text-xl font-display font-bold text-[var(--accent)] mb-4">
@@ -47,18 +48,18 @@ const currentYear = new Date().getFullYear()
           <h4 class="font-semibold text-[var(--text-primary)] mb-4">Quick Links</h4>
           <ul class="space-y-2 text-sm">
             <li>
-              <RouterLink to="/classical" class="text-[var(--text-secondary)] hover:text-[var(--accent)]">
-                Classical Works
+              <RouterLink to="/works" class="text-[var(--text-secondary)] hover:text-[var(--accent)]">
+                Works
               </RouterLink>
             </li>
             <li>
-              <RouterLink to="/games" class="text-[var(--text-secondary)] hover:text-[var(--accent)]">
-                Game Music
+              <RouterLink to="/about" class="text-[var(--text-secondary)] hover:text-[var(--accent)]">
+                About
               </RouterLink>
             </li>
             <li>
               <RouterLink to="/contact" class="text-[var(--text-secondary)] hover:text-[var(--accent)]">
-                Commission
+                Contact
               </RouterLink>
             </li>
           </ul>
@@ -80,6 +81,11 @@ const currentYear = new Date().getFullYear()
               <div :class="platform.icon" />
             </a>
           </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <NewsletterSignup />
         </div>
       </div>
 

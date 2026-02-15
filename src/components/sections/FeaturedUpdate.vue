@@ -177,11 +177,6 @@ const steamImage = computed(() => {
   color: var(--accent);
 }
 
-[data-aesthetic="gaming"] .featured-label {
-  font-family: var(--font-pixel);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-}
 
 .featured-badge {
   padding: 0.375rem 1rem;
@@ -272,12 +267,6 @@ const steamImage = computed(() => {
   line-height: 1.2;
 }
 
-[data-aesthetic="gaming"] .featured-title {
-  font-family: var(--font-pixel);
-  font-size: 1.125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
 
 .featured-subtitle {
   font-size: 1rem;
@@ -348,9 +337,6 @@ const steamImage = computed(() => {
     font-size: 2rem;
   }
 
-  [data-aesthetic="gaming"] .featured-title {
-    font-size: 1.25rem;
-  }
 
   .featured-description {
     margin-bottom: 1.5rem;

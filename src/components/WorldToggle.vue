@@ -200,17 +200,6 @@ function selectWorld(world: World) {
   line-height: 1.2;
 }
 
-/* Classical card always uses serif font */
-[data-testid="world-tab-classical"] .card-title {
-  font-family: 'Playfair Display', Georgia, serif;
-}
-
-/* Gaming card always uses pixel/monospace font */
-[data-testid="world-tab-gaming"] .card-title {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-}
 
 .card-subtitle {
   font-size: 0.875rem;
@@ -253,8 +242,5 @@ function selectWorld(world: World) {
     font-size: 1.1rem;
   }
 
-  [data-testid="world-tab-gaming"] .card-title {
-    font-size: 0.85rem;
-  }
 }
 </style>

@@ -1,77 +1,98 @@
-.homepage { min-height: 100vh; }
-.hero-actions { margin-top: 2rem; display: flex; justify-content: center; }
-
-.cta-section {
-  padding: 5rem 1rem;
-  background: var(--bg-secondary);
-  position: relative;
+.homepage {
+  min-height: 100vh;
 }
 
-.cta-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent) 80%, transparent);
-  opacity: 0.2;
-}
-
-.cta-container { max-width: 48rem; margin: 0 auto; text-align: center; }
-
-.cta-title {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
-}
-
-@media (min-width: 768px) { .cta-title { font-size: 2.5rem; } }
-
-[data-aesthetic="gaming"] .cta-title {
-  font-family: var(--font-pixel);
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.cta-description {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  line-height: 1.7;
-}
-
-.cta-button {
-  display: inline-flex;
+.homepage-hero {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  color: var(--bg-primary);
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 600;
-  border-radius: 0.5rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 2rem 1rem;
 }
 
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+.homepage-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .homepage-title { font-size: 5rem; }
+}
+
+@media (min-width: 1024px) {
+  .homepage-title { font-size: 6rem; }
+}
+
+.homepage-tagline {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .homepage-tagline { font-size: 1.25rem; }
+}
+
+.homepage-nav {
+  padding: 0 1rem 5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (min-width: 640px) {
+  .nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.nav-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background: var(--bg-secondary);
+  text-decoration: none;
+  transition: background 0.2s ease;
+  text-align: center;
+}
+
+.nav-card:hover {
+  background: var(--bg-tertiary);
   opacity: 1;
 }
 
-[data-aesthetic="gaming"] .cta-button {
-  font-family: var(--font-body);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 1rem;
-  box-shadow: 0 4px 20px rgba(112, 212, 208, 0.3);
+.nav-card-icon {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
 }
 
-[data-aesthetic="gaming"] .cta-button:hover { box-shadow: 0 6px 28px rgba(112, 212, 208, 0.4); }
+.nav-card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.nav-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 20rem;
+}

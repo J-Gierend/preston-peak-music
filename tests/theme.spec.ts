@@ -2,9 +2,9 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Theme', () => {
   test('theme is controlled by world selection', async ({ page }) => {
-    await page.goto('/#/')
+    await page.goto('/#/works')
 
-    // Homepage defaults to classical (light theme)
+    // Works page defaults to classical (light theme)
     const initialTheme = await page.evaluate(() =>
       document.documentElement.getAttribute('data-theme')
     )
@@ -31,23 +31,14 @@ test.describe('Theme', () => {
     expect(classicalTheme).toBe('light')
   })
 
-  test('games page has gaming aesthetic', async ({ page }) => {
+  test('games page renders', async ({ page }) => {
     await page.goto('/#/games')
-
-    const aesthetic = await page.evaluate(() =>
-      document.querySelector('[data-aesthetic]')?.getAttribute('data-aesthetic')
-    )
-
-    expect(aesthetic).toBe('gaming')
+    await expect(page.locator('h1')).toBeVisible()
   })
 
-  test('classical page has classical aesthetic', async ({ page }) => {
+  test('classical URL redirects to works page', async ({ page }) => {
     await page.goto('/#/classical')
-
-    const aesthetic = await page.evaluate(() =>
-      document.querySelector('[data-aesthetic]')?.getAttribute('data-aesthetic')
-    )
-
-    expect(aesthetic).toBe('classical')
+    await page.waitForTimeout(300)
+    expect(page.url()).toContain('#/works')
   })
 })

@@ -9,20 +9,24 @@ test.describe('Navigation', () => {
   test('navigation links work', async ({ page }) => {
     await page.goto('/')
 
+    // Navigate to Works
+    await page.locator('nav').getByText('Works').click()
+    await expect(page.locator('h1')).toContainText('Works')
+
     // Navigate to About
-    await page.click('text=About')
+    await page.locator('nav').getByText('About').click()
     await expect(page.locator('h1')).toContainText('About')
 
     // Navigate to Listen
-    await page.click('text=Listen')
+    await page.locator('nav').getByText('Listen').click()
     await expect(page.locator('h1')).toContainText('Listen')
 
     // Navigate to News
-    await page.click('text=News')
+    await page.locator('nav').getByText('News').click()
     await expect(page.locator('h1')).toContainText('News')
 
     // Navigate to Contact
-    await page.click('text=Contact')
+    await page.locator('nav').getByText('Contact').click()
     await expect(page.locator('h1')).toContainText('Commission')
   })
 

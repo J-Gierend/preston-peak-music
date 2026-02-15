@@ -10,6 +10,7 @@ const { aesthetic, setWorld } = useTheme()
 
 const navLinks = [
   { to: '/', label: 'Home' },
+  { to: '/works', label: 'Works' },
   { to: '/about', label: 'About' },
   { to: '/listen', label: 'Listen' },
   { to: '/news', label: 'News' },

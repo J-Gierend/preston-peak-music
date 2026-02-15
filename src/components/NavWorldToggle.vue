@@ -84,18 +84,6 @@ function selectWorld(world: World) {
   font-size: 0.875rem;
 }
 
-/* Classical button always uses serif font */
-.toggle-btn:not(.gaming) .toggle-label {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 600;
-}
-
-/* Gaming button always uses pixel font */
-.toggle-btn.gaming .toggle-label {
-  font-family: 'Press Start 2P', 'Courier New', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.02em;
-}
 
 /* Hide label on small screens */
 @media (max-width: 768px) {
