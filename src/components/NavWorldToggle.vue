@@ -47,7 +47,7 @@ function selectWorld(world: World) {
   gap: 0.25rem;
   padding: 0.25rem;
   background: var(--bg-secondary);
-  border-radius: 0.5rem;
+  border-radius: 0;
   border: 1px solid var(--accent)/20;
 }
 
@@ -58,7 +58,7 @@ function selectWorld(world: World) {
   padding: 0.375rem 0.75rem;
   border: none;
   background: transparent;
-  border-radius: 0.375rem;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s ease;
   color: var(--text-secondary);

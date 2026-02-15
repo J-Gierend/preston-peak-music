@@ -28,7 +28,7 @@
   height: 3px;
   background: linear-gradient(90deg, var(--accent), var(--accent-hover));
   margin: 0 auto 1.5rem;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 [data-aesthetic="gaming"] .header-accent {
@@ -95,7 +95,7 @@
 
 @media (min-width: 640px) { .featured-grid { grid-template-columns: repeat(2, 1fr); } }
 
-.featured-card { box-shadow: 0 0 0 2px var(--accent), 0 4px 12px rgba(0,0,0,0.1); }
+.featured-card { border: 2px solid var(--accent); }
 
 /* Category Navigation */
 .category-nav {
@@ -115,7 +115,7 @@
   padding: 0.625rem 1rem;
   background: var(--bg-tertiary);
   border: 1px solid transparent;
-  border-radius: 0.5rem;
+  border-radius: 0;
   color: var(--text-secondary);
   font-size: 0.875rem;
   font-weight: 500;
@@ -141,7 +141,7 @@
   opacity: 0.7;
   background: rgba(0,0,0,0.1);
   padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
+  border-radius: 0;
 }
 
 .category-btn.active .cat-count {
@@ -152,20 +152,6 @@
 /* Works Section */
 .works-section {
   margin-top: 1rem;
-}
-
-/* Card animations */
-.works-grid :deep(.card), .packs-grid :deep(.card) { animation: card-enter 0.4s ease backwards; }
-.works-grid :deep(.card:nth-child(1)), .packs-grid :deep(.card:nth-child(1)) { animation-delay: 0.05s; }
-.works-grid :deep(.card:nth-child(2)), .packs-grid :deep(.card:nth-child(2)) { animation-delay: 0.1s; }
-.works-grid :deep(.card:nth-child(3)), .packs-grid :deep(.card:nth-child(3)) { animation-delay: 0.15s; }
-.works-grid :deep(.card:nth-child(4)), .packs-grid :deep(.card:nth-child(4)) { animation-delay: 0.2s; }
-.works-grid :deep(.card:nth-child(5)), .packs-grid :deep(.card:nth-child(5)) { animation-delay: 0.25s; }
-.works-grid :deep(.card:nth-child(6)), .packs-grid :deep(.card:nth-child(6)) { animation-delay: 0.3s; }
-
-@keyframes card-enter {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (min-width: 768px) {

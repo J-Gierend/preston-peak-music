@@ -19,7 +19,7 @@ function handleError() {
 </script>
 
 <template>
-  <div ref="containerRef" class="rounded-lg overflow-hidden bg-[var(--bg-secondary)]">
+  <div ref="containerRef" class="overflow-hidden bg-[var(--bg-secondary)]">
     <EmbedFallback
       v-if="hasError || !albumId"
       platform="Bandcamp"
@@ -35,7 +35,7 @@ function handleError() {
       @error="handleError"
     />
     <div v-else class="w-full h-[120px] flex items-center justify-center">
-      <div class="i-carbon-music text-4xl text-[var(--accent)] animate-pulse" />
+      <div class="i-carbon-music text-4xl text-[var(--accent)] op-50" />
     </div>
   </div>
 </template>

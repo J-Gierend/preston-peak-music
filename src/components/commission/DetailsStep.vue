@@ -50,7 +50,7 @@ const isEmailValid = computed(() => {
           type="text"
           :value="modelValue.name"
           @input="updateField('name', ($event.target as HTMLInputElement).value)"
-          class="w-full px-4 py-3 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--bg-tertiary)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--accent)] focus:outline-none transition-colors"
+          class="w-full px-4 py-3 bg-[var(--bg-tertiary)] border border-[var(--bg-tertiary)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--accent)] focus:outline-none transition-colors"
           placeholder="John Doe"
           required
         />
@@ -66,7 +66,7 @@ const isEmailValid = computed(() => {
           type="email"
           :value="modelValue.email"
           @input="updateField('email', ($event.target as HTMLInputElement).value)"
-          class="w-full px-4 py-3 rounded-lg bg-[var(--bg-tertiary)] border text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none transition-colors"
+          class="w-full px-4 py-3 bg-[var(--bg-tertiary)] border text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none transition-colors"
           :class="isEmailValid ? 'border-[var(--bg-tertiary)] focus:border-[var(--accent)]' : 'border-red-500'"
           placeholder="john@example.com"
           required
@@ -86,7 +86,7 @@ const isEmailValid = computed(() => {
           :value="modelValue.message"
           @input="updateField('message', ($event.target as HTMLTextAreaElement).value)"
           rows="5"
-          class="w-full px-4 py-3 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--bg-tertiary)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"
+          class="w-full px-4 py-3 bg-[var(--bg-tertiary)] border border-[var(--bg-tertiary)] text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:border-[var(--accent)] focus:outline-none transition-colors resize-none"
           placeholder="Tell me about your project, timeline, and any specific requirements..."
         />
       </div>

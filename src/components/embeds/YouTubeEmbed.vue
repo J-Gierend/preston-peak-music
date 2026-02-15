@@ -83,7 +83,7 @@ function handleError() {
 <style scoped>
 .youtube-embed {
   aspect-ratio: 16 / 9;
-  border-radius: 0.5rem;
+  border-radius: 0;
   overflow: hidden;
   background: var(--bg-secondary);
   position: relative;
@@ -127,13 +127,10 @@ function handleError() {
 .youtube-play-btn {
   width: 68px;
   height: 48px;
-  transition: transform 0.15s ease, filter 0.15s ease;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
 .youtube-facade:hover .youtube-play-btn {
-  transform: scale(1.1);
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  opacity: 0.9;
 }
 
 .youtube-play-bg {
@@ -161,11 +158,6 @@ function handleError() {
 .loading-icon {
   font-size: 2.5rem;
   color: var(--accent);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+  opacity: 0.5;
 }
 </style>

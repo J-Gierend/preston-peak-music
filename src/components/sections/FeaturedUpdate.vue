@@ -139,14 +139,9 @@ const steamImage = computed(() => {
 
 .featured-container {
   background: var(--bg-secondary);
-  border-radius: 1.25rem;
+  border-radius: 0;
   overflow: hidden;
   border: 2px solid var(--accent);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-}
-
-[data-aesthetic="gaming"] .featured-container {
-  box-shadow: 0 0 30px rgba(112, 212, 208, 0.2);
 }
 
 .featured-header {
@@ -180,7 +175,7 @@ const steamImage = computed(() => {
 
 .featured-badge {
   padding: 0.375rem 1rem;
-  border-radius: 9999px;
+  border-radius: 0;
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -196,9 +191,8 @@ const steamImage = computed(() => {
 
 .featured-media {
   margin-bottom: 1.25rem;
-  border-radius: 0.75rem;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Steam media link (image with overlay) */
@@ -212,11 +206,11 @@ const steamImage = computed(() => {
   aspect-ratio: 460 / 215;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
+  transition: opacity 0.3s ease;
 }
 
 .steam-media-link:hover .steam-image {
-  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 .steam-media-overlay {
@@ -240,7 +234,7 @@ const steamImage = computed(() => {
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
   background: rgba(27, 40, 56, 0.95);
-  border-radius: 0.5rem;
+  border-radius: 0;
   color: white;
   font-weight: 600;
   font-size: 0.875rem;
@@ -290,19 +284,16 @@ const steamImage = computed(() => {
   gap: 0.625rem;
   padding: 0.75rem 1.5rem;
   background: linear-gradient(135deg, #1b2838, #2a475e);
-  border-radius: 0.5rem;
+  border-radius: 0;
   color: white;
   font-weight: 600;
   font-size: 0.9375rem;
   text-decoration: none;
   border: 1px solid rgba(102, 192, 244, 0.3);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
-  transition: all 0.25s ease;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .steam-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 192, 244, 0.25);
   border-color: #66c0f4;
   background: linear-gradient(135deg, #1e3a50, #2f5470);
 }

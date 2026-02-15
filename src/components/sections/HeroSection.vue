@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
-import { useScrollAnimation } from '../../composables/useScrollAnimation'
+import { ref, watch } from 'vue'
 
 const props = defineProps<{
   title: string
@@ -8,36 +7,12 @@ const props = defineProps<{
   backgroundImage?: string
 }>()
 
-const { gsap } = useScrollAnimation()
 const currentBg = ref(props.backgroundImage)
-const isTransitioning = ref(false)
 
 watch(() => props.backgroundImage, (newBg, oldBg) => {
   if (newBg !== oldBg) {
-    isTransitioning.value = true
-    setTimeout(() => {
-      currentBg.value = newBg
-      setTimeout(() => {
-        isTransitioning.value = false
-      }, 50)
-    }, 250)
+    currentBg.value = newBg
   }
-})
-
-onMounted(() => {
-  gsap.from('.hero-title', {
-    opacity: 0,
-    y: 30,
-    duration: 1,
-    ease: 'power3.out'
-  })
-  gsap.from('.hero-subtitle', {
-    opacity: 0,
-    y: 20,
-    duration: 1,
-    delay: 0.3,
-    ease: 'power3.out'
-  })
 })
 </script>
 
@@ -51,7 +26,6 @@ onMounted(() => {
       v-if="currentBg"
       data-testid="hero-background"
       class="hero-background"
-      :class="{ transitioning: isTransitioning }"
       :style="{ backgroundImage: `url(${currentBg})` }"
     />
 
@@ -87,12 +61,6 @@ onMounted(() => {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: opacity 0.5s ease, transform 0.8s ease;
-}
-
-.hero-background.transitioning {
-  opacity: 0;
-  transform: scale(1.02);
 }
 
 .hero-overlay {

@@ -10,7 +10,7 @@ const baseUrl = import.meta.env.BASE_URL
     <HeroSection
       title="Commission"
       subtitle="Let's create something special together"
-      :background-image="`${baseUrl}images/backgrounds/hero-contact.png`"
+      :background-image="`${baseUrl}images/backgrounds/hero-contact.jpg`"
     />
 
     <section class="py-20 px-4">

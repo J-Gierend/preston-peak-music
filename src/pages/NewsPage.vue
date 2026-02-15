@@ -58,7 +58,7 @@ function getTypeColor(type: string): string {
     <HeroSection
       title="News"
       subtitle="Updates, releases, and announcements"
-      :background-image="`${baseUrl}images/backgrounds/hero-news.png`"
+      :background-image="`${baseUrl}images/backgrounds/hero-news.jpg`"
     />
 
     <section class="py-20 px-4">

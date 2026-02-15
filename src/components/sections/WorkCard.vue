@@ -32,10 +32,10 @@ const emit = defineEmits<{
     </div>
 
     <div class="flex flex-wrap gap-2 mb-3">
-      <span class="px-2 py-1 text-xs bg-[var(--accent)]/20 text-[var(--bg-primary)] font-medium rounded">
+      <span class="px-2 py-1 text-xs bg-[var(--accent)]/20 text-[var(--bg-primary)] font-medium">
         {{ work.instrumentation }}
       </span>
-      <span class="px-2 py-1 text-xs bg-[var(--bg-tertiary)] text-[var(--text-secondary)] rounded">
+      <span class="px-2 py-1 text-xs bg-[var(--bg-tertiary)] text-[var(--text-secondary)]">
         {{ work.duration }}
       </span>
     </div>

@@ -92,7 +92,7 @@ function getCategoryWorkCount(categorySlug: string): number {
     <HeroSection
       title="Classical Works"
       subtitle="Concert music, chamber works, and solo pieces"
-      :background-image="`${baseUrl}images/backgrounds/hero-sheet-music.png`"
+      :background-image="`${baseUrl}images/backgrounds/hero-sheet-music.jpg`"
     />
 
     <!-- Featured Works Section -->
@@ -125,7 +125,7 @@ function getCategoryWorkCount(categorySlug: string): number {
             v-for="cat in categories"
             :key="cat.slug"
             :to="`/classical/${cat.slug}`"
-            class="group p-4 bg-[var(--bg-tertiary)] rounded-xl hover:bg-[var(--accent)]/20 transition-all border border-transparent hover:border-[var(--accent)]/30"
+            class="group p-4 bg-[var(--bg-tertiary)] hover:bg-[var(--accent)]/20 transition-colors border border-transparent hover:border-[var(--accent)]/30"
           >
             <h3 class="font-semibold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
               {{ cat.name }}

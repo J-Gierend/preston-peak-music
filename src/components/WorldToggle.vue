@@ -92,23 +92,21 @@ function selectWorld(world: World) {
 .world-card {
   position: relative;
   aspect-ratio: 4 / 3;
-  border-radius: 1rem;
+  border-radius: 0;
   overflow: hidden;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.3s ease;
   background: none;
   padding: 0;
 }
 
 .world-card.active {
   border-color: var(--accent);
-  box-shadow: 0 0 24px rgba(201, 168, 92, 0.3);
 }
 
 .world-card.active[data-testid="world-tab-gaming"] {
   border-color: #70d4d0;
-  box-shadow: 0 0 24px rgba(112, 212, 208, 0.3);
 }
 
 .card-image {
@@ -117,11 +115,11 @@ function selectWorld(world: World) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s ease;
+  transition: opacity 0.3s ease;
 }
 
 .world-card:hover .card-image {
-  transform: scale(1.05);
+  opacity: 0.9;
 }
 
 .card-overlay {
@@ -133,7 +131,7 @@ function selectWorld(world: World) {
     rgba(26, 42, 58, 0.4) 50%,
     transparent 100%
   );
-  transition: all 0.5s ease;
+  transition: background 0.5s ease;
 }
 
 .card-overlay.hovered {
@@ -177,7 +175,7 @@ function selectWorld(world: World) {
 .card-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
-  transition: transform 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .classical-icon {
@@ -189,7 +187,7 @@ function selectWorld(world: World) {
 }
 
 .world-card:hover .card-icon {
-  transform: scale(1.1);
+  color: var(--text-primary);
 }
 
 .card-title {
@@ -209,7 +207,7 @@ function selectWorld(world: World) {
 
 .card-badge {
   padding: 0.375rem 1rem;
-  border-radius: 9999px;
+  border-radius: 0;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;

@@ -28,7 +28,7 @@ onMounted(async () => {
     <HeroSection
       title="About"
       subtitle="The story behind the music"
-      :background-image="`${baseUrl}images/backgrounds/hero-about.png`"
+      :background-image="`${baseUrl}images/backgrounds/hero-about.jpg`"
     />
 
     <section v-if="bio" class="py-20 px-4">

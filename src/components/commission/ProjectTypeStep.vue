@@ -53,7 +53,7 @@ function select(id: string) {
         v-for="type in projectTypes"
         :key="type.id"
         @click="select(type.id)"
-        class="p-6 rounded-xl border-2 text-left transition-all hover:border-[var(--accent)] group"
+        class="p-6 border-2 text-left transition-colors hover:border-[var(--accent)] group"
         :class="modelValue === type.id
           ? 'border-[var(--accent)] bg-[var(--accent)]/10'
           : 'border-[var(--bg-tertiary)] bg-[var(--bg-secondary)]'"

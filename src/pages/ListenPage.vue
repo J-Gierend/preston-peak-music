@@ -32,7 +32,7 @@ onMounted(async () => {
     <HeroSection
       title="Listen"
       subtitle="Stream and discover my music"
-      :background-image="`${baseUrl}images/backgrounds/hero-listen.png`"
+      :background-image="`${baseUrl}images/backgrounds/hero-listen.jpg`"
     />
 
     <section class="py-20 px-4">
@@ -69,7 +69,7 @@ onMounted(async () => {
         </div>
 
         <!-- Bandcamp CTA -->
-        <div class="bg-[var(--bg-secondary)] rounded-2xl p-8 text-center">
+        <div class="bg-[var(--bg-secondary)] p-8 text-center">
           <div class="i-simple-icons-bandcamp text-5xl text-[#1da0c3] mx-auto mb-4" />
           <h3 class="text-xl font-display font-bold text-[var(--text-primary)] mb-2">
             Support on Bandcamp

@@ -67,7 +67,7 @@ watch(() => props.isOpen, (open) => {
             <li v-for="link in links" :key="link.to">
               <RouterLink
                 :to="link.to"
-                class="block px-4 py-3 rounded-lg text-[var(--text-primary)] hover:bg-[var(--accent)]/10 transition-colors"
+                class="block px-4 py-3 text-[var(--text-primary)] hover:bg-[var(--accent)]/10 transition-colors"
                 active-class="bg-[var(--accent)]/20 text-[var(--accent)]"
                 @click="emit('close')"
               >

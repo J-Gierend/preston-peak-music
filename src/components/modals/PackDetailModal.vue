@@ -57,7 +57,7 @@ watch(() => props.isOpen, (open) => {
         />
 
         <!-- Modal -->
-        <div class="relative bg-[var(--bg-secondary)] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="relative bg-[var(--bg-secondary)] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
           <!-- Header -->
           <div class="sticky top-0 bg-[var(--bg-secondary)] border-b border-[var(--accent)]/20 p-6 flex items-start justify-between">
             <div>
@@ -89,7 +89,7 @@ watch(() => props.isOpen, (open) => {
             <!-- Price & Tags -->
             <div class="flex flex-wrap items-center gap-3">
               <span
-                class="px-4 py-2 rounded-lg text-lg font-bold"
+                class="px-4 py-2 text-lg font-bold"
                 :class="pack.price === 'FREE' ? 'bg-green-500 text-white' : 'bg-[var(--accent)] text-[var(--bg-primary)]'"
               >
                 {{ pack.price }}
@@ -97,7 +97,7 @@ watch(() => props.isOpen, (open) => {
               <span
                 v-for="tag in pack.style"
                 :key="tag"
-                class="px-3 py-1 bg-[var(--bg-tertiary)] text-[var(--text-secondary)] rounded-lg text-sm"
+                class="px-3 py-1 bg-[var(--bg-tertiary)] text-[var(--text-secondary)] text-sm"
               >
                 {{ tag }}
               </span>
@@ -142,15 +142,5 @@ watch(() => props.isOpen, (open) => {
 .modal-enter-from,
 .modal-leave-to {
   opacity: 0;
-}
-
-.modal-enter-active .relative,
-.modal-leave-active .relative {
-  transition: transform 0.3s ease;
-}
-
-.modal-enter-from .relative,
-.modal-leave-to .relative {
-  transform: scale(0.95) translateY(20px);
 }
 </style>

@@ -91,7 +91,7 @@ const bandcampUrl = computed(() => {
         />
 
         <!-- Modal -->
-        <div class="relative bg-[var(--bg-secondary)] rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        <div class="relative bg-[var(--bg-secondary)] max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
           <!-- Header -->
           <div class="sticky top-0 bg-[var(--bg-secondary)] border-b border-[var(--accent)]/20 p-6 flex items-start justify-between">
             <div>
@@ -113,10 +113,10 @@ const bandcampUrl = computed(() => {
           <div class="p-6 space-y-6">
             <!-- Details -->
             <div class="flex flex-wrap gap-3">
-              <span class="px-3 py-1 bg-[var(--accent)] text-[var(--bg-primary)] font-medium rounded-lg">
+              <span class="px-3 py-1 bg-[var(--accent)] text-[var(--bg-primary)] font-medium">
                 {{ work.instrumentation }}
               </span>
-              <span class="px-3 py-1 bg-[var(--bg-tertiary)] text-[var(--text-secondary)] rounded-lg">
+              <span class="px-3 py-1 bg-[var(--bg-tertiary)] text-[var(--text-secondary)]">
                 {{ work.duration }}
               </span>
             </div>
@@ -157,7 +157,7 @@ const bandcampUrl = computed(() => {
             </div>
 
             <!-- Sheet Music Section -->
-            <div v-if="work.sheetMusicAvailable" class="bg-[var(--bg-tertiary)] rounded-xl p-4 space-y-4">
+            <div v-if="work.sheetMusicAvailable" class="bg-[var(--bg-tertiary)] p-4 space-y-4">
               <h3 class="text-sm font-semibold text-[var(--text-secondary)] uppercase tracking-wide">
                 Sheet Music
               </h3>
@@ -291,15 +291,5 @@ const bandcampUrl = computed(() => {
 .modal-enter-from,
 .modal-leave-to {
   opacity: 0;
-}
-
-.modal-enter-active .relative,
-.modal-leave-active .relative {
-  transition: transform 0.3s ease;
-}
-
-.modal-enter-from .relative,
-.modal-leave-to .relative {
-  transform: scale(0.95) translateY(20px);
 }
 </style>

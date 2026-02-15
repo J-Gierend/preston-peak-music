@@ -22,7 +22,7 @@ defineProps<{
         </div>
         <div
           v-if="i < totalSteps"
-          class="flex-1 h-1 rounded transition-colors"
+          class="flex-1 h-1 transition-colors"
           :class="i < stepNumber ? 'bg-[var(--accent)]' : 'bg-[var(--bg-tertiary)]'"
         />
       </template>

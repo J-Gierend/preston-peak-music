@@ -65,7 +65,7 @@ function closeModal() {
     <HeroSection
       title="Game Music"
       subtitle="Soundtracks and music packs for your games"
-      :background-image="`${baseUrl}images/backgrounds/hero-gaming.png`"
+      :background-image="`${baseUrl}images/backgrounds/hero-gaming.jpg`"
     />
 
     <section class="py-20 px-4">

@@ -87,7 +87,7 @@ function closeModal() {
     <HeroSection
       :title="currentCategory?.name || 'Works'"
       :subtitle="currentCategory?.description || 'Classical compositions'"
-      :background-image="`${baseUrl}images/backgrounds/hero-sheet-music.png`"
+      :background-image="`${baseUrl}images/backgrounds/hero-sheet-music.jpg`"
     />
 
     <section class="py-8 px-4 border-b border-[var(--accent)]/20">
@@ -108,7 +108,7 @@ function closeModal() {
             :key="cat.slug"
             :to="`/classical/${cat.slug}`"
             :class="[
-              'px-4 py-2 rounded-lg font-medium transition-all',
+              'px-4 py-2 font-medium transition-colors',
               cat.slug === category
                 ? 'bg-[var(--accent)] text-[var(--bg-primary)]'
                 : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--accent)]/20 hover:text-[var(--text-primary)]'

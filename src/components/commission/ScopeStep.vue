@@ -49,7 +49,7 @@ function select(id: string) {
         v-for="scope in scopes"
         :key="scope.id"
         @click="select(scope.id)"
-        class="w-full p-4 rounded-xl border-2 text-left transition-all hover:border-[var(--accent)] flex items-center gap-4"
+        class="w-full p-4 border-2 text-left transition-colors hover:border-[var(--accent)] flex items-center gap-4"
         :class="modelValue === scope.id
           ? 'border-[var(--accent)] bg-[var(--accent)]/10'
           : 'border-[var(--bg-tertiary)] bg-[var(--bg-secondary)]'"

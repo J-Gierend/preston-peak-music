@@ -99,14 +99,9 @@
 
 /* Card hover effects */
 .card-hover {
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  transition: opacity var(--transition-normal);
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
-
-[data-aesthetic="gaming"] .card-hover:hover {
-  box-shadow: 0 10px 40px rgba(112, 212, 208, 0.2);
+  opacity: 0.9;
 }

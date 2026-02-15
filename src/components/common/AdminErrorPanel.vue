@@ -14,7 +14,7 @@ const hasErrors = computed(() => errors.value.length > 0)
   <Transition name="slide">
     <div
       v-if="isAdmin && hasErrors"
-      class="fixed bottom-4 right-4 z-50 max-w-md bg-red-900/95 backdrop-blur-sm rounded-lg shadow-xl border border-red-500/50 p-4"
+      class="fixed bottom-4 right-4 z-50 max-w-md bg-red-900/95 backdrop-blur-sm shadow-xl border border-red-500/50 p-4"
     >
       <div class="flex items-start justify-between mb-3">
         <h3 class="text-red-200 font-semibold flex items-center gap-2">
@@ -34,7 +34,7 @@ const hasErrors = computed(() => errors.value.length > 0)
         <li
           v-for="(error, index) in errors"
           :key="index"
-          class="bg-red-950/50 rounded p-2"
+          class="bg-red-950/50 p-2"
         >
           <div class="text-red-200 font-mono text-xs mb-1">
             {{ error.file }}
@@ -55,12 +55,11 @@ const hasErrors = computed(() => errors.value.length > 0)
 <style scoped>
 .slide-enter-active,
 .slide-leave-active {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .slide-enter-from,
 .slide-leave-to {
-  transform: translateY(20px);
   opacity: 0;
 }
 </style>

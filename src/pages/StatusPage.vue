@@ -561,7 +561,7 @@ const changelog = [
   max-width: 1000px;
   margin: 0 auto;
   padding: 3rem 1.5rem;
-  font-family: var(--font-body, 'Inter', system-ui, sans-serif);
+  font-family: var(--font-body);
   color: var(--text-primary);
   min-height: 100vh;
 }
@@ -580,7 +580,7 @@ const changelog = [
 }
 
 .status-header h1 {
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
@@ -614,7 +614,7 @@ const changelog = [
   padding: 1rem 1.5rem;
   background: none;
   border: none;
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-secondary);
@@ -638,7 +638,7 @@ const changelog = [
   color: white;
   font-size: 0.75rem;
   padding: 0.15rem 0.5rem;
-  border-radius: 10px;
+  border-radius: 0;
   font-family: var(--font-body);
 }
 
@@ -655,7 +655,7 @@ section {
 }
 
 h2 {
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-display);
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -690,23 +690,22 @@ h2 {
   padding: 1.25rem;
   background: var(--bg-secondary);
   border: 2px solid rgba(212, 175, 55, 0.2);
-  border-radius: 12px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .missing-stat:hover {
   border-color: rgba(212, 175, 55, 0.4);
-  transform: translateY(-2px);
 }
 
 .missing-stat.active {
   border-color: var(--accent);
-  background: linear-gradient(135deg, var(--bg-secondary), rgba(212, 175, 55, 0.1));
+  background: var(--bg-secondary);
 }
 
 .stat-count {
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-display);
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--accent);
@@ -728,7 +727,7 @@ h2 {
   padding: 1rem 1.5rem;
   background: linear-gradient(135deg, rgba(74, 222, 128, 0.1), rgba(74, 222, 128, 0.05));
   border: 1px solid rgba(74, 222, 128, 0.3);
-  border-radius: 12px;
+  border-radius: 0;
   margin-bottom: 2rem;
 }
 
@@ -752,15 +751,14 @@ h2 {
   background: var(--accent);
   color: var(--bg-primary);
   border: none;
-  border-radius: 6px;
+  border-radius: 0;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .btn-export:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  opacity: 0.9;
 }
 
 .btn-clear {
@@ -768,7 +766,7 @@ h2 {
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 6px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s;
 }
@@ -788,7 +786,7 @@ h2 {
 }
 
 .section-header h3 {
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -806,7 +804,7 @@ h2 {
   color: #166534;
   font-weight: 500;
   background: rgba(74, 222, 128, 0.1);
-  border-radius: 12px;
+  border-radius: 0;
 }
 
 .input-list {
@@ -818,7 +816,7 @@ h2 {
 .input-card {
   background: var(--bg-secondary);
   border: 1px solid rgba(212, 175, 55, 0.2);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 1.25rem;
 }
 
@@ -848,7 +846,7 @@ h2 {
   color: #166534;
   font-size: 0.75rem;
   padding: 0.25rem 0.75rem;
-  border-radius: 12px;
+  border-radius: 0;
   font-weight: 600;
 }
 
@@ -887,18 +885,17 @@ h2 {
   padding: 0.75rem 1rem;
   background: var(--bg-primary);
   border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 8px;
+  border-radius: 0;
   font-family: inherit;
   font-size: 0.9rem;
   color: var(--text-primary);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s;
 }
 
 .input-group input:focus,
 .input-group textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 .input-group input::placeholder,
@@ -921,7 +918,7 @@ h2 {
 
 .changelog-item {
   background: var(--bg-secondary);
-  border-radius: 12px;
+  border-radius: 0;
   border: 1px solid rgba(212, 175, 55, 0.2);
   overflow: hidden;
   transition: border-color 0.2s ease;
@@ -961,7 +958,7 @@ h2 {
 }
 
 .changelog-title {
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--text-primary);
@@ -1022,7 +1019,7 @@ h2 {
 
 .export-modal {
   background: var(--bg-secondary);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 2rem;
   max-width: 600px;
   width: 100%;
@@ -1031,7 +1028,7 @@ h2 {
 }
 
 .export-modal h3 {
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-display);
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: var(--text-primary);
@@ -1045,7 +1042,7 @@ h2 {
 .export-content {
   background: var(--bg-primary);
   border: 1px solid rgba(212, 175, 55, 0.2);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 1rem;
   font-size: 0.8rem;
   overflow: auto;
@@ -1066,15 +1063,14 @@ h2 {
   background: var(--accent);
   color: var(--bg-primary);
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+  opacity: 0.9;
 }
 
 .btn-secondary {
@@ -1082,7 +1078,7 @@ h2 {
   background: transparent;
   color: var(--text-secondary);
   border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s;
 }
