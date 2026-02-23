@@ -1,4 +1,6 @@
-# CLAUDE.md - Preston Peak Website Project
+*Inherits global rules (TDD, smoke testing, SRT, Ralph Loop, quality gates) from ~/.claude/CLAUDE.md.*
+
+# Preston Peak Website
 
 ## Project Overview
 Modern, animated portfolio website for Preston Peak, a post-classical composer.
@@ -9,44 +11,9 @@ Features dual aesthetics (classical elegance + retro gaming) with dramatic secti
 - `index.html` - Concept presentation page (for client review)
 - `images/` - Generated background images
 
----
+## Gemini API Policy
 
-## CRITICAL: Gemini API Usage Policy
-
-### MANDATORY CONFIRMATION REQUIRED
-
-**The Gemini API key stored in `.env` must NEVER be used without explicit user confirmation.**
-
-Before ANY Gemini API call (image generation, text, or other services), you MUST:
-
-1. **State your intent clearly:**
-   ```
-   [GEMINI API] I want to use the Gemini API to: [specific purpose]
-   This will consume API quota.
-   ```
-
-2. **Wait for explicit confirmation:**
-   - User must say "yes", "confirmed", "go ahead", "approved", or similar
-   - Silence or ambiguous responses = NO permission
-   - "Maybe" or "I guess" = NO permission
-
-3. **Never batch unlimited requests:**
-   - Always specify exact number of API calls before asking
-   - Maximum 10 image generations per confirmation
-   - If more needed, ask again
-
-### Prohibited Actions (without confirmation):
-- Generating images
-- Making test API calls
-- Checking API status via actual requests
-- Any action that consumes API quota
-
-### Current Session Authorization:
-- **Authorized:** Generate up to 10 preview images for concept presentation
-- **Authorized by:** User on 2026-01-10
-- **Purpose:** Create background images for Preston Peak website concept
-
----
+The Gemini API key in `.env` requires explicit user confirmation before any call. State intent, wait for "yes"/"confirmed", max 10 image generations per confirmation.
 
 ## Development Guidelines
 
