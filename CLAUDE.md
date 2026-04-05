@@ -1,4 +1,4 @@
-*Inherits global rules from ~/.claude/CLAUDE.md. Quality rules (TDD, verification, SRT) enforced by ship pipeline.*
+*Inherits global rules (TDD, smoke testing, SRT, Ralph Loop, quality gates) from ~/.claude/CLAUDE.md.*
 *All project knowledge (stack, design system, aesthetics) lives in the Second Brain. Query it: `brain_query("ppeakWebsite ...", detail="full")`*
 
 # Preston Peak Website
